@@ -1,0 +1,17 @@
+*.aux
+*.log
+*.out
+*.bbl
+*.bcf
+*.blg
+*.thm
+*.toc
+*.run.xml
+*.synctex.gz
+*.7z
+*.fdb_latexmk
+*.fls
+desktop.ini
+_minted-ExpTreat/
+_archive/
+*.bak*

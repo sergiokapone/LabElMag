@@ -1,9 +1,9 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.9.3)  9 SEP 2023 18:07
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.10.14)  20 OCT 2023 00:22
  system commands enabled.
 **LabWork.tex
 (./LabWork.tex
 LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-08-29>
+L3 programming layer <2023-10-10>
 Lua module: luaotfload 2023-08-31 3.26 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
@@ -107,16 +107,16 @@ Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/fontspec/fontspec.sty
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/l3packages/xparse/xparse.s
 ty (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2023-08-29 L3 programming layer (loader) 
+Package: expl3 2023-10-10 L3 programming layer (loader) 
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/l3backend/l3backend-luatex
 .def
-File: l3backend-luatex.def 2023-04-19 L3 backend support: PDF output (LuaTeX)
+File: l3backend-luatex.def 2023-10-10 L3 backend support: PDF output (LuaTeX)
 \l__color_backend_stack_int=\count195
 Inserting `l3color' in `luaotfload.parse_color'.
 \l__pdf_internal_box=\box51
 ))
-Package: xparse 2023-02-02 L3 Experimental document command parser
+Package: xparse 2023-10-10 L3 Experimental document command parser
 )
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 Lua module: fontspec 2022/01/15 2.8a Font selection for XeLaTeX and LuaLaTeX
@@ -288,7 +288,7 @@ Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
 \CatcodeTableOther=\catcodetable14
 \CatcodeTableExpl=\catcodetable15
 ) (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2023/08/29 v3.93 The Babel package
+Package: babel 2023/09/29 v3.95 The Babel package
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/babel/luababel.def
 \bbl@readstream=\read2
@@ -569,7 +569,7 @@ File: ppluatex.def 2022/12/19 v0.5x Pdfpages driver for LuaTeX (AM)
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2023/07/31 v3.6n Customizing captions (AR)
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
@@ -651,12 +651,6 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \RaggedRightParindent=\skip74
 \JustifyingParindent=\skip75
 )
-(d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/lualatex/lualatex-math/lualatex-
-math.sty
-Package: lualatex-math 2022/01/01 v1.12 Patches for mathematics typesetting wit
-h LuaLaTeX
-Lua module: lualatex-math 2013/08/03 1.3 Patches for mathematics typesetting wit
-h LuaLaTeX)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip76
@@ -725,15 +719,6 @@ LaTeX Info: Redefining \Relbar on input line 971.
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
-! Illegal parameter number in definition of \__hook package/amsmath/after.
-<to be read again> 
-\Ustopmath 
-l.104 \else
-         
-You meant to type ## instead of #, right?
-Or maybe a } was forgotten somewhere earlier, and things
-are all screwed up? I'm going to assume that you meant ##.
-
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/esint/esint.sty
 Package: esint 
 \symlargesymbolsA=\mathgroup4
@@ -749,7 +734,7 @@ Package: mhchem 2021/12/31 v4.09 for typesetting chemical formulae
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys
 2e.sty
-Package: l3keys2e 2023-02-02 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2023-10-10 LaTeX2e option processing using LaTeX3 keys
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/chemgreek/chemgreek.sty
 Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use
@@ -838,15 +823,16 @@ Package: nextpage 2009/09/03 v1.1a additional page commands
 \epigraphrule=\skip97
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/lastpage/lastpage.sty
-Package: lastpage 2023/07/24 v2.0c lastpage: 2.09 or 2e? (HMM)
+Package: lastpage 2023/10/14 v2.0e lastpage: 2.09 or 2e? (HMM)
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/lastpage/lastpage2e.sty
-Package: lastpage2e 2023/07/24 v2.0c Decide which 2e lastpage version to use (H
+Package: lastpage2e 2023/10/14 v2.0e Decide which 2e lastpage version to use (H
 MM)
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/lastpage/lastpagemodern.st
 y
-Package: lastpagemodern 2023-07-24 v2.0c Refers to last page's name (HMM; JPG)
+Package: lastpagemodern 2023-10-14 v2.0e Refers to last page's name (HMM; JPG)
+\c@lastpagecount=\count320
 ) 
 )) (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2023/01/31 v1.1.6 Todonotes source and documentation.
@@ -859,7 +845,7 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks35
 \XKV@tempa@toks=\toks36
 )
-\XKV@depth=\count320
+\XKV@depth=\count321
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -931,14 +917,14 @@ raryfiltered.code.tex
 \pgf@yd=\dimen278
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count321
-\c@pgf@countb=\count322
-\c@pgf@countc=\count323
-\c@pgf@countd=\count324
+\c@pgf@counta=\count322
+\c@pgf@countb=\count323
+\c@pgf@countc=\count324
+\c@pgf@countd=\count325
 \t@pgf@toka=\toks41
 \t@pgf@tokb=\toks42
 \t@pgf@tokc=\toks43
-\pgf@sys@id@count=\count325
+\pgf@sys@id@count=\count326
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
@@ -956,8 +942,8 @@ File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysso
 ftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count326
-\pgfsyssoftpath@bigbuffer@items=\count327
+\pgfsyssoftpath@smallbuffer@items=\count327
+\pgfsyssoftpath@bigbuffer@items=\count328
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyspr
 otocol.code.tex
@@ -974,7 +960,7 @@ e.tex)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/math/pgfmathparser.c
 ode.tex
 \pgfmath@dimen=\dimen279
-\pgfmath@count=\count328
+\pgfmath@count=\count329
 \pgfmath@box=\box67
 \pgfmath@toks=\toks44
 \pgfmath@stack@operand=\toks45
@@ -1002,7 +988,7 @@ s.integerarithmetics.code.tex)
 e.tex)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfloat.co
 de.tex
-\c@pgfmathroundto@lastzeros=\count329
+\c@pgfmathroundto@lastzeros=\count330
 ))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/math/pgfint.code.tex
 )
@@ -1042,7 +1028,7 @@ File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box68
 \pgf@hbox=\box69
 \pgf@layerbox@main=\box70
-\pgf@picture@serial@count=\count330
+\pgf@picture@serial@count=\count331
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregr
 aphicstate.code.tex
@@ -1077,8 +1063,8 @@ File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen303
-\pgf@sys@shading@range@num=\count331
-\pgf@shadingcount=\count332
+\pgf@sys@shading@range@num=\count332
+\pgf@shadingcount=\count333
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreim
 age.code.tex
@@ -1146,7 +1132,7 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibrary
 plothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count333
+\pgf@plot@mark@count=\count334
 \pgfplotmarksize=\dimen308
 )
 \tikz@lastx=\dimen309
@@ -1161,19 +1147,19 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@figbox@bg=\box74
 \tikz@tempbox=\box75
 \tikz@tempbox@bg=\box76
-\tikztreelevel=\count334
-\tikznumberofchildren=\count335
-\tikznumberofcurrentchild=\count336
-\tikz@fig@count=\count337
+\tikztreelevel=\count335
+\tikznumberofchildren=\count336
+\tikznumberofcurrentchild=\count337
+\tikz@fig@count=\count338
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/modules/pgfmodulemat
 rix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count338
-\pgfmatrixcurrentcolumn=\count339
-\pgf@matrix@numberofcolumns=\count340
+\pgfmatrixcurrentrow=\count339
+\pgfmatrixcurrentcolumn=\count340
+\pgf@matrix@numberofcolumns=\count341
 )
-\tikz@expandcount=\count341
+\tikz@expandcount=\count342
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
 ibraries/tikzlibrarytopaths.code.tex
@@ -1183,7 +1169,7 @@ File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ibraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-\c@@todonotes@numberoftodonotes=\count342
+\c@@todonotes@numberoftodonotes=\count343
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.st
 y
@@ -1198,7 +1184,7 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 \pdftexcmds@toks=\toks49
 ) (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2023/06/19 version 6.0.4 text color boxes
+Package: tcolorbox 2023/09/26 version 6.1.0 text color boxes
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
@@ -1216,9 +1202,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box78
 \tcb@lowerbox=\box79
 \tcb@phantombox=\box80
-\c@tcbbreakpart=\count343
-\c@tcblayer=\count344
-\c@tcolorbox@number=\count345
+\c@tcbbreakpart=\count344
+\c@tcblayer=\count345
+\c@tcolorbox@number=\count346
 \tcb@temp=\box81
 \tcb@temp=\box82
 \tcb@temp=\box83
@@ -1226,15 +1212,15 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbraster.code.t
 ex
-Library (tcolorbox): 'tcbraster.code.tex' version '6.0.4'
-\c@tcbrastercolumn=\count346
-\c@tcbrasterrow=\count347
-\c@tcbrasternum=\count348
-\c@tcbraster=\count349
+Library (tcolorbox): 'tcbraster.code.tex' version '6.1.0'
+\c@tcbrastercolumn=\count347
+\c@tcbrasterrow=\count348
+\c@tcbrasternum=\count349
+\c@tcbraster=\count350
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbskins.code.te
 x
-Library (tcolorbox): 'tcbskins.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbskins.code.tex' version '6.1.0'
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tikzfill/tikzfill.image.st
 y
@@ -1251,11 +1237,11 @@ File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
 ))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.c
 ode.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.1.0'
 ))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbbreakable.cod
 e.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.1.0'
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/pdfcol/pdfcol.sty
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 Package pdfcol Info: Interface disabled because of package `luacolor'.
@@ -1267,45 +1253,45 @@ Package pdfcol Info: pdfTeX's color stacks are not available.
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.te
 x
-Library (tcolorbox): 'tcbhooks.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.1.0'
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code
 .tex
-Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.1.0'
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.
 tex
-Library (tcolorbox): 'tcbfitting.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.1.0'
 \tcbfitdim=\dimen317
 \tcb@lowerfitdim=\dimen318
 \tcb@upperfitdim=\dimen319
-\tcb@cur@hbadness=\count350
+\tcb@cur@hbadness=\count351
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.
 code.tex
-Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.1.0'
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcblistings.code
 .tex
-Library (tcolorbox): 'tcblistings.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcblistings.code.tex' version '6.1.0'
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count351
+\lst@mode=\count352
 \lst@gtempboxa=\box89
 \lst@token=\toks52
-\lst@length=\count352
+\lst@length=\count353
 \lst@currlwidth=\dimen320
-\lst@column=\count353
-\lst@pos=\count354
+\lst@column=\count354
+\lst@pos=\count355
 \lst@lostspace=\dimen321
 \lst@width=\dimen322
-\lst@newlines=\count355
-\lst@lineno=\count356
+\lst@newlines=\count356
+\lst@lineno=\count357
 \lst@maxwidth=\dimen323
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count357
-\lst@skipnumbers=\count358
+\c@lstnumber=\count358
+\lst@skipnumbers=\count359
 \lst@framebox=\box90
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/listings/listings.cfg
@@ -1315,31 +1301,31 @@ Package: listings 2023/02/27 1.9 (Carsten Heinz)
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcblistingscore.
 code.tex
-Library (tcolorbox): 'tcblistingscore.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.1.0'
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbprocessing.co
 de.tex
-Library (tcolorbox): 'tcbprocessing.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.1.0'
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2023/04/15 v1.0d unified shell escape interface for LaTeX
 Package shellesc Info: Unrestricted shell escape enabled on input line 75.
 ))
-\c@tcblisting=\count359
+\c@tcblisting=\count360
 ))
 Package tcolorbox Info: Library `listingsutf8' is compatible with pdftex only. 
 Library `listings` is loaded instead. on input line 29.
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbexternal.code
 .tex
-Library (tcolorbox): 'tcbexternal.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.1.0'
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code
 .tex
-Library (tcolorbox): 'tcbmagazine.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.1.0'
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbvignette.code
 .tex
-Library (tcolorbox): 'tcbvignette.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.1.0'
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
 ibraries/tikzlibraryfadings.code.tex
@@ -1351,7 +1337,7 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/tcolorbox/tcbposter.code.t
 ex
-Library (tcolorbox): 'tcbposter.code.tex' version '6.0.4'
+Library (tcolorbox): 'tcbposter.code.tex' version '6.1.0'
 ))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
 ibraries/tikzlibrarydecorations.pathmorphing.code.tex
@@ -1364,7 +1350,7 @@ orations.code.tex
 \pgfdecoratedinputsegmentcompleteddistance=\dimen326
 \pgfdecoratedinputsegmentremainingdistance=\dimen327
 \pgf@decorate@distancetomove=\dimen328
-\pgf@decorate@repeatstate=\count360
+\pgf@decorate@repeatstate=\count361
 \pgfdecorationsegmentamplitude=\dimen329
 \pgfdecorationsegmentlength=\dimen330
 )
@@ -1399,7 +1385,7 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ibraries/tikzlibrarydecorations.markings.code.tex
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/libraries/decoration
 s/pgflibrarydecorations.markings.code.tex))
-\tikz@lib@circ@count=\count361
+\tikz@lib@circ@count=\count362
 \tikzcircuitssizeunit=\dimen332
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/libraries/shapes/cir
@@ -1412,7 +1398,7 @@ ibraries/tikzlibraryintersections.code.tex
 intersections.code.tex
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibrary
 fpu.code.tex)
-\pgf@intersect@solutions=\count362
+\pgf@intersect@solutions=\count363
 ))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.revisi
@@ -1429,8 +1415,8 @@ Package pgfplots info on input line 124: Initializing with LUA version Lua 5.3
 \t@pgfplots@tokb=\toks54
 \t@pgfplots@tokc=\toks55
 \pgfplots@tmpa=\dimen333
-\c@pgfplots@coordindex=\count363
-\c@pgfplots@scanlineindex=\count364
+\c@pgfplots@coordindex=\count364
+\c@pgfplots@scanlineindex=\count365
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/sys/pgfplotssys
 generic.code.tex))
@@ -1461,13 +1447,13 @@ gfplotsliststructure.code.tex)
 gfplotsliststructureext.code.tex)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/liststructure/p
 gfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count365
+\c@pgfplotsarray@tmp=\count366
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/liststructure/p
 gfplotsmatrix.code.tex)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/numtable/pgfplo
 tstableshared.code.tex
-\c@pgfplotstable@counta=\count366
+\c@pgfplotstable@counta=\count367
 \t@pgfplotstable@a=\toks59
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/liststructure/p
@@ -1480,7 +1466,7 @@ nary.data.code.tex))
 il.verb.code.tex)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/libs/pgflibrary
 pgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count367
+\c@pgfplotslibrarysurf@no=\count368
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/sys/pgflibraryp
 gfplots.surfshading.pgfsys-luatex.def)))
@@ -1514,7 +1500,7 @@ ibraries/tikzlibrarydecorations.pathreplacing.code.tex
 s/pgflibrarydecorations.pathreplacing.code.tex))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrar
 ypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count368
+\pgfplots@numplots=\count369
 \pgfplots@xmin@reg=\dimen334
 \pgfplots@xmax@reg=\dimen335
 \pgfplots@ymin@reg=\dimen336
@@ -1545,9 +1531,9 @@ tstable.coltype.code.tex)))
 ibraries/tikzlibraryfpu.code.tex)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrar
 ypgfplots.groupplots.code.tex
-\pgfplots@group@current@plot=\count369
-\pgfplots@group@current@row=\count370
-\pgfplots@group@current@column=\count371
+\pgfplots@group@current@plot=\count370
+\pgfplots@group@current@row=\count371
+\pgfplots@group@current@column=\count372
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrar
 ypgfplots.units.code.tex)
@@ -1595,7 +1581,7 @@ with kernel methods
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
 ibraries/tikzexternalshared.code.tex))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2021/07/05 v2.14 Sectioning titles
+Package: titlesec 2023/10/17 v2.15 Sectioning titles
 \ttl@box=\box96
 \beforetitleunit=\skip98
 \aftertitleunit=\skip99
@@ -1608,7 +1594,7 @@ Package: titlesec 2021/07/05 v2.14 Sectioning titles
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/titlesec/titleps.sty))
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/titlesec/titletoc.sty
-Package: titletoc 2021/07/05 v2.14 TOC entries
+Package: titletoc 2023/10/17 v2.15 TOC entries
 \ttl@leftsep=\dimen349
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
@@ -1617,8 +1603,8 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@outerparindent=\dimen350
 \enit@toks=\toks61
 \enit@inbox=\box97
-\enit@count@id=\count372
-\enitdp@description=\count373
+\enit@count@id=\count373
+\enitdp@description=\count374
 )
 \bibitemsep=\skip101
 \bibparskip=\skip102
@@ -1628,7 +1614,7 @@ Package: biblatex 2023/03/05 v3.19 programmable bibliographies (PK/MW)
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count374
+\lrq@indent=\count375
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -1637,49 +1623,49 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count375
-\c@listtotal=\count376
-\c@listcount=\count377
-\c@liststart=\count378
-\c@liststop=\count379
-\c@citecount=\count380
-\c@citetotal=\count381
-\c@multicitecount=\count382
-\c@multicitetotal=\count383
-\c@instcount=\count384
-\c@maxnames=\count385
-\c@minnames=\count386
-\c@maxitems=\count387
-\c@minitems=\count388
-\c@citecounter=\count389
-\c@maxcitecounter=\count390
-\c@savedcitecounter=\count391
-\c@uniquelist=\count392
-\c@uniquename=\count393
-\c@refsection=\count394
-\c@refsegment=\count395
-\c@maxextratitle=\count396
-\c@maxextratitleyear=\count397
-\c@maxextraname=\count398
-\c@maxextradate=\count399
-\c@maxextraalpha=\count400
-\c@abbrvpenalty=\count401
-\c@highnamepenalty=\count402
-\c@lownamepenalty=\count403
-\c@maxparens=\count404
-\c@parenlevel=\count405
-\blx@tempcnta=\count406
-\blx@tempcntb=\count407
-\blx@tempcntc=\count408
-\c@blx@maxsection=\count409
-\blx@maxsegment@0=\count410
-\blx@notetype=\count411
-\blx@parenlevel@text=\count412
-\blx@parenlevel@foot=\count413
-\blx@sectionciteorder@0=\count414
-\blx@sectionciteorderinternal@0=\count415
-\blx@entrysetcounter=\count416
-\blx@biblioinstance=\count417
+\c@tabx@nest=\count376
+\c@listtotal=\count377
+\c@listcount=\count378
+\c@liststart=\count379
+\c@liststop=\count380
+\c@citecount=\count381
+\c@citetotal=\count382
+\c@multicitecount=\count383
+\c@multicitetotal=\count384
+\c@instcount=\count385
+\c@maxnames=\count386
+\c@minnames=\count387
+\c@maxitems=\count388
+\c@minitems=\count389
+\c@citecounter=\count390
+\c@maxcitecounter=\count391
+\c@savedcitecounter=\count392
+\c@uniquelist=\count393
+\c@uniquename=\count394
+\c@refsection=\count395
+\c@refsegment=\count396
+\c@maxextratitle=\count397
+\c@maxextratitleyear=\count398
+\c@maxextraname=\count399
+\c@maxextradate=\count400
+\c@maxextraalpha=\count401
+\c@abbrvpenalty=\count402
+\c@highnamepenalty=\count403
+\c@lownamepenalty=\count404
+\c@maxparens=\count405
+\c@parenlevel=\count406
+\blx@tempcnta=\count407
+\blx@tempcntb=\count408
+\blx@tempcntc=\count409
+\c@blx@maxsection=\count410
+\blx@maxsegment@0=\count411
+\blx@notetype=\count412
+\blx@parenlevel@text=\count413
+\blx@parenlevel@foot=\count414
+\blx@sectionciteorder@0=\count415
+\blx@sectionciteorderinternal@0=\count416
+\blx@entrysetcounter=\count417
+\blx@biblioinstance=\count418
 \labelnumberwidth=\skip103
 \labelalphawidth=\skip104
 \biblabelsep=\skip105
@@ -1690,9 +1676,9 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \blx@bcfin=\read5
 \blx@bcfout=\write4
 \blx@langwohyphens=\language89
-\c@mincomprange=\count418
-\c@maxcomprange=\count419
-\c@mincompwidth=\count420
+\c@mincomprange=\count419
+\c@maxcomprange=\count420
+\c@mincompwidth=\count421
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -1703,74 +1689,74 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'numeric-comp.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count421
-\c@savedafterword=\count422
-\c@annotator=\count423
-\c@savedannotator=\count424
-\c@author=\count425
-\c@savedauthor=\count426
-\c@bookauthor=\count427
-\c@savedbookauthor=\count428
-\c@commentator=\count429
-\c@savedcommentator=\count430
-\c@editor=\count431
-\c@savededitor=\count432
-\c@editora=\count433
-\c@savededitora=\count434
-\c@editorb=\count435
-\c@savededitorb=\count436
-\c@editorc=\count437
-\c@savededitorc=\count438
-\c@foreword=\count439
-\c@savedforeword=\count440
-\c@holder=\count441
-\c@savedholder=\count442
-\c@introduction=\count443
-\c@savedintroduction=\count444
-\c@namea=\count445
-\c@savednamea=\count446
-\c@nameb=\count447
-\c@savednameb=\count448
-\c@namec=\count449
-\c@savednamec=\count450
-\c@translator=\count451
-\c@savedtranslator=\count452
-\c@shortauthor=\count453
-\c@savedshortauthor=\count454
-\c@shorteditor=\count455
-\c@savedshorteditor=\count456
-\c@labelname=\count457
-\c@savedlabelname=\count458
-\c@institution=\count459
-\c@savedinstitution=\count460
-\c@lista=\count461
-\c@savedlista=\count462
-\c@listb=\count463
-\c@savedlistb=\count464
-\c@listc=\count465
-\c@savedlistc=\count466
-\c@listd=\count467
-\c@savedlistd=\count468
-\c@liste=\count469
-\c@savedliste=\count470
-\c@listf=\count471
-\c@savedlistf=\count472
-\c@location=\count473
-\c@savedlocation=\count474
-\c@organization=\count475
-\c@savedorganization=\count476
-\c@origlocation=\count477
-\c@savedoriglocation=\count478
-\c@origpublisher=\count479
-\c@savedorigpublisher=\count480
-\c@publisher=\count481
-\c@savedpublisher=\count482
-\c@language=\count483
-\c@savedlanguage=\count484
-\c@origlanguage=\count485
-\c@savedoriglanguage=\count486
-\c@pageref=\count487
-\c@savedpageref=\count488
+\c@afterword=\count422
+\c@savedafterword=\count423
+\c@annotator=\count424
+\c@savedannotator=\count425
+\c@author=\count426
+\c@savedauthor=\count427
+\c@bookauthor=\count428
+\c@savedbookauthor=\count429
+\c@commentator=\count430
+\c@savedcommentator=\count431
+\c@editor=\count432
+\c@savededitor=\count433
+\c@editora=\count434
+\c@savededitora=\count435
+\c@editorb=\count436
+\c@savededitorb=\count437
+\c@editorc=\count438
+\c@savededitorc=\count439
+\c@foreword=\count440
+\c@savedforeword=\count441
+\c@holder=\count442
+\c@savedholder=\count443
+\c@introduction=\count444
+\c@savedintroduction=\count445
+\c@namea=\count446
+\c@savednamea=\count447
+\c@nameb=\count448
+\c@savednameb=\count449
+\c@namec=\count450
+\c@savednamec=\count451
+\c@translator=\count452
+\c@savedtranslator=\count453
+\c@shortauthor=\count454
+\c@savedshortauthor=\count455
+\c@shorteditor=\count456
+\c@savedshorteditor=\count457
+\c@labelname=\count458
+\c@savedlabelname=\count459
+\c@institution=\count460
+\c@savedinstitution=\count461
+\c@lista=\count462
+\c@savedlista=\count463
+\c@listb=\count464
+\c@savedlistb=\count465
+\c@listc=\count466
+\c@savedlistc=\count467
+\c@listd=\count468
+\c@savedlistd=\count469
+\c@liste=\count470
+\c@savedliste=\count471
+\c@listf=\count472
+\c@savedlistf=\count473
+\c@location=\count474
+\c@savedlocation=\count475
+\c@organization=\count476
+\c@savedorganization=\count477
+\c@origlocation=\count478
+\c@savedoriglocation=\count479
+\c@origpublisher=\count480
+\c@savedorigpublisher=\count481
+\c@publisher=\count482
+\c@savedpublisher=\count483
+\c@language=\count484
+\c@savedlanguage=\count485
+\c@origlanguage=\count486
+\c@savedoriglanguage=\count487
+\c@pageref=\count488
+\c@savedpageref=\count489
 \shorthandwidth=\skip110
 \shortjournalwidth=\skip111
 \shortserieswidth=\skip112
@@ -1800,19 +1786,19 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
-\c@textcitecount=\count489
-\c@textcitetotal=\count490
-\c@textcitemaxnames=\count491
-\c@biburlbigbreakpenalty=\count492
-\c@biburlbreakpenalty=\count493
-\c@biburlnumpenalty=\count494
-\c@biburlucpenalty=\count495
-\c@biburllcpenalty=\count496
+\c@textcitecount=\count490
+\c@textcitetotal=\count491
+\c@textcitemaxnames=\count492
+\c@biburlbigbreakpenalty=\count493
+\c@biburlbreakpenalty=\count494
+\c@biburlnumpenalty=\count495
+\c@biburlucpenalty=\count496
+\c@biburllcpenalty=\count497
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count497
+\c@smartand=\count498
 )
 Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
 Package biblatex Info: ... file 'numeric-comp.bbx' found.
@@ -1830,8 +1816,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2023/03/05 v3.19 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count498
-\c@bbx:relatedtotal=\count499
+\c@bbx:relatedcount=\count499
+\c@bbx:relatedtotal=\count500
 )))
 Package biblatex Info: Trying to load citation style 'numeric-comp'...
 Package biblatex Info: ... file 'numeric-comp.cbx' found.
@@ -1839,10 +1825,10 @@ Package biblatex Info: ... file 'numeric-comp.cbx' found.
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/biblatex/cbx/numeric-comp.
 cbx
 File: numeric-comp.cbx 2023/03/05 v3.19 biblatex citation style (PK/MW)
-\c@cbx@tempcnta=\count500
-\c@cbx@tempcntb=\count501
-\c@cbx@tempcntc=\count502
-\c@cbx@tempcntd=\count503
+\c@cbx@tempcnta=\count501
+\c@cbx@tempcntb=\count502
+\c@cbx@tempcntc=\count503
+\c@cbx@tempcntd=\count504
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -1868,7 +1854,7 @@ Package biblatex Info: LuaTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2023-08-29 L3 programming layer (loader) 
+(biblatex)             2023-10-10 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
 
@@ -1903,11 +1889,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 tring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count504
+\c@section@level=\count505
 )
 \@linkdim=\dimen351
-\Hy@linkcounter=\count505
-\Hy@pagecounter=\count506
+\Hy@linkcounter=\count506
+\Hy@pagecounter=\count507
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2023-07-08 v7.01b Hyperref: PDFDocEncoding definition (HO)
@@ -1915,7 +1901,7 @@ File: pd1enc.def 2023-07-08 v7.01b Hyperref: PDFDocEncoding definition (HO)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count507
+\Hy@SavedSpaceFactor=\count508
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2023-07-08 v7.01b Hyperref: PDF Unicode definition (HO)
@@ -1944,7 +1930,7 @@ Package hyperref Info: Plain pages OFF on input line 4182.
 Package hyperref Info: Backreferencing OFF on input line 4187.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4434.
-\c@Hy@tempcnt=\count508
+\c@Hy@tempcnt=\count509
 LaTeX Info: Redefining \url on input line 4772.
 \XeTeXLinkMargin=\dimen352
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/bitset/bitset.sty
@@ -1955,7 +1941,7 @@ y
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count509
+\Fld@menulength=\count510
 \Field@Width=\dimen353
 \Fld@charsize=\dimen354
 Package hyperref Info: Hyper figures OFF on input line 6051.
@@ -1969,15 +1955,15 @@ Package hyperref Info: PDF/A mode OFF on input line 6081.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count510
-\c@Item=\count511
-\c@Hfootnote=\count512
+\Hy@abspage=\count511
+\c@Item=\count512
+\c@Hfootnote=\count513
 )
 Package hyperref Info: Driver (autodetected): hluatex.
  (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/hyperref/hluatex.def
 File: hluatex.def 2023-07-08 v7.01b Hyperref driver for luaTeX
-\Fld@listcount=\count513
-\c@bookmark@seq@number=\count514
+\Fld@listcount=\count514
+\c@bookmark@seq@number=\count515
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilech
 eck.sty
@@ -2000,14 +1986,14 @@ Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
-\BKM@id=\count515
+\BKM@id=\count516
 ))) (./CoverPage.tex)
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count516
-\@quotereset=\count517
+\@quotelevel=\count517
+\@quotereset=\count518
 (./LabWork.aux)
 \openout1 = LabWork.aux
 
@@ -2134,16 +2120,16 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 ine 34.
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count518
+\scratchcounter=\count519
 \scratchdimen=\dimen355
 \scratchbox=\box98
-\nofMPsegments=\count519
-\nofMParguments=\count520
+\nofMPsegments=\count520
+\nofMParguments=\count521
 \everyMPshowfont=\toks62
-\MPscratchCnt=\count521
+\MPscratchCnt=\count522
 \MPscratchDim=\dimen356
-\MPnumerator=\count522
-\makeMPintoPDFobject=\count523
+\MPnumerator=\count523
+\makeMPintoPDFobject=\count524
 \everyMPtoPDFconversion=\toks63
 )
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base
@@ -2214,7 +2200,7 @@ Package caption Info: End \AtBeginDocument code.
 
 Package chemgreek Info: Activating mapping `fontspec' on line 34.
 
-\c@lstlisting=\count524
+\c@lstlisting=\count525
 
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
@@ -2245,9 +2231,8 @@ Package biblatex Info: Automatic encoding selection.
 
 \openout4 = LabWork.bcf
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'LabWork.bbl' not found.
-
-No file LabWork.bbl.
+Package biblatex Info: ... file 'LabWork.bbl' found.
+ (./LabWork.bbl)
 Package biblatex Info: Reference section=0 on input line 34.
 Package biblatex Info: Reference segment=0 on input line 34.
 Package hyperref Info: Link coloring ON on input line 34.
@@ -2260,7 +2245,7 @@ File: logo_PTI.pdf Graphic file (type pdf)
 <use logo_PTI.pdf>
 Package luatex.def Info: logo_PTI.pdf  used on input line 35.
 (luatex.def)             Requested size: 144.19937pt x 144.19435pt.
-[1
+ [1
 
 
 {d:/Programs/LaTeX/TeXLive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./
@@ -2271,15 +2256,9 @@ logo_PTI.pdf>] [1
 \tf@toc=\write5
 
 \openout5 = LabWork.toc
- [2
 
+(./LabCoulombs/LabCoulombs.tex [2
 
-]
-
-LaTeX Font Warning: Font shape `TU/stix(0)/m/sc' undefined
-(Font)              using `TU/stix(0)/m/n' instead on input line 59.
-
-(./LabCoulombs/LabCoulombs.tex [3
 
 ]
 Розділ 1.
@@ -2294,15 +2273,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--30
  []
 
 
-LaTeX Warning: Citation 'BK79' on page 4 undefined on input line 34.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 34--36
 
  []
-
-
-LaTeX Warning: Citation 'Mat3' on page 4 undefined on input line 36.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 36--38
@@ -2310,20 +2283,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--38
  []
 
 
-LaTeX Warning: Citation 'FLF5' on page 4 undefined on input line 38.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 38--40
 
  []
 
-
-LaTeX Warning: Citation 'Kalashnikov' on page 4 undefined on input line 40.
-
-
-LaTeX Warning: Citation 'Siv3' on page 4 undefined on input line 42.
-
-[4
+[3
 
 ]
 LaTeX Font Info:    Trying to load font information for U+esint on input line 5
@@ -2335,58 +2299,51 @@ File: uesint.fd
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-[5] [6]
-
-LaTeX Warning: Citation 'Tu2004' on page 7 undefined on input line 162.
-
-[7]
-
-LaTeX Warning: Citation 'PhysRevLett.66.572' on page 8 undefined on input line 
-173.
-
-
+[4] [5]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `CMUTypewriterText' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [6]
 Underfull \hbox (badness 6396) in paragraph at lines 173--174
-[][]\TU/stix(0)/m/n/14.4 Що сто-су-є-ться мі-кро-ско-пі-
-чних
+[]\TU/stix(0)/m/n/14.4 Що сто-су-є-ться мі-кро-ско-пі-ч
+них
  []
 
-
-LaTeX Warning: Reference `pic:Charge_Image' on page 8 undefined on input line 1
-82.
-
-<LabCoulombs/pic/ColumbTorsiomBalance.png, id=135, 153.4533pt x 201.6333pt>
+<LabCoulombs/pic/ChargeImage.png, id=131, 963.6pt x 803.0pt>
+File: LabCoulombs/pic/ChargeImage.png Graphic file (type png)
+<use LabCoulombs/pic/ChargeImage.png>
+Package luatex.def Info: LabCoulombs/pic/ChargeImage.png  used on input line 18
+2.
+(luatex.def)             Requested size: 145.11053pt x 120.92265pt.
+[7<./LabCoulombs/pic/ChargeImage.png>]
+<LabCoulombs/pic/ColumbTorsiomBalance.png, id=147, 153.4533pt x 201.6333pt>
 File: LabCoulombs/pic/ColumbTorsiomBalance.png Graphic file (type png)
 <use LabCoulombs/pic/ColumbTorsiomBalance.png>
 Package luatex.def Info: LabCoulombs/pic/ColumbTorsiomBalance.png  used on inpu
-t line 189.
-(luatex.def)             Requested size: 215.48668pt x 283.17076pt.
-<LabCoulombs/pic/Installation.png, id=136, 461.47406pt x 597.73312pt>
+t line 197.
+(luatex.def)             Requested size: 202.42416pt x 266.00601pt.
+<LabCoulombs/pic/Installation.png, id=148, 461.47406pt x 597.73312pt>
 File: LabCoulombs/pic/Installation.png Graphic file (type png)
 <use LabCoulombs/pic/Installation.png>
-Package luatex.def Info: LabCoulombs/pic/Installation.png  used on input line 1
-97.
-(luatex.def)             Requested size: 217.66211pt x 281.92876pt.
-<LabCoulombs/pic/ChargeImage.png, id=137, 963.6pt x 803.0pt>
-File: LabCoulombs/pic/ChargeImage.png Graphic file (type png)
-<use LabCoulombs/pic/ChargeImage.png>
-Package luatex.def Info: LabCoulombs/pic/ChargeImage.png  used on input line 20
-8.
-(luatex.def)             Requested size: 193.47578pt x 161.22205pt.
-[8]
+Package luatex.def Info: LabCoulombs/pic/Installation.png  used on input line 2
+05.
+(luatex.def)             Requested size: 204.6029pt x 265.00993pt.
 <LabCoulombs/pic/TorsionDynamometer.png, id=151, 130.3269pt x 190.0701pt>
 File: LabCoulombs/pic/TorsionDynamometer.png Graphic file (type png)
 <use LabCoulombs/pic/TorsionDynamometer.png>
 Package luatex.def Info: LabCoulombs/pic/TorsionDynamometer.png  used on input 
-line 228.
+line 227.
 (luatex.def)             Requested size: 204.6029pt x 298.42517pt.
 <LabCoulombs/pic/DCPower.png, id=152, 206.2104pt x 285.9483pt>
 File: LabCoulombs/pic/DCPower.png Graphic file (type png)
 <use LabCoulombs/pic/DCPower.png>
-Package luatex.def Info: LabCoulombs/pic/DCPower.png  used on input line 236.
+Package luatex.def Info: LabCoulombs/pic/DCPower.png  used on input line 235.
 (luatex.def)             Requested size: 204.6029pt x 283.7267pt.
- [9<./LabCoulombs/pic/ColumbTorsiomBalance.png><./LabCoulombs/pic/Installation.p
-ng><./LabCoulombs/pic/TorsionDynamometer.png><./LabCoulombs/pic/DCPower.png>] [
-10]) (./LabMomentum/LabMomentum.tex [11]
+ [8<./LabCoulombs/pic/ColumbTorsiomBalance.png><./LabCoulombs/pic/Installation.p
+ng>] [9<./LabCoulombs/pic/TorsionDynamometer.png><./LabCoulombs/pic/DCPower.png>
+]) (./LabMomentum/LabMomentum.tex
+[10]
 Розділ 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 24--24
@@ -2398,44 +2355,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--24
 
  []
 
-
-LaTeX Warning: Citation 'Siv3' on page 12 undefined on input line 28.
-
-
-LaTeX Warning: Citation 'Mat3' on page 12 undefined on input line 30.
-
-[12
+[11
 
 ]
-<LabMomentum/pic/corksckrew.png, id=203, 86.2422pt x 69.3792pt>
+<LabMomentum/pic/corksckrew.png, id=205, 86.2422pt x 69.3792pt>
 File: LabMomentum/pic/corksckrew.png Graphic file (type png)
 <use LabMomentum/pic/corksckrew.png>
 Package luatex.def Info: LabMomentum/pic/corksckrew.png  used on input line 63.
 
 (luatex.def)             Requested size: 86.24197pt x 69.37901pt.
- [13<./LabMomentum/pic/corksckrew.png>]
-<LabMomentum/pic/Helmholtz_coils.png, id=226, 1027.84pt x 1102.1175pt>
+ [12<./LabMomentum/pic/corksckrew.png>]
+<LabMomentum/pic/Helmholtz_coils.png, id=227, 1027.84pt x 1102.1175pt>
 File: LabMomentum/pic/Helmholtz_coils.png Graphic file (type png)
 <use LabMomentum/pic/Helmholtz_coils.png>
 Package luatex.def Info: LabMomentum/pic/Helmholtz_coils.png  used on input lin
 e 104.
 (luatex.def)             Requested size: 174.13034pt x 186.70163pt.
-<LabMomentum/pic/Helmholtz_coils_field.png, id=229, 654.445pt x 638.385pt>
+<LabMomentum/pic/Helmholtz_coils_field.png, id=230, 654.445pt x 638.385pt>
 File: LabMomentum/pic/Helmholtz_coils_field.png Graphic file (type png)
 <use LabMomentum/pic/Helmholtz_coils_field.png>
 Package luatex.def Info: LabMomentum/pic/Helmholtz_coils_field.png  used on inp
 ut line 110.
 (luatex.def)             Requested size: 174.13034pt x 169.85307pt.
- [14<./LabMomentum/pic/Helmholtz_coils.png><./LabMomentum/pic/Helmholtz_coils_fi
+ [13<./LabMomentum/pic/Helmholtz_coils.png><./LabMomentum/pic/Helmholtz_coils_fi
 eld.png>]
-<LabMomentum/pic/Experimental_installation.png, id=252, 250.7769pt x 179.2296pt
+<LabMomentum/pic/Experimental_installation.png, id=253, 250.7769pt x 179.2296pt
 >
 File: LabMomentum/pic/Experimental_installation.png Graphic file (type png)
 <use LabMomentum/pic/Experimental_installation.png>
 Package luatex.def Info: LabMomentum/pic/Experimental_installation.png  used on
  input line 186.
 (luatex.def)             Requested size: 214.24991pt x 153.12802pt.
-<LabMomentum/pic/Power_supply.png, id=253, 1050.92625pt x 749.80125pt>
+<LabMomentum/pic/Power_supply.png, id=254, 1050.92625pt x 749.80125pt>
 File: LabMomentum/pic/Power_supply.png Graphic file (type png)
 <use LabMomentum/pic/Power_supply.png>
 Package luatex.def Info: LabMomentum/pic/Power_supply.png  used on input line 1
@@ -2448,8 +2399,8 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15] [16<./LabMomentum/pic/Experimental_installation.png><./LabMomentum/pic/Powe
-r_supply.png>] [17]) [18] [19
+[14] [15<./LabMomentum/pic/Experimental_installation.png><./LabMomentum/pic/Powe
+r_supply.png>] [16]) [17] [18
 
 ]
 
@@ -2457,55 +2408,44 @@ enddocument/afterlastpage: lastpage setting LastPage.
 (./LabWork.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-08-29>
+L3 programming layer <2023-10-10>
  ***********
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                LabWork
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'LabWork.run.xml'.
 
 \openout1 = LabWork.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 61753 strings out of 477259
+ 61771 strings out of 476835
  195579,2848258 words of node,token memory allocated
- 1995 words of node memory still in use:
-   31 hlist, 2 vlist, 14 rule, 1 local_par, 12 glue, 4 kern, 1 penalty, 3 glyph,
- 266 attribute, 94 glue_spec, 110 attribute_list, 2 write, 48 pdf_literal nodes
-   avail lists: 1:10,2:22195,3:5102,4:58,5:226,6:53,7:11718,8:42,9:757,10:31,11:
-977
- 81254 multiletter control sequences out of 65536+600000
- 107 fonts using 23672671 bytes
- 118i,12n,115p,2739b,1976s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/stix/STIX-Itali
-c.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/stix/STIX
--Regular.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/st
-ix/STIX-Bold.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/publi
-c/cm-unicode/cmunsx.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmex10.pfb><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi12.pfb><d:/Programs/LaTeX/TeXLive/2023/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programs/LaTeX/TeXLive/2023/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Programs/LaTeX/TeXLive/2023/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programs/LaTeX/TeXLive/202
-3/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programs/LaTeX/TeXLive/
-2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programs/LaTeX/TeX
-Live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programs/LaTeX
-/TeXLive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb>
-Output written on LabWork.pdf (20 pages, 4285924 bytes).
+ 1985 words of node memory still in use:
+   31 hlist, 2 vlist, 14 rule, 1 local_par, 11 glue, 4 kern, 1 penalty, 3 glyph,
+ 263 attribute, 95 glue_spec, 109 attribute_list, 2 write, 48 pdf_literal nodes
+   avail lists: 1:13,2:22195,3:5102,4:52,5:239,6:53,7:11718,8:42,9:757,10:31,11:
+988
+ 81696 multiletter control sequences out of 65536+600000
+ 107 fonts using 23662751 bytes
+ 118i,12n,115p,2739b,3367s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/cm-unicode/cmun
+tt.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/stix/STI
+X-Italic.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/st
+ix/STIX-Regular.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/pu
+blic/stix/STIX-Bold.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentyp
+e/public/cm-unicode/cmunsx.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmex10.pfb><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programs/LaTeX/TeXLive/2023/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/Programs/LaTeX/TeXLive/2023/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programs/LaTeX/TeXLive/202
+3/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Programs/LaTeX/TeXLive
+/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programs/LaTeX/TeXL
+ive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programs/LaTeX/T
+eXLive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programs/La
+TeX/TeXLive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Program
+s/LaTeX/TeXLive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb>
+Output written on LabWork.pdf (19 pages, 4418768 bytes).
 
-PDF statistics: 383 PDF objects out of 1000 (max. 8388607)
- 294 compressed objects within 3 object streams
+PDF statistics: 391 PDF objects out of 1000 (max. 8388607)
+ 300 compressed objects within 3 object streams
  116 named destinations out of 1000 (max. 131072)
  292 words of extra memory for PDF output out of 10000 (max. 100000000)
 
