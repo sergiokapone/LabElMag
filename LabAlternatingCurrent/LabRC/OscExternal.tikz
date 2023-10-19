@@ -1,0 +1,39 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+\begin{tikzpicture}[scale=0.75]
+
+\begin{axis}[%
+% === Налаштування сітки ===
+				grid = both,
+				major grid style={line width=.6pt,draw=green!60!black},
+				minor tick num = 19,
+				minor grid style = {line width=.1pt,draw=gray!5},
+				% === Налаштування положення координатних осей ===
+				axis lines = middle,
+				axis line style={-, green!60!black},
+                every x tick/.style={green!60!black},
+                every y tick/.style={green!60!black},
+width=15cm,
+height=15cm,
+%scale only axis,
+%enlargelimits=false,
+%line join=round,
+%% === Налаштування сітки ===
+				% === Вибір підписів шкали для відображення ===
+xticklabel=\empty,
+yticklabel=\empty,
+extra x ticks={-5,...,5},
+extra y ticks={-5,...,5},
+xmin = -5,
+xmax = 5,
+ymin = -5,
+ymax = 5,
+trig format plots=rad,
+]
+
+\addplot[samples=100, mark=none, green!80!black, ultra thick, domain=0:2*pi,] ({2*sin(x)}, {4*cos(x)});
+\end{axis}
+\end{tikzpicture}%

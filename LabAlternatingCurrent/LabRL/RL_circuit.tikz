@@ -1,0 +1,26 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+\begin{tikzpicture}[thick, every circuit symbol/.style={thick}]
+	\draw[red, fill=red!10] (-0.5,-1.5) coordinate (G) rectangle ++(1,3);
+    \draw[red!50, fill=red!10] (4.7,-1.5) coordinate (Diff)  rectangle ++(1,3);
+    \draw[red!50, fill=red!10] (9.5,-1.5) coordinate (Osc)  rectangle ++(1.5,3);
+    \node[fill=black,circle,scale=0.3,pin={[pin distance=0.5cm]225:{\scriptsize Генератор ГЗ-112/1}}] at (G) {};
+    \node[fill=black,circle,scale=0.3,pin={[pin distance=0.5cm]-45:{\scriptsize Дифференційний підсилювач}}] at (Diff) {};
+    \node[fill=black,circle,scale=0.3,pin={[pin distance=0.5cm]-45:{\scriptsize Осцилограф C1-93}}] at (Osc) {};
+	\draw (0,-2) coordinate (START) to [ac source={rotate=-90}] ++(0,4) -- ++(3,0) -- ++(0,-0.5) coordinate (R1) to[resistor={info={$R$}}]  ++(0,-1.5) coordinate (C1) to  [inductor={info={$L$}}] ++(0,-1.5)  coordinate (C2)  -- ++(0,-0.5) -- (START)
+	;
+    %\draw[dashed] (C1) -- ++(-1,0) to [resistor={info'={$R_C$}, color=red}] ++(0,-1.5) -- (C2);
+    \pic (A) at (5,0.75) {amplifier}; 
+    \pic (B) at (5,-0.75) {amplifier};
+    \draw[red] (R1) -- (A-top) ;
+    \draw[] (C1) -- (A-bottom);
+    \draw[] (C1) -- (B-top) ;
+    \draw[blue] (C2) -- (B-bottom);
+    \draw (A-head) -- node[above] {\tiny  \tcbox{\sc{A}} до каналу I осцилографа} ++(4,0) coordinate (O1);
+    \draw (B-head) -- node[above] {\tiny \tcbox{\sc{B}}  до каналу II осцилографа}  ++(4,0) coordinate (O2);
+    \draw[green!50!black] ([xshift=1ex]O1) sin ++(0.25,0.25) cos ++(0.25,-0.25) sin ++(0.25,-0.25) cos ++(0.25,0.25);
+    \draw[green!50!black] ([xshift=1ex]O2) sin ++(0.25,0.25) cos ++(0.25,-0.25) sin ++(0.25,-0.25) cos ++(0.25,0.25);
+\end{tikzpicture}

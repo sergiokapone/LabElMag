@@ -1,0 +1,380 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+
+\documentclass{LabWork}
+\graphicspath{{LabWork6pic/}}
+%============================================= Заголовок документу ====================================================%
+\work{6}
+\title{Магнітний момент у магнітному полі}
+
+%\author{Тор А.~В.}{}
+%\author{Другий А.~В.}{}
+%
+%\group{ФФ-93}
+
+\abstract{Визначити момент сили, зумовлений магнітним моментом в постійному магнітному полі, як функцію:
+\begin{itemize}
+\item індукції магнітного поля;
+\item кута між напрямком магнітного поля та магнітного моменту;
+\item величини магнітного моменту.
+\end{itemize}
+}
+%======================================================================================================================%
+
+\begin{document}
+\maketitle
+
+%
+\fputrue% ----- Увімкнення двигуна точних розрахунків
+\pgfmathsetmacro{\muz}{4*pi*1e-7}
+\pgfmathsetmacro{\R}{0.2}
+\pgfmathsetmacro{\n}{154}
+\pgfmathsetmacro{\CG}{(4/5)^(3/2)*\muz*\n/\R}
+\fpufalse% ----- Вимкнення двигуна точних розрахунків
+%
+\section{Робоча формула}
+
+Якщо магнітне поле буде неоднорідним, то воно буде різне на різних частини  контура, який вміщений у це магнітне поле і, відповідно, на різні частини контура діяти різний обертальний момент.Для того, щоб цього уникнути, бажано використовувати однорідне магнітне поле, що забезпечується завдяки котушкам Гельмгольца.
+
+У даній роботі контур~--- це пласка петля, що має $N$ витків, по якій тече постійний струм $I'$, діаметр кільця $d$. А тому, його магнітний момент дорівнює:
+\begin{equation*}\label{eq:pmE}
+	p_m = I'\frac{N \pi d^2}{4},
+\end{equation*}
+а обертальний момент тоді визначатиметься як:
+\begin{equation*}\label{}
+	M = I'\frac{N \pi d^2}{4} B\sin\alpha.
+\end{equation*}
+
+Далі, враховуючи, що магнітне поле котушок Гельмгольца пропорційні силі струму, що тебе по ним ($B = CI$, де $C$~--- величина, що залежить від параметрів котушок і називається \emph{константою котушок Гельмгольца}) можемо записати:
+\begin{equation}\label{eq:TorqueE}
+	M = \frac{\pi}{4} CII'Nd^2\sin\alpha.
+\end{equation}
+
+
+\subsection{Дослід 1. Залежність обертального моменту від сили струму в \\контурі}
+
+Константами експерименту є величини в табл.~\ref{tab:ExpConst}.
+
+\pgfmathsetmacro{\N}{3}
+\pgfmathsetmacro{\D}{0.12}
+\pgfmathsetmacro{\angle}{90}
+\pgfmathsetmacro{\IG}{2.85}
+
+\begin{table}[h!]
+	\centering
+	\caption{Константи експерименту}
+	\begin{tabular}{ll}
+		\toprule
+		Величина                                 & Значення                        \\ \midrule
+		Число витків контура, $N$                & $\pgfmathprintnumber[]{\N}$     \\
+		Діаметр контура, $d$, м                  & $\pgfmathprintnumber[]{\D}$     \\
+		Струм в котушках Гельмгольца, $I$, А     & $\pgfmathprintnumber[]{\IG}$    \\
+		Орієнтація контура, $\alpha$, ${}^\circ$ & $\pgfmathprintnumber[]{\angle}$ \\ \bottomrule
+	\end{tabular}
+	\label{tab:ExpConst}
+\end{table}
+
+Для даного досліду, константу котушок можна обчислити, знаючи коефіцієнт лінійної апроксимації графіка $M = M(I')$:
+\begin{equation}\label{eq:TorqueEk}
+	M = k I'.
+\end{equation}
+
+Виходячи з формули~\eqref{eq:TorqueE} та даних таблиці~\ref{tab:ExpConst} бачимо, що
+\begin{equation}\label{eq:Ck}
+	C = \frac{4k}{IN\pi d^2 \sin\alpha} = \pgfmathparse{4/(\IG*\N*pi*\D^2*sin(\angle))}\pgfmathprintnumber\pgfmathresult \cdot k.
+\end{equation}
+
+В експериментах було виміряно момент сили, що діє на контур зі струмом в магнітному полі. Оскільки динамометр прилада градуйований в мН, то для отримання значення моменту, вказані значення сили необхідно домножити на плече, що дорівнює $12$~см. Результати занесені до таблиці~\ref{tab:expresults}
+
+%========================= Завантаження данних з таблиці ==========================%
+%----- Присвоєння данних змінній \TorqueVsCurrentCoilTable
+\pgfplotstableread{
+	Current CError Force    FError
+	0       0        0          0
+	0.50    0.012    0.40e-03   0.05e-3
+	0.80    0.012    0.60e-03   0.05e-3
+	1.00    0.012    0.70e-03   0.05e-3
+	1.50    0.012    1.00e-03   0.05e-3
+	1.90    0.012    1.30e-03   0.05e-3
+	1.70    0.012    1.20e-03   0.05e-3
+	1.20    0.012    0.75e-03   0.10e-3
+}\TorqueVsCurrentCoilTable
+%=============== Додавання нової колонки в таблицю =========================%
+%----- Додається нова колонка Torque (обертовий момент), значення в якій є результатом множення колонки Force (Сила) на 0.12
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{Force}*0.12},
+]{Torque}\TorqueVsCurrentCoilTable
+
+%================== Додавання нової колонки в таблицю=======================%
+%----- Додається нова колонка TError (похибка для обертового моменту), значення в якій є результатом множення колонки FError (похибки для сили) на 0.12
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{FError}*0.12},
+]{TError}\TorqueVsCurrentCoilTable
+
+%============================================================================%
+
+%======================= Верстка таблиці  ==================%
+\begin{table}[h!]
+	\centering
+	\caption{Результати вимірювань}
+	\label{tab:expresults}
+	\pgfplotstabletypeset[
+		col sep=space,
+		%1000 sep={,},
+		every head row/.style={
+				before row={\toprule},
+				after row={\midrule}
+			},
+		every last row/.style={after row=\bottomrule},
+		empty cells with={-},
+		columns/Current/.style={fixed zerofill, dec sep align, sci precision=2, column name={$I'$, А}, },
+		columns={Current,Force,Torque},
+		columns/Force/.style={fixed zerofill, sci precision=1, column name={$F$, $\cdot 10^{-3}$ Н}, multiply by=1000},
+		columns/Torque/.style={fixed zerofill, sci precision=1, column name={$M$, $\cdot 10^{-4}$ Н$\cdot$м}, multiply by=1e4},
+	]\TorqueVsCurrentCoilTable
+\end{table}
+
+%================================================================================%
+
+За даними результатами побудовано графік~\ref{plt:expresults}.
+
+\begin{tornpage}
+	\begin{center}%[h!]
+		%\centering
+		\begin{tikzpicture}
+			\begin{axis}[%
+					LabPlotGrid,
+					xlabel={$I'$, А},
+					ylabel=\empty,
+					every y tick scale label/.style={at={(0.05,1)},anchor=south},
+					ytick scale label code/.code={$M$, $\cdot 10^{#1}$ Н$\cdot$м},
+					legend pos = north west,
+					width=1\linewidth,
+					height=0.6\linewidth,
+				]
+				%---- Побудова графіку за даними ----%
+				\addplot[%
+					blue,
+					only marks,
+					error bars/.cd,
+					y dir = both,  y explicit,
+				]
+				table[%
+						x=Current,
+						y = Torque,
+						x error = CError,
+						y error = TError,
+					]\TorqueVsCurrentCoilTable;
+				%---- Додавання легенди до вищепобудованого графіку ----%
+				\addlegendentry{Експериментальні дані}
+				%---- Побудова лінійної апроксимації до даних файлу ----%	
+				\addplot[red] table[x=Current, y={create col/linear regression={y = Torque}}]\TorqueVsCurrentCoilTable;
+				%---- Параметри регресії ----%
+				\xdef\slope{\pgfplotstableregressiona}
+				\xdef\ycepte{\pgfplotstableregressionb}
+				%---- Додавання легенди до вищепобудованого графіку ----%
+				\addlegendentry{$M = \pgfmathprintnumber{\slope} \cdot I \pgfmathprintnumber[print sign]{\ycepte}$ Апроксимація}
+			\end{axis}
+		\end{tikzpicture}
+		\captionof{figure}{Графік залежності обертального моменту від струму у витку $M(I')$.}
+		\label{plt:expresults}
+	\end{center}
+\end{tornpage}
+
+З лінійної апроксимації результатів (рис.~\ref{plt:expresults}) бачимо, що коефіцієнт нахилу $k = \pgfmathprintnumber{\slope}$~Н/А, а значення константи котушок можна розрахувати з~\eqref{eq:Ck}
+
+%----------------- Математичні обчислення ------------%
+\fputrue
+\pgfmathsetmacro{\CGEI}{4*\slope/(\IG*\N*\D^2*pi*sin(\angle))}% ----- Обчислення значення
+\pgfmathfloatparsenumber{\CGEI}% ---- Розпарсити число на мантісу m і експонетну e у вигляді: m*10^e
+\pgfmathfloattomacro{\pgfmathresult}{\FlagCGEI}{\MantissaCGEI}{\ExponentCGEI}% --- Запис мантиси і експоненти у відповідні змінні
+\fpufalse
+%-----------------------------------------------------%
+
+\begin{equation*}
+	C \approx
+	(\pgfmathprintnumber[fixed, precision=1]{\MantissaCGEI} \pm 1.2) \cdot 10^{\ExponentCGEI} \, \text{Тл/А}
+\end{equation*}
+
+
+Відносна похибка:%
+\fputrue\pgfmathparse{(1.22e-4/\CGEI)*100}\fpufalse
+\begin{equation*}
+	\epsilon \approx \pgfmathprintnumber[fixed, precision=0]{\pgfmathresult}~\text{\%}.
+\end{equation*}
+
+Відмінність експериментального значення від теоретичного становить \fputrue\pgfmathparse{abs(\CGEI/\CG - 1)*100}\fpufalse$\left( \frac{C_\mathrm{exp}} {C_\mathrm{theor}}-  1\right) \cdot 100\, \text{\%} = \pgfmathprintnumber\pgfmathresult$~\%.
+
+\subsection{Дослід 2. Залежність обертального моменту від сили струму в \\котушках Гельмгольца}
+
+\pgfplotstableread{
+	Current Force FError
+	0.50 0.15e-03 0.05e-3
+	0.75 0.30e-03 0.05e-3
+	0.90 0.35e-03 0.05e-3
+	0.95 0.40e-03 0.05e-3
+	1.00 0.50e-03 0.05e-3
+	1.10 0.55e-03 0.05e-3
+	1.20 0.60e-03 0.05e-3
+	1.30 0.65e-03 0.05e-3
+	1.40 0.65e-03 0.05e-3
+	1.50 0.70e-03 0.05e-3
+	1.60 0.75e-03 0.05e-3
+	1.70 0.80e-03 0.05e-3
+	1.80 0.85e-03 0.05e-3
+	1.90 0.90e-03 0.05e-3
+	2.00 0.95e-03 0.05e-3
+	2.10 1.00e-03 0.05e-3
+	2.20 1.05e-03 0.05e-3
+	2.30 1.10e-03 0.05e-3
+	2.40 1.15e-03 0.05e-3
+	2.50 1.20e-03 0.05e-3
+	2.75 1.40e-03 0.05e-3
+}\TorqueVsCurrentHelmholtzTable
+
+%=============== Додавання нової колонки в таблицю =========================%
+%----- Додається нова колонка Torque (обертовий момент), значення в якій є результатом множення колонки Force (Сила) на 0.12
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{Force}*0.12},
+]{Torque}\TorqueVsCurrentHelmholtzTable
+
+%================== Додавання нової колонки в таблицю=======================%
+%----- Додається нова колонка TError (похибка для обертового моменту), значення в якій є результатом множення колонки FError (похибки для сили) на 0.12
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{FError}*0.12},
+]{TError}\TorqueVsCurrentHelmholtzTable
+
+
+\subsection{Дослід 3. Залежність обертального моменту від орієнтації контура}
+
+\pgfplotstableread{
+	a Force FError
+	15 0.10e-3 0.05e-3
+	30 0.60e-3 0.05e-3
+	45 1.00e-3 0.05e-3
+	60 1.25e-3 0.05e-3
+	75 1.40e-3 0.05e-3
+	90 1.50e-3 0.05e-3
+}\TorqueVsSinAlphaTable
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{Force}*0.12},
+]{Torque}\TorqueVsSinAlphaTable
+
+\pgfplotstablecreatecol[
+	create col/expr={sin(\thisrow{a})},
+]{sina}\TorqueVsSinAlphaTable
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{FError}*0.12},
+]{TError}\TorqueVsSinAlphaTable
+
+\begin{tornpage}
+	\begin{center}%[h!]
+		%\centering
+		\begin{tikzpicture}
+			\begin{axis}[%
+					LabPlotGrid,
+					xlabel={$\sin\alpha$},
+					ylabel=\empty,
+					every y tick scale label/.style={at={(0.05,1)},anchor=south},
+					ytick scale label code/.code={$M$, $\cdot 10^{#1}$ Н$\cdot$м},
+					legend pos = north west,
+					width=1\linewidth,
+					height=0.6\linewidth,
+				]
+				%---- Побудова графіку за даними ----%
+				\addplot[%
+					blue,
+					only marks,
+					error bars/.cd,
+					y dir = both,  y explicit,
+				]
+				table[%
+						x=sina,
+						y = Torque,
+						y error = TError,
+					]\TorqueVsSinAlphaTable;
+				%---- Додавання легенди до вищепобудованого графіку ----%
+				\addlegendentry{Експериментальні дані}
+				%---- Побудова лінійної апроксимації до даних файлу ----%	
+				\addplot[red] table[x=sina, y={create col/linear regression={y = Torque}}]\TorqueVsSinAlphaTable;
+				%---- Параметри регресії ----%
+				\xdef\slope{\pgfplotstableregressiona}
+				\xdef\ycepte{\pgfplotstableregressionb}
+				%---- Додавання легенди до вищепобудованого графіку ----%
+				\addlegendentry{$M = \pgfmathprintnumber{\slope} \cdot \sin\alpha \pgfmathprintnumber[print sign]{\ycepte}$ Апроксимація}
+			\end{axis}
+		\end{tikzpicture}
+		\captionof{figure}{Графік залежності обертального моменту від $\sin\alpha$ у витку $M(\sin\alpha)$.}
+		\label{plt:expresults}
+	\end{center}
+\end{tornpage}
+
+З лінійної апроксимації результатів (рис.~\ref{plt:expresults}) бачимо, що коефіцієнт нахилу $k = \pgfmathprintnumber{\slope}$~Н/А, а значення константи котушок можна розрахувати з~\eqref{eq:Ck}
+
+
+\pgfmathsetmacro{\N}{3}
+\pgfmathsetmacro{\D}{0.12}
+\pgfmathsetmacro{\IG}{2.85}
+\pgfmathsetmacro{\I}{2}
+
+%----------------- Математичні обчислення ------------%
+\fputrue
+\pgfmathsetmacro{\CGEsin}{4*\slope/(\IG*\I*\N*\D^2*pi)}% ----- Обчислення значення
+\pgfmathfloatparsenumber{\CGEsin}% ---- Розпарсити число на мантісу m і експонетну e у вигляді: m*10^e
+\pgfmathfloattomacro{\pgfmathresult}{\FlagCGEsin}{\MantissaCGEsin}{\ExponentCGEsin}% --- Запис мантиси і експоненти у відповідні змінні
+\fpufalse
+%-----------------------------------------------------%
+
+\begin{equation*}
+	C \approx
+	(\pgfmathprintnumber[fixed, precision=1]{\MantissaCGEsin} \pm 0.6) \cdot 10^{\ExponentCGEI} \, \text{Тл/А}
+\end{equation*}
+
+\subsection{Дослід 4. Залежність обертального моменту від площі контура}
+
+\pgfplotstableread{
+	d Force FError
+	0.06 0.10e-3 0.05e-3
+	0.09 0.15e-3 0.05e-3
+	0.12 0.25e-3 0.05e-3
+}\TorqueVsDiameterTable
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{Force}*0.12},
+]{Torque}\TorqueVsDiameterTable
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{FError}*0.12},
+]{TError}\TorqueVsDiameterTable
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{d}^2},
+]{ds}\TorqueVsDiameterTable
+
+\subsection{Дослід 5. Залежність обертального моменту від кількості витків \\контура}
+
+\pgfplotstableread{
+	N Force FError
+	1 0.25e-3 0.05e-3
+	2 0.80e-3 0.05e-3
+	3 1.50e-3 0.05e-3
+}\TorqueVsNumderTable
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{Force}*0.12},
+]{Torque}\TorqueVsNumderTable
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{FError}*0.12},
+]{TError}\TorqueVsNumderTable
+
+
+\section{Обговорення результатів}
+
+
+\section*{Висновки}
+
+\end{document}

@@ -1,0 +1,73 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !BIB program = biber
+
+
+\documentclass{LabBook}
+\usepackage{graphicx}
+\addbibresource[label=Lab1]{LabCoulombs/LabWork1.bib}
+\addbibresource{\jobname.bib}
+%\usepackage{caption}
+
+
+%========================================================================================================
+%
+%									      Вихідні дані докумета
+%
+%========================================================================================================
+
+\title{Електрика та магнетизм}
+\def\subtitle{Лабораторний практикум. Електричне та магнітне поле}
+
+\newcommand{\inX}{%
+\tikz[baseline=-0.3em]{\draw (165:0.5em) arc (165:-165:0.5em); \draw[-latex] (-0.8em,0) -- ++(1em,0);} X%
+}
+
+%========================================================================================================
+%
+\input{CoverPage}%					      Титульна сторінка
+%
+%========================================================================================================
+\date{}
+
+\begin{document}
+\CoverPage
+\maketitle
+%\makeinfopage
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+%========================================================================================================
+%
+%									      Вставка файлів розділів
+%
+%========================================================================================================
+
+%\setcounter{part}{1}
+%\renewcommand{\thechapter}{3.\arabic{chapter}}
+\newcommand{\Chapters}{
+    LabCoulombs,
+    LabMomentum,
+%    LabEarthMagnet,
+}
+
+%========================================================================================================
+%\pagestyle{theorpart}
+%\include{AlternatingCurrent/AlternatingCurrent}
+\textsc{}
+%\part{Практична частина}
+\labworklayout
+\pagestyle{main}
+\multiinclude{\Chapters}[]
+
+%\clearpage
+%\begin{refsection}
+%\nocite{Mat3, FLF6, AleshkevichElectro, Ledenev4, berkeley2}
+%\printbibliography[title={Рекомендована література}]
+%\end{refsection}
+
+\makelastpage
+
+\end{document}

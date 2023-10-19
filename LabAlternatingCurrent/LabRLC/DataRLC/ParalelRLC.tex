@@ -1,0 +1,144 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !BIB program = bibtex8
+
+\documentclass[tikz, border=1cm]{standalone}
+\usepackage{ pgfplots, tikz-3dplot}
+\usetikzlibrary{fpu}
+\usetikzlibrary{decorations.text, decorations.markings}
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}  
+\usetikzlibrary{shapes, shadows}
+\usetikzlibrary{quotes,angles}
+\pgfdeclarelayer{bg}    % declare background layer
+\pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
+\usetikzlibrary{shapes.geometric,calc}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{
+	%every tick label/.append style={scale=0.5},
+	every axis label/.append style={font=\small},
+	compat=newest,
+}
+\tikzset{every picture/.style={font=\small}}
+% -------------------------------------- Електричні кола ------------------------------------------------
+\usetikzlibrary{circuits.ee.IEC}
+\tikzset{circuit ee IEC,
+every info/.style=red,
+semithick,
+every info/.style={font=\footnotesize},
+small circuit symbols,
+circuit declare symbol = ampermeter,
+circuit declare symbol = voltmeter,
+circuit declare symbol = galvanometer,
+set ampermeter graphic = {draw,generic circle IEC, minimum size=5mm,info=center:A},%
+set voltmeter graphic = {draw,generic circle IEC, minimum size=5mm,info=center:V},
+set galvanometer graphic = {draw,generic circle IEC, minimum size=5mm,info=center:G},
+}
+% -------------------------------------- Паттерни -------------------------------------------------------
+\usetikzlibrary{patterns}
+\tikzstyle{ground}=[fill,pattern=north east lines,draw=none,minimum width=0.3,minimum height=0.6]
+
+\begin{document}
+	\begin{tikzpicture}[
+		declare function = {
+		L = 2e-0;
+		C = 1.2e-3;
+		R = 1e3;
+		RI = 50;
+		RL = 0.8;
+		Ri = 5 ;
+		E = 10;
+		omegares = 1/sqrt(L*C);
+		a(\x) = 1/R + RL/(RL^2 + \x^2*L^2);
+		b(\x) = \x*C - \x*L/(RL^2 + \x^2*L^2);
+		c(\x) = (RI + Ri) + a(\x)/(a(\x)^2 + b(\x)^2);
+		d(\x) =  b(\x)/(a(\x)^2 + b(\x)^2);
+		g(\x) = c(\x)^2 + d(\x)^2;
+		I(\x) = E/sqrt(g(\x));
+		Imin = I(omegares);
+		U(\x) = E*sqrt( (1- (Ri+ RI)*c(\x)/g(\x))^2 + ((Ri+ RI)*d(\x)/g(\x))^2 );
+		Umax = U(omegares);
+		},
+]
+		\begin{axis}[clip = false,
+				% === Налаштування сітки ===
+% === Налаштування сітки ===
+				grid = both,
+				grid style={line width=.1pt, draw=gray!10},
+				major grid style={line width=.2pt,draw=gray!50},
+				minor tick num = 4,
+				minor grid style = {line width=.1pt,draw=gray!10},
+				% === Налаштування положення координатних осей ===
+				axis lines = middle,
+				axis line style={-stealth},
+				% === Підпис координатних осей ===
+				%				xticklabels={},
+				xlabel={$\omega$},
+%				ylabel={$\frac{U_{0_{RLC}}}{U_{0_{\max}}}$},
+				% === Положення підпису координатних осей ===
+				ylabel style={left},
+				xlabel style={below},
+				extra tick style={% changes for all extra ticks
+						tick align=outside,
+						major grid style={dashed,draw=black}
+					},
+			    extra x tick style={
+			      major tick style={
+			      },
+			      tick label style={
+			        /pgf/number format/.cd, fixed, fixed zerofill,
+			        precision=2,
+			      }
+			    },
+				xtick style={draw=none},
+				ytick style={draw=none},
+				xticklabels={},
+				yticklabels={},			
+				extra x ticks={omegares},
+				extra x tick labels={$\omega_0$},
+%				extra y ticks={(E - I(0)*(Ri + RI))/Umax},
+%				extra y tick labels={$\frac{\mathcal{E} - I(0)\cdot R_i}{U_{\max}}$},
+				% === Вибір підписів шкали для відображення ===
+				xtick = {},
+				ytick = {},
+				% === Налаштування мінімальних та максимальних значень координат ===
+				xmin = 0*omegares,
+				xmax =  3*omegares,
+				ymin = {(E - I(0)*(Ri + RI))/Umax},
+				ymax =  1,
+				% === Налаштування розміру графіка ===
+				width=1\linewidth,
+%				height=0.95\textheight,
+			]
+
+			\addplot [ultra thick,samples = 500, green!50!black, thick, domain=0*omegares:3*omegares, blue] {U(x)/Umax};
+			\addplot [ultra thick,samples = 500, green!50!black, thick, domain=0*omegares:3*omegares, red] {I(x)/I(0)};
+			\legend{$\frac{U_{0_{RLC}}}{U_{0_{\max}}}$, $\frac{I_0(\omega)}{I_0(\omega \to 0)}$}	
+		\end{axis}
+	\end{tikzpicture}
+\end{document}
+
+
+
+%\begin{wrapfigure}[15]{L}{0.25\linewidth}\centering
+%	\begin{tikzpicture}[framed,background rectangle/.style={draw=gray!50, fill=gray!5}]
+%		\pgfmathsetmacro{\IC}{4.5}
+%		\pgfmathsetmacro{\IL}{3.5}
+%		\pgfmathsetmacro{\PhL}{-70}
+%		\pgfmathsetmacro{\IR}{\IL*cos(\PhL)}
+%		\pgfmathsetmacro{\DCL}{\IC + \IL*sin(\PhL)}
+%		\pgfmathsetmacro{\PhI}{atan(\DCL/\IR)}
+%		\draw[-latex, cyan] (0,0) -- ++(2,0) node[right, color=black] {$\vec{U}_{0}$} ;
+%		\draw[-latex,  green!50!black, ultra thick] (0,0) -- ++({\IL*cos(\PhL)},0) node[below right, color=black] {$\vec{I}_{0_{R_L}}$};
+%		\draw[-latex,  red, ultra thick] (0,0) -- ++(0,\IC) node[left, color=black] {$\vec{I}_{0_C}$}  coordinate (IC);
+%		\draw[-latex,  blue, ultra thick] (0,0) -- ++(\PhL:\IL) node[left, color=black] {$\vec{I}_{0_L}$} coordinate (IL);
+%		\coordinate (I) at (\IR,\DCL) ;
+%		\draw[-latex] (0,0) -- (I) node[sloped, right, color=black, ultra thick] {$\vec{I}_{0}$};
+%		\draw[dashed] (IL) -- (I) (IC) -- (I);
+%		\draw (0,0) ++(0.4,0) arc(0:\PhL:0.4) node[pos=0.8, right] {$\phi_L$};
+%		\draw (0,0) ++(0.4,0) arc(0:\PhI:0.4) node[pos=0.9, right] {$\phi$};
+%	\end{tikzpicture}
+%	\caption{Векторна діаграма струмів}
+%	\label{pic:paralell_vect_diagramm}
+%\end{wrapfigure}

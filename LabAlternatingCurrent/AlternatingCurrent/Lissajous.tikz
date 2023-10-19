@@ -1,0 +1,35 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+\begin{tikzpicture}
+
+\begin{axis}[%
+% === Налаштування сітки ===
+axis lines = middle,
+axis line style={-latex, black},
+grid=both,
+grid style={line width=.1pt, draw=gray!10},
+major grid style={line width=.2pt,draw=gray!50},
+minor tick num=4,
+width=1\linewidth,
+height=1\linewidth,
+% === Вибір підписів шкали для відображення ===
+xticklabel=\empty,
+yticklabel=\empty,
+xmin = -5,
+xmax = 5,
+ymin = -5,
+ymax = 5,
+trig format plots=rad,
+]
+
+\addplot[samples=100, mark=none, green, ultra thick, domain=0:2*pi,] ({2*cos(x)}, {4*cos(x  + pi/4)});
+\draw[latex-latex] (axis cs:3,0) -- node[right] {$U_{0y}$ } (axis cs:3,4);
+\draw[] (axis cs:1.4,4) -- (axis cs:3.2,4);
+
+\draw[latex-latex] (axis cs:-2,0) -- node[left] {$U_{y}(x=0)$ } (axis cs:-2,2.8);
+\draw[] (axis cs:0,2.8) -- (axis cs:-2.2,2.8);
+\end{axis}
+\end{tikzpicture}%

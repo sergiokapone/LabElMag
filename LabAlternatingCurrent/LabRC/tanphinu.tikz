@@ -1,0 +1,41 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+\begin{tikzpicture}[declare function={C=2*10^(-6);R = 100;}]
+    \begin{axis}[
+    % === Налаштування сітки ===
+    grid = both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=brown!50},
+    minor grid style = {line width=.1pt,draw=brown!10},
+    xlabel={$ f $, Гц},
+    ylabel={$\phi$, $\circ$},
+    ylabel style={at={(0.1,1)}, anchor=east, rotate=-90},
+    axis x line=top,
+    every x tick scale label/.style={at={(xticklabel cs:1)},anchor=south west},
+    width=0.7\linewidth,
+    height=0.7\linewidth,
+    legend style={font=\scriptsize},
+    legend entries={,{$C = 2$~мкФ {,} $R = 100$~Ом}},  
+    legend pos=south east,
+    tick label style={scaled x ticks=base 10:-3},
+    ]
+    \pgfmathsetmacro{\sd}{750}
+    \pgfmathsetmacro{\fd}{16e3}
+
+    \addplot[domain=\sd:\fd, thick, samples=100, smooth, mark=none]
+    {-atan(1/(2*pi*x*C*R))};
+
+
+\pgfplotsinvokeforeach{1,2,...,16} {
+\addplot[ 
+thick, only marks, mark=o,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=south},
+] coordinates { ({#1*1e3}, {-atan(1/(2*pi*#1*1e3*C*R))}) };
+}
+
+    
+    \end{axis}    
+\end{tikzpicture}

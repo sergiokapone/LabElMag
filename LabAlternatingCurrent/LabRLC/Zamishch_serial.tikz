@@ -1,0 +1,35 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+	%---------------------------------------------------------
+	\begin{minipage}[t]{0.3\linewidth}
+		\centering
+		\begin{tikzpicture}[thick, every circuit symbol/.style={thick}]
+			\draw (0,0) node[contact] {} to [capacitor={info={$C$}}] ++(4,0) node[contact] {} (1,0) -- ++(0,-1) to [resistor={info={$R_C$}, color=red}] ++(2,0) -- ++ (0,1);
+		\end{tikzpicture}
+		\caption{Схема заміщення реального конденсатора}
+		\label{pic:equiv_capacitor}
+	\end{minipage}
+	\quad%---------------------------------------------------------
+	\begin{minipage}[t]{0.3\linewidth}
+		\centering
+		\begin{tikzpicture}[thick, every circuit symbol/.style={thick}]
+			\draw (0,0) node[contact] {} to [resistor={info={$R_L$}, color=red}] ++(2,0) to [inductor={info={$L$}}] ++(2,0) node[contact] {};
+			\path (0,0) -- ++(0,-1.05);
+		\end{tikzpicture}
+		\caption{Схема заміщення реальної котушки}
+		\label{pic:equiv_inductor}
+	\end{minipage}
+	\quad%---------------------------------------------------------
+	\begin{minipage}[t]{0.3\linewidth}
+		\centering
+		\begin{tikzpicture}[thick, every circuit symbol/.style={thick}]
+			\draw (0,0) node[contact] {} to [resistor={info={$R_i$}, color=red}] ++(2,0) to [ac source={info={$\mathcal{E}$}}] ++(2,0) node[contact] {};
+			\path (0,0) -- ++(0,-1.05);
+		\end{tikzpicture}
+		\caption{Схема заміщення реального генератора}
+		\label{pic:equiv_ac_generator}
+	\end{minipage}
+	%---------------------------------------------------------

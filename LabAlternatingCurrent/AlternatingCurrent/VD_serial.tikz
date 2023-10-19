@@ -1,0 +1,71 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+	\begin{subfigure}[b]{0.30\linewidth}
+		\centering
+		\begin{tikzpicture}[
+				declare function = {
+						UC = 3;
+						UL = 2;
+						UR = 2;
+						DLC = (UL - UC);
+						PhU = atan (DLC/UR);
+					},
+			]
+			\path[use as bounding box] (0,-1.5) rectangle ++(4,4);
+			\draw[-latex, cyan] (0,0) -- ++(3.5,0) node[right, color=black] {$\vec{I}_0$};
+			\draw[-latex,  green!50!black,ultra thick] (0,0) -- ++(UR,0) node[above, pos=0.5, color=black] {$\vec{U}_{0_R}$};
+			\draw[-latex,  blue, ultra thick] (UR+0.15,0) -- ++(0,UL) node[right, color=black] {$\vec{U}_{0_L}$};
+			\draw[-latex,  red, ultra thick] (UR,UL) -- ++(0,-UC) node[left, color=black, pos=0.1] {$\vec{U}_{0_C}$};
+			\draw[-latex,  black, ultra thick] (0,0) -- (PhU:{UR/cos(PhU)}) node[below, color=black, pos=0.5, sloped] {$\vec{\mathcal{E}}_{0}$} coordinate (U);
+			%	\draw[dashed] (\UR,0) -- (U) (0,\DLC) -- (U);
+			\draw[->] (0,0) ++(1.5,0) arc(0:PhU:1.5) node[pos=0.6, right] {$\phi$};
+		\end{tikzpicture}
+		\caption{$\omega < \omega_0$}
+		\label{pic:S-vector_diagrams<}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.30\linewidth}
+		\centering
+		\begin{tikzpicture}[
+				declare function = {
+						UC = 3.2;
+						UL = 3.2;
+						UR = 2.2;
+						DLC = (UL - UC);
+						PhU = atan (DLC/UR);
+					},
+			]
+			\path[use as bounding box] (0,-1.5) rectangle ++(5,5);
+			\draw[-latex, cyan] (0,0) -- ++(3.5,0) node[right, color=black] {$\vec{I}_0$};
+			\draw[-latex,  black,ultra thick] (0,0) -- ++({2/cos(atan(1/2.2)},0) node[below, pos=0.5, color=black] {$\vec{U}_{0_R} = \vec{\mathcal{E}}_{0}$};
+			\draw[-latex,  blue, ultra thick] (UR+0.15,0) -- ++(0,UL) node[right, color=black] {$\vec{U}_{0_L}$};
+			\draw[-latex,  red, ultra thick] (UR,UL) -- ++(0,-UC) node[left, color=black, pos=0.5] {$\vec{U}_{0_C}$};
+		\end{tikzpicture}
+		\caption{$\omega = \omega_0$}
+		\label{pic:S-vector_diagrams=}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.30\linewidth}
+		\centering
+		\begin{tikzpicture}[
+				declare function = {
+						UC = 2;
+						UL = 3;
+						UR = 2;
+						DLC = (UL - UC);
+						PhU = atan (DLC/UR);
+					},
+			]
+			\path[use as bounding box] (0,-1.5) rectangle ++(4,4);
+			\draw[-latex, cyan] (0,0) -- ++(3.5,0) node[right, color=black] {$\vec{I}_0$};
+			\draw[-latex,  green!50!black,ultra thick] (0,0) -- ++(UR,0) node[below, pos=0.5, color=black] {$\vec{U}_{0_R}$};
+			\draw[-latex,  blue, ultra thick] (UR+0.15,0) -- ++(0,UL) node[right, color=black] {$\vec{U}_{0_L}$};
+			\draw[-latex,  red, ultra thick] (UR,UL) -- ++(0,-UC) node[left, color=black, pos=0.5] {$\vec{U}_{0_C}$};
+			\draw[-latex,  black, ultra thick] (0,0) -- (PhU:{UR/cos(PhU)}) node[above, color=black, pos=0.5, sloped] {$\vec{\mathcal{E}}_{0}$} coordinate (U);
+			%	\draw[dashed] (\UR,0) -- (U) (0,\DLC) -- (U);
+			\draw[->] (0,0) ++(1.5,0) arc(0:PhU:1.5) node[pos=0.6, right] {$\phi$};
+		\end{tikzpicture}
+		\caption{$\omega > \omega_0$}
+		\label{pic:S-vector_diagrams>}
+	\end{subfigure}

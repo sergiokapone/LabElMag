@@ -1,0 +1,69 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+	\begin{subfigure}[b]{0.30\linewidth}
+		\centering
+		\begin{tikzpicture}[
+				declare function = {
+						IC = 1;
+						IL = 2;
+						IR = 2;
+						DLC = (IL - IC);
+						PhI = -atan(DLC/IR);
+					},
+			]
+			\path[use as bounding box] (0,1.5) rectangle ++(5,-4);
+			\draw[-latex, cyan] (0,0) -- ++(3.5,0) node[right, color=black] {$\vec{\mathcal{E}}_0$};
+			\draw[-latex,  green!50!black,ultra thick] (0,0) -- ++(IR,0) node[above, pos=0.25, color=black] {$\vec{I}_{0_R}$};
+			\draw[-latex,  blue, ultra thick] (IR+0.15,0) -- ++(0,-IL) node[right, color=black] {$\vec{I}_{0_L}$};
+			\draw[-latex,  red, ultra thick] (IR,-IL) -- ++(0,IC) node[left, color=black, pos=0.5] {$\vec{I}_{0_C}$};
+			\draw[-latex,  black, ultra thick] (0,0) -- (PhI:{IR/cos(PhI)}) node[below, color=black, pos=0.5, sloped] {$\vec{I}_{0}$} coordinate (I);
+			\draw[<-] (0,0) ++(1.5,0) arc(0:PhI:1.5) node[pos=0.6, right] {$\phi > 0$};
+		\end{tikzpicture}
+		\caption{$\omega < \omega_0$}
+		\label{pic:P-vector_diagrams<}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.30\linewidth}
+		\centering
+		\begin{tikzpicture}[
+				declare function = {
+						IC = 1.5;
+						IL = 1.5;
+						IR = 2;
+						DLC = (IL - IC);
+						PhI = -atan(DLC/IR);
+					},
+			]
+			\path[use as bounding box] (0,1.5) rectangle ++(5,-4);
+			\draw[-latex, cyan] (0,0) -- ++(3.5,0) node[right, color=black] {$\vec{\mathcal{E}}_0$};
+			\draw[-latex,  green!50!black,ultra thick] (0,0) -- ++(IR,0) node[above, pos=0.5, color=black] {$\vec{I}_{0_R} = \vec{I}_{0}$};
+			\draw[-latex,  blue, ultra thick] (IR+0.15,0) -- ++(0,-IL) node[right, color=black] {$\vec{I}_{0_L}$};
+			\draw[-latex,  red, ultra thick] (IR,-IL) -- ++(0,IC) node[left, color=black, pos=0.2] {$\vec{I}_{0_C}$};
+		\end{tikzpicture}
+		\caption{$\omega = \omega_0$}
+		\label{pic:P-vector_diagrams=}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.30\linewidth}
+		\centering
+		\begin{tikzpicture}[
+				declare function = {
+						IC = 2;
+						IL = 1;
+						IR = 2;
+						DLC = (IL - IC);
+						PhI = -atan(DLC/IR);
+					},
+			]
+			\path[use as bounding box] (0,1.5) rectangle ++(5,-4);
+			\draw[-latex, cyan] (0,0) -- ++(3.5,0) node[right, color=black] {$\vec{\mathcal{E}}_0$};
+			\draw[-latex,  green!50!black,ultra thick] (0,0) -- ++(IR,0) node[below, pos=0.25, color=black] {$\vec{I}_{0_R}$};
+			\draw[-latex,  blue, ultra thick] (IR+0.15,0) -- ++(0,-IL) node[right, color=black] {$\vec{I}_{0_L}$};
+			\draw[-latex,  red, ultra thick] (IR,-IL) -- ++(0,IC) node[left, color=black, pos=0.2] {$\vec{I}_{0_C}$};
+			\draw[-latex,  black, ultra thick] (0,0) -- (PhI:{IR/cos(PhI)}) node[above, color=black, pos=0.5, sloped] {$\vec{I}_{0}$} coordinate (I);
+			\draw[<-] (0,0) ++(1.5,0) arc(0:PhI:1.5) node[pos=0.6, right] {$\phi < 0$};
+		\end{tikzpicture}
+		\caption{$\omega > \omega_0$}
+		\label{pic:P-vector_diagrams>}
+	\end{subfigure}

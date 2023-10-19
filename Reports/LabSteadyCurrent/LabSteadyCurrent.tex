@@ -1,0 +1,253 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !BIB program = bibtex8
+
+\documentclass{LabWork}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+every info/.style={font=\small},
+}
+
+%============================================= Заголовок документу ====================================================%
+\work{4}
+\title{Джерела електричної енергії та їх характеристики}
+
+\author{Тор А.~В.}{}
+\author{Другий А.~В.}{}
+
+\group{ФФ-93}
+
+\abstract{%
+
+Виміряти напругу $U$, на клемах декількох джерел електроенергії як функцію сили струму, змінюючи зовнішній опір $R_e$, і розрахувати напругу без навантаження $\mathcal{E}$ і внутрішній опір $R_i$ джерела.
+
+Виміряти безпосередньо напругу без навантаження від джерела електроенергії (без зовнішнього опору) та його внутрішній опір (підбираючи умови узгодження $R_i  =  R_e$). Визначити силову діаграму залежності між напругою на клемах та силою струму.
+}
+%======================================================================================================================%
+
+\begin{document}
+\writedatatofile{\jobname}
+\maketitle
+
+\section{Експериментальні дані}
+
+\pgfplotstableread{
+	I	U
+	0.4	8.6
+	0.5	8.3
+	0.6	7.9
+	0.7	7.3
+	0.8	6.6
+	0.9	6.3
+	1.0	5.8
+	1.1	5.2
+	1.2	4.5
+	1.3	4.1
+	1.4	3.6
+	1.5	3.1
+}\UvsI
+
+\pgfplotstablecreatecol[
+	create col/expr={0.0125/\thisrow{I}},
+]{Ierror}\UvsI
+
+\pgfplotstablecreatecol[
+	create col/expr={0.5/\thisrow{U}},
+]{Uerror}\UvsI
+
+\begin{table}[!htbp]\centering
+	\caption{Таблиця з експериментальними даними кислотно-свинцевого акумулятора}
+	\label{tab1}
+	\pgfplotstabletypeset[
+		multicolumn names,
+		columns/I/.style={
+				column name={$I$, А},
+				column type={
+						S[
+								round-mode=places,
+								round-precision=2,
+								%                scientific-notation=engineering,
+								%                table-format=2.1,
+								exponent-product = \cdot
+							]
+					},
+				string type
+			},
+		columns/U/.style={
+				column name={$U$, В},
+				column type={
+						S[
+								round-mode=places,
+								round-precision=2,
+								%                scientific-notation=engineering,
+								%                table-format=2.1,
+								exponent-product = \cdot
+							]
+					},
+				string type
+			},
+		columns/Ierror/.style={
+				column name={$\Delta I$, А},
+				fixed zerofill, fixed,
+			},
+		columns/Uerror/.style={
+				column name={$\Delta U$, В},
+				fixed zerofill, fixed,
+			},
+		every head row/.style={
+				before row={\toprule},
+				after row={\midrule},
+			},
+		every last row/.style={after row=\bottomrule}
+	]\UvsI
+\end{table}
+
+\begin{tornpage}
+	\begin{center}%[h!]
+		%\centering
+		\begin{tikzpicture}
+			\begin{axis}[legend style={font=\scriptsize},
+					legend pos = north east,
+					xlabel={$I$, А},
+					ylabel={$U$, В},
+					%				every axis y label/.style={
+					%				    at={(yticklabel cs:1)},
+					%				    anchor=south,
+					%				},
+					%				every y tick scale label/.style={at={(0.05,1)},anchor=south},
+					ytick scale label code/.code={$U$, $\cdot 10^{#1}$ Н$\cdot$м},
+					%	xmin = 3,
+					%	xmax = 8,
+					minor tick num = 1,
+					width=1\linewidth,
+					height=0.6\linewidth,
+					% === Налаштування сітки ===
+					grid = both,
+					major grid style={line width=.6pt,draw=brown!60},
+					minor tick num = 9,
+					minor grid style = {line width=.1pt,draw=brown!20},
+				]
+
+				%-------------------------------------------- Побудова графіку за даними з файлу -----------------------------------------%
+				\addplot[
+					blue,
+					only marks,
+					error bars/.cd,
+					x dir=both, x explicit,
+					y dir=both, y explicit,
+				]
+				table[
+						x= I,
+						x error = Ierror,
+						y = U,
+						y error = Uerror,
+					]\UvsI;
+
+				%------------------------------------ Додавання легенди до вищепобудованого графіку --------------------------------------%
+				\addlegendentry{Експериментальні дані}
+
+				%---------------------------------- Побудова лінійної апроксимації до даних файлу ----------------------------------------%	
+				\addplot[red,
+				]
+				table[x=I, y={create col/linear regression={y = U}}]\UvsI;
+				\xdef\slope{\pgfplotstableregressiona}
+				\xdef\ycepte{\pgfplotstableregressionb}
+
+				%------------------------------------ Додавання легенди до вищепобудованого графіку --------------------------------------%
+				\addlegendentry{
+					$U = \pgfmathprintnumber{\slope} \cdot I \pgfmathprintnumber[print sign]{\ycepte}$
+					Апроксимація
+				}
+			\end{axis}
+		\end{tikzpicture}
+		\captionof{figure}{Графік залежності $U(I)$ за даними табл.~\ref{tab1}}
+		\label{plt:expresults}
+	\end{center}
+\end{tornpage}
+
+\pgfmathsetmacro{\Uz}{10.86}
+\pgfmathsetmacro{\Ri}{5.18}
+\pgfmathsetmacro{\Iz}{\Uz/\Ri}
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{U}/\thisrow{I}/\Ri},
+]{ReRi}\UvsI
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{U}/\Uz},
+]{UU0}\UvsI
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{I}/\Iz},
+]{II0}\UvsI
+
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{U}/\Uz*\thisrow{I}/\Iz},
+]{PP0}\UvsI
+
+\begin{tornpage}
+	\begin{center}%[ht!]\centering
+		\begin{tikzpicture}
+			\begin{semilogxaxis}[
+					x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+					legend style={row sep = 5pt},
+					xlabel={$\frac{R_e}{R_i}$},
+					width = \linewidth,
+					height = 0.8\linewidth,
+					grid = both,
+					major grid style={line width=.6pt,draw=brown!60},
+					minor tick num = 9,
+					minor grid style = {line width=.1pt,draw=brown!20},
+					axis lines=center,
+					%        axis y line shift=1,
+				]
+
+				\addplot[domain=0.01:100, samples=100, blue] {1 - 1/(1 + x/1)};
+				\addplot[domain=0.01:100, samples=100, green!50! black] {1/(1 + x/1)};
+				\addplot[domain=0.01:100, samples=100, red] {x/1/(1+x/1)^2};
+
+				\addplot[
+					blue,
+					only marks,
+					error bars/.cd,
+					y dir = both,  y explicit,
+				]
+				table[
+						x= ReRi,
+						y = UU0,
+					]\UvsI;
+
+				\addplot[
+					green!50! black,
+					only marks,
+					error bars/.cd,
+					y dir = both,  y explicit,
+				]
+				table[
+						x= ReRi,
+						y = II0,
+					]\UvsI;
+
+				\addplot[
+					red,
+					only marks,
+					error bars/.cd,
+					y dir = both,  y explicit,
+				]
+				table[
+						x= ReRi,
+						y = PP0,
+					]\UvsI;
+
+
+				\legend{${U}/{\mathcal{E}}$, ${I}/{I_0}$, ${P}/{P_0}$}
+			\end{semilogxaxis}
+		\end{tikzpicture}
+		\captionof{figure}{Діаграма режимів для акумулятора}
+		\label{diag}
+	\end{center}
+\end{tornpage}
+
+
+\end{document}

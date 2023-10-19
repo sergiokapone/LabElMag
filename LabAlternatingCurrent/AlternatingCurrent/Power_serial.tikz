@@ -1,0 +1,67 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+		\begin{tikzpicture}
+			\pgfset{fpu=true}
+			\pgfmathsetmacro{\L}{2e-3}
+			\pgfmathsetmacro{\C}{2.2e-6}
+			\pgfmathsetmacro{\R}{10}
+			\pgfmathsetmacro{\RL}{0.8}
+			\pgfmathsetmacro{\Ri}{5}
+			\pgfmathsetmacro{\U}{5}
+			\pgfmathsetmacro{\omegares}{1/sqrt(\L*\C)}
+			\pgfmathsetmacro{\Q}{sqrt(\L/\C)/\RL}
+			\pgfmathsetmacro{\Imax}{\U/(\R + \Ri + \RL)}
+			\pgfset{fpu=false}
+			\begin{axis}[clip = false,
+					% === Налаштування сітки ===
+					grid = both,
+					grid style={line width=.1pt, draw=gray!10},
+					major grid style={line width=.2pt,draw=gray!50},
+					minor tick num = 5,
+					minor grid style = {line width=.1pt,draw=gray!10},
+					% === Налаштування положення координатних осей ===
+					%axis x line=center, % top, center, bottom
+					%axis y line=center, % left, center, right
+					axis lines = middle,
+					axis line style={-stealth},
+					% === Підпис координатних осей ===
+					xticklabels={},
+					%xlabel={$\omega$},
+					ylabel={$\frac{P}{P_{\max}}$},
+					xtick scale label code/.code={$\omega$},
+					yticklabels={},
+					xtick style={draw=none},
+					ytick style={draw=none},
+					% === Положення підпису координатних осей ===
+					%				xlabel style={below right},
+					ylabel style={above right},
+					every x tick scale label/.style={at={(1,0)}, anchor = north},
+					extra y ticks={1/2, 1},
+					extra x ticks={\omegares},
+					extra y tick labels={$\frac12$, $1$},
+					extra x tick labels={$\omega_0$},
+					% === Вибір підписів шкали для відображення ===
+					xtick = {},
+					ytick = {},
+					% === Налаштування мінімальних та максимальних значень координат ===
+					xmin = 0,
+					xmax =  2*\omegares,
+					ymin = 0,
+					ymax =  1,
+					% === Налаштування розміру графіка ===
+					width=1\linewidth,
+					height=1\linewidth,
+				]
+				\addplot [ultra thick,samples = 500, green!50!black, thick, domain=0.5*\omegares:2*\omegares, name path global=ResCurve] {(\R + \RL + \Ri)^2/((\R + \RL + \Ri)^2 + (x*\L-1/(\C*x))^2)};
+
+				\path[name path=line] (axis cs:0, {1/2}) -- (axis cs:3*\omegares,{1/2});
+				\draw [thick,
+					dashed,
+					name intersections={of=ResCurve and line},
+				] (axis cs:0, {1/2}) -- (intersection-1) -- (intersection-2) (intersection-1) -- (intersection-1 |-0,0) node [below left] {$\omega_0 - \Delta\omega$} (intersection-2) -- (intersection-2 |-0,0) node [below right] {$\omega_0 + \Delta\omega$};
+				\fill [white, draw=green!50!black, name intersections={of=ResCurve and line}] (intersection-1) circle (0.1cm) (intersection-2) circle (0.1cm);
+			\end{axis}
+		\end{tikzpicture}

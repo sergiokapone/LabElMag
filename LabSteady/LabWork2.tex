@@ -1,0 +1,175 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !BIB program = biber
+
+\documentclass{LabWork}
+\usepackage{subcaption}
+
+\tikzset{%
+tangent/.style={
+	decoration={
+		markings,% switch on markings
+		mark=
+		at position #1
+		with
+		{
+			\coordinate (tangent point-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (0pt,0pt);
+			\coordinate (tangent unit vector-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (1,0pt);
+			\coordinate (tangent orthogonal unit vector-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (0pt,1);
+		}
+	},
+	postaction=decorate
+},
+use tangent/.style={
+	shift=(tangent point-#1),
+	x=(tangent unit vector-#1),
+	y=(tangent orthogonal unit vector-#1)
+},
+use tangent/.default=1
+}
+\addbibresource{LabWork2.bib}
+\graphicspath{{LabWork2pic/}}
+
+
+%============================================= Заголовок документу ====================================================%
+\work{2}
+\title{Електричні поля та потенціали\\ заряджених тіл}
+
+%\author{Тор А.~В.}{}
+%\author{Другий А.~В.}{}
+
+%\group{ФФ-93}
+
+\abstract{%
+Експериментальне дослідження електростатичного поля заряджених тіл різної конфігурації та опис його за допомогою еквіпотенційних силових ліній.
+}
+%======================================================================================================================%
+
+\begin{document}
+\writedatatofile{\jobname}
+\maketitle
+
+\section{Теоретичні відомості}
+
+\subsection{Напруженість електростатичного поля та картина силових ліній}
+В просторі навколо зарядженого тіла існує електричне поле. Щоб переконатися в цьому, достатньо піднести до тіла пробний заряд. На заряд буде діяти сила. Існування цієї сили, згідно теорії близькодії, спричинене полем, що створило заряджене тіло.
+
+Сила взаємодії зарядженого тіла з пробним зарядом залежить від величини цього заряду. Якщо брати різні пробні заряди, то і сила, що діє на них в даній точці поля, буде різною. Однак відношення сили до заряду залишається постійним і характеризує вже саме поле.
+
+\begin{wrapfigure}{O}{0.45\linewidth}\centering
+\begin{tikzpicture}[scale=1,
+        line/.style={ultra thick, red, tangent=0.1, tangent=0.5, tangent=0.9, decoration={markings, mark=at position 0.5 with \arrow{latex},},
+		postaction=decorate}]
+	\draw [line] (0,0) to[bend left] (5,4);
+    	\draw [-latex, thick, use tangent] (0,0) -- (2,0) node[above] {};
+    	\draw [-latex, thick, use tangent=2] (0,0) -- (1.5,0) node[below] {};
+    	\draw [-latex, thick, use tangent=3] (0,0) -- (0.5,0) node[below] {};
+	\draw [line] (0,-0.5) to[bend left] (5,2);
+    	\draw [-latex, thick, use tangent] (0,0) -- (2,0) node[above] {};
+    	\draw [-latex, thick, use tangent=2] (0,0) -- (1.5,0) node[above] {};
+    	\draw [-latex, thick, use tangent=3] (0,0) -- (0.8,0) node[right] {$\vec E$};
+	\draw [line] (0,-1) to[bend left] (5,0);
+    	\draw [-latex, thick, use tangent] (0,0) -- (2,0) node[above] {};
+    	\draw [-latex, thick, use tangent=2] (0,0) -- (1.5,0) node[above] {};
+    	\draw [-latex, thick, use tangent=3] (0,0) -- (1,0) node[above] {};
+\end{tikzpicture}
+\caption{Лінії напруженості електричного поля}
+\label{pic:Elines}
+\end{wrapfigure}
+Відношення сили, що діє на заряд, до величини цього заряду називається напруженістю поля. Напруженість
+поля є основною його характеристикою. Вона повністю характеризує поле в кожній його точці за величиною і за напрямком. Напруженість поля є сила, що діє на одиничний позитивний заряд визначається за формулою:
+\begin{equation}\label{key}
+    \tcbhighmath[drop fuzzy shadow]{\vec{E} = \frac{\vec{F}}{q}}
+\end{equation}
+
+
+
+Електричне поле зручно графічно зображати за допомогою картини так званих силових ліній, або ліній
+напруженості. Лінією напруженості називається лінія, дотична до якої в кожній точці збігається за напрямком з напруженістю (рис.~\ref{pic:Elines}). Якщо поле створюється зарядженою кулькою або точковим зарядом, лінії напруженості є прямі, що радіально розходяться від заряду або від центру кульки (рис.~\ref{fig:q1}). 
+
+Сильніше поле зображується більш щільно розташованими лініями напруженості. Такий спосіб зображення ступеня інтенсивності поля абсолютно природний, оскільки за відсутності поля силових ліній не повинно бути зовсім. Поле негативного заряду відрізняється лише напрямком ліній (рис.~\ref{fig:qmin}). 
+
+\tikzset{
+charge/.style={
+circle, 
+text= white,
+minimum size={20pt},
+inner sep=2pt,
+}
+}
+\begin{figure}[h!]
+  \centering
+   \def\R{2.5} 
+  \begin{subfigure}[t]{0.3\linewidth}
+    \centering
+    \begin{tikzpicture}[scale=1,
+        line/.style={thick, red, decoration={markings, mark=at position 0.8 with \arrow{latex},},
+        postaction=decorate}]
+        \node[ball color=red, charge] (q) at (0,0) {$+$};
+        \foreach \i in {1,2,...,9} {\draw[line] (q) -- (\i*360/9:\R);}
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:q1}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.3\linewidth}
+    \centering
+    \begin{tikzpicture}[scale=1,
+            line/.style={thick, red, decoration={markings, mark=at position 0.8 with \arrow{latex},},
+    		postaction=decorate}]
+    \node[ball color=red, charge] (q) at (0,0) {$+$};
+    \foreach \i in {1,2,...,20} {\draw[line] (q) -- (\i*360/20:\R);}
+    \end{tikzpicture}    
+    \caption{}
+    \label{fig:q2}
+  \end{subfigure}
+  \label{fig:myfig}
+  \begin{subfigure}[t]{0.3\linewidth}
+    \centering
+    \begin{tikzpicture}[scale=1,
+            line/.style={thick, red, decoration={markings, mark=at position 0.2 with \arrow{latex},},
+    		postaction=decorate}]
+    \node[ball color=blue, charge] (q) at (0,0) {\tikz{\draw (0,0) -- (0.25,0)}};
+    \foreach \i in {1,2,...,20} {\draw[line] (\i*360/20:\R) -- (q);}
+    \end{tikzpicture} 
+    \caption{}
+    \label{fig:qmin}
+  \end{subfigure}
+  \caption{Силові лінії точкового заряду}
+  \label{fig:q}
+\end{figure}
+
+
+Більш складна картина силових ліній виходить у випадку, коли поле створюється не одним точковим зарядом, а декількома, або неточковими зарядами. Результуюче поле знаходиться за принципом суперпозиції полів окремих зарядів. Наприклад, на рис. 5 зображено поле, створюване двома рівними за величиною і протилежними за знаком зарядами, на рис. 6 - поле, створюване рівними за величиною і однаковими за знаком точковими зарядами. На рис. 7 - однорідне поле в плоскому конденсаторі, яке виникає за умови, що відстань між обкладинками конденсатора значно менше, ніж розміри пластин. Однорідним називається поле, в якому напруженість у всіх точках має одну і ту ж величину і однаковий напрямок. В такому полі силові лінії паралельні і густина їх усюди однакова.
+
+\subsection{Потенціал електростатичного поля}
+
+Електростатичне поле є потенціальним, його можна повністю охарактеризувати більш простою величиною, ніж напруженість, яка називається \emph{потенціалом}. 
+\begin{wrapfigure}{O}{0.45\linewidth}\centering
+\begin{tikzpicture}[scale=1,
+        line/.style={ultra thick, red, tangent=0.1, tangent=0.5, tangent=0.9, decoration={markings, mark=at position 0.5 with \arrow{latex}, },
+		postaction=decorate}]
+	\draw [line] (0,0) to[bend left] (5,4);
+        \draw[dashed] (0,1) to[bend left] (1.5,-1); 
+	\draw [line] (0,-0.6) to[bend left] (5,2);
+           \draw[dashed] (0.8,2) to[bend left] (2.3,-0.5); 
+	\draw [line] (0,-1) to[bend left] (5,0);
+           \draw[dashed] (3.7,4) to[bend left=15pt] (4.1,-0.5); 
+\end{tikzpicture}
+\caption{Лінії напруженості електричного поля та еквіпотенціальні поверхні}
+\label{pic:philines}
+\end{wrapfigure}
+
+\section{Ідея експериментів та устаткування}
+
+
+
+\section{Хід експерименту}
+
+\begin{enumerate}
+\item Встановіть напругу високовольтного джере
+\end{enumerate}
+
+\section*{Розрахункове завдання}
+
+\end{document}

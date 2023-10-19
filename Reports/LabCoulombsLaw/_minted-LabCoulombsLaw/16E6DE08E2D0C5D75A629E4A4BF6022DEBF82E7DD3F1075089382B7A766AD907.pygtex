@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{o}{=} \PYG{n}{A}\PYG{o}{*}\PYG{n}{x}\PYG{o}{**}\PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n+nb}{s}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{);}  \PYG{c}{\PYGZsh{} Define the function to fit}
+\PYG{n+nv}{A}\PYG{o}{=}\PYG{l+m+mf}{1e+12}\PYG{p}{;} \PYG{n+nv}{s} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}4} \PYG{p}{;}     \PYG{c}{\PYGZsh{} Set reasonable starting values here}
+\PYG{k}{fit} \PYG{n+nf}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{l+s}{\PYGZdq{}QF.dat\PYGZdq{}} \PYG{n+nb}{using} \PYG{p}{(}\PYG{err}{\PYGZdl{}}\PYG{l+m+mi}{1}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{:}\PYG{l+m+mi}{2} \PYG{n+nb}{via} \PYG{n}{A}\PYG{o}{,}\PYG{err}{і}\PYG{p}{;} \PYG{c}{\PYGZsh{} Fitting data from file QF.dat}
+\PYG{k}{plot}  \PYG{p}{[}\PYG{n}{x}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{o}{:}\PYG{l+m+mf}{6.5e\PYGZhy{}16}\PYG{p}{]} \PYG{n+nf}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}QF.dat\PYGZdq{}} \PYG{n+nb}{u} \PYG{p}{(}\PYG{err}{\PYGZdl{}}\PYG{l+m+mi}{1}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{:}\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{k}{set} \PYG{n+nb}{print} \PYG{l+s}{\PYGZdq{}A.dat\PYGZdq{}} \PYG{c}{\PYGZsh{} Save aproximation coefitients in file A.dat}
+\PYG{k}{print} \PYG{n}{A}\PYG{o}{,}\PYG{n}{A\PYGZus{}err}\PYG{o}{,}\PYG{n}{s}
+\PYG{k}{set} \PYG{n+nb}{print}
+\end{Verbatim}

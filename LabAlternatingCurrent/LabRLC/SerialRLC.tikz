@@ -1,0 +1,119 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+
+
+%---------------------------------------------------------
+\begin{center}
+	\begin{tikzpicture}[
+			declare function={
+					L  = 2e-3;
+					C  = 1.2e-6;
+					R  = 10;
+					RL  = 0.8;
+					Ri  = 5;
+					Rtot = R + RL + Ri;
+					U  = 10;
+					omegares  = 1/sqrt(L*C);
+					nures  = omegares/(2*pi);
+					Q  = sqrt(L/C)/Rtot;
+					Imax  = U/Rtot;
+					D1 =  (1/(4*pi*L))*(sqrt( (Rtot^2+4*L/C)) - Rtot);
+					D2 = (1/(4*pi*L))*(sqrt( (Rtot^2*C+4*L)/C) + Rtot);
+					I(\x) = Rtot/sqrt(Rtot^2 + ((2*pi*\x)*L-1/(C*(2*pi*\x)))^2);
+					F2(\x) = sqrt(Rtot^2/(pi^2*\x^2*L^2) + sqrt(((\x^2 - 1)*Rtot^2*(\x^2*C*Rtot^2 - 4*\x^2*L - C*Rtot^2))/(\x^4*C))/(pi^2*L^2) + 2/(pi^2*C*L) - Rtot^2/(pi^2*L^2))/(2*sqrt(2));
+					F1(\x) = sqrt(Rtot^2/(pi^2*\x^2*L^2) - sqrt(((\x^2 - 1)*Rtot^2*(\x^2*C*Rtot^2 - 4*\x^2*L - C*Rtot^2))/(\x^4*C))/(pi^2*L^2) + 2/(pi^2*C*L) - Rtot^2/(pi^2*L^2))/(2*sqrt(2));
+				},
+		]
+
+
+		\begin{axis}[
+				% === Налаштування сітки ===
+				grid = both,
+				major grid style={line width=.6pt,draw=brown!60},
+				minor tick num = 9,
+				minor grid style = {line width=.1pt,draw=brown!20},
+				% === Налаштування положення координатних осей ===
+				axis lines = middle,
+				axis line style={-stealth},
+				% === Підпис координатних осей ===
+				%				xticklabels={},
+				xlabel={$\nu$, Hz},
+				ylabel={$\frac{I_{0}}{I_{\max}}$},
+				% === Положення підпису координатних осей ===
+				ylabel style={above right},
+				every tick/.style={black},
+				extra tick style={% changes for all extra ticks
+						tick align=outside,
+						major grid style={dashed,draw=black}
+					},
+			    extra x tick style={
+			      red,
+			      major tick style={
+			        gray,
+			      },
+			      tick label style={
+					yshift=10mm,
+			        /pgf/number format/.cd, fixed, fixed zerofill,
+			        precision=2,
+			      }
+			    },
+				extra y tick style={% changes for extra y ticks
+						tick label style={yshift=2mm},
+					},
+				extra x ticks={F1(1/sqrt(2)), nures, F2(1/sqrt(2)},
+				extra x tick labels={
+					\pgfmathprintnumberFE[custom exponent=0]{F1(1/sqrt(2))/100},
+					\pgfmathprintnumberFE[custom exponent=0]{nures/100},
+					\pgfmathprintnumberFE[custom exponent=0]{F2(1/sqrt(2))/100},
+					},
+				extra y ticks={1/sqrt(2)},
+				extra y tick labels={$1/\sqrt{2}$},
+				scaled x ticks=base 10:-2,
+				% === Вибір підписів шкали для відображення ===
+				xtick = {},
+				ytick = {},
+				% === Налаштування мінімальних та максимальних значень координат ===
+				xmin = 15e2,
+				xmax =  65e2,
+				ymin = 0.25,
+				ymax =  1,
+				% === Налаштування розміру графіка ===
+				width=1\linewidth,
+				height=0.85\textheight,
+			]
+			\addplot [ultra thick,samples = 500, green!50!black, thick, domain=0.51*nures:1.85*nures, name path global=ResCurve]  {I(x)};
+
+
+			\pgfplotsinvokeforeach{0.3,0.4,...,0.9}
+			{
+				\addplot[color=blue,mark=*, only marks, point meta=x, nodes near coords={\pgfmathprintnumberFE[custom exponent=0, precision=1]{\pgfplotspointmeta/100}}, every node near coord/.append style={anchor=west}] coordinates { (F1(#1),#1) (F2(#1),#1) };
+			}
+			\addplot[color=red,mark=*, only marks, point meta=x, nodes near coords={\pgfmathprintnumberFE[custom exponent=0, precision=1]{\pgfplotspointmeta/100}}, every node near coord/.append style={anchor=south}] coordinates {(F2(1),1)};
+
+
+			%			\fill [white, draw=green!50!black, name intersections={of=ResCurve and line}] (intersection-1) circle (0.05cm) (intersection-2) circle (0.05cm);
+			\node[anchor = north east, text width=6cm] at (current axis.north east) {
+				\begin{tornpage}
+					$C = \pgfmathprintnumberFE[custom exponent=-6,precision=1]{C}$~Ф,\\
+					$L = \pgfmathprintnumberFE[custom exponent=-3,precision=0]{L}$~Гн,\\
+					$R_L = \pgfmathprintnumberFE[custom exponent=0,precision=2]{RL}$~Ом,\\
+					$R_i = \pgfmathprintnumberFE[custom exponent=0,precision=2]{Ri}$~Ом,\\
+					$R_I = \pgfmathprintnumberFE[custom exponent=0,precision=2]{R}$~Ом,\\
+					\hrulefill\\
+					\medskip%
+					$Q^{\mathrm{theor}} = \dfrac{1}{R}\sqrt{\dfrac{L}{C}} = \pgfmathprintnumberFE[custom exponent=0,precision=2]{Q}$\\
+					\hrulefill\\
+					\smallskip%
+					$\nu_0 = \pgfmathprintnumberFE[custom exponent=2,precision=1]{nures}$~Hz \\
+					$2\Delta\nu = \pgfmathprintnumberFE[custom exponent=2,precision=1]{D2-D1}$~Hz\\
+					\hrulefill\\
+					\smallskip%
+					$Q^{\mathrm{exp}} = \dfrac{\nu_0}{2\Delta\nu} = \pgfmathprintnumberFE[custom exponent=0,precision=2]{nures/(D2-D1)}$
+				\end{tornpage}
+			};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}

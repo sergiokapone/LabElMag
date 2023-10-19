@@ -1,0 +1,240 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+%------------- Externalize ------------
+%\usetikzlibrary{external}
+%\tikzexternalize[prefix=\currfiledir/pictures/]
+%\tcbsetforeverylayer{shield externalize}
+
+
+%============================================= Заголовок документу ====================================================%
+
+\keywords{Змінний струм, $RC$-коло, активний опір, ємнісний опір,імпеданс.}
+\abstract{Визначення імпедансу конденсатора як функції частоти. Визначення фазового зсуву між напругою на конденсаторі та струмом в колі як функції частоти.}
+\apparatus{генератор сигналів низькочастотний ГЗ-112, диференційний підсилювач, осцилограф C1-93.}
+\chapter{Конденсатор у колі змінного струму}
+\makeworktitle
+
+%======================================================================================================================%
+
+
+
+\section{Обладнання}
+
+\subsubsection*{Генератор ГЗ-112}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[every pin/.style={minimum size = 5pt, pin edge={red, thick}, draw, fill=gray!5, red, circle, font=\scriptsize},
+    small dot/.style={fill=black,circle,scale=0.3}]
+    \node at (0,0){ \includegraphics[width=12cm]{\currfiledir/GZ112}};
+    \node[small dot,pin={[pin distance=2.2cm]90:{\ref{btn:power}}}] at (-5,0) {};
+    \node[small dot,pin={[pin distance=1cm]-90:{\ref{btn:exit}}}] at (5.0,-1.5)  {};
+    \node[small dot,pin={[pin distance=1cm]0:{\ref{btn:dB}}}] at (5.1,0.1)  {};
+    \node[small dot,pin={[pin distance=2.75 cm]-15:{\ref{btn:dBMultiplier}}}] at (3.5,-0.5)  {};
+    \node[small dot,pin={[pin distance=2.3cm]90:{\ref{btn:sygnaltype}}}] at  (1.8,-0.1) {};
+    \node[small dot,pin={[pin distance=2.1cm]90:{\ref{btn:Hz}}}] at (-3.3,0.1) {};
+    \node[small dot,pin={[pin distance=2.7cm]90:{\ref{btn:HzMultiplier}}}] at (0.3,-0.5) {};
+%    \draw[red] (-6,-3) to [grid with coordinates] (6,2.2);
+\end{tikzpicture}
+\caption{Елементи керування генератором ГЗ-112}
+\label{fig:gz112}
+\end{figure}
+
+На рис.~\ref{fig:gz112} показані основні органи керування генератором: 
+\begin{enumerate}
+    \item \label{btn:power} ручка вмикання/вимикання живлення;
+    \item \label{btn:Hz} регулювання частоти; 
+    \item \label{btn:HzMultiplier} множник частоти вихідного сигналу;
+    \item \label{btn:sygnaltype} установка форми сигналу: синусоїдальний/меандр;
+    \item \label{btn:dB} регулювання амплітуди вихідного сигналу; 
+    \item \label{btn:dBMultiplier} множник амплітуди вихідного сигналу;  
+    \item \label{btn:exit} вихід сигналу; 
+    \item вивід синхронізації.
+\end{enumerate}
+
+\subsubsection*{Диференційний підсилювач}
+
+%---------------------------------------------------------
+\begin{wrapfigure}{l}{0.35\linewidth}\centering
+    \includegraphics[width=4cm]{\currfiledir/DiffAmpl}
+\caption{Диференційний підсилювач}
+\label{fig:DiffAmpl}
+\end{wrapfigure}%
+%---------------------------------------------------------
+Диференційний підсилювач (рис.~\ref{fig:DiffAmpl}) призначений для одночасного вимірювання двох напруг при підключенні до входів двоканального осцилографа. Його входи можуть бути підключені до будь-якої точки кола не впливаючи на його електричну поведінку.
+
+Він має два входи, які позначені літерами $A$ та $B$, кожен з яких має пару $4$~мм сокетів червоного та синього кольору. Детальну інформацію можна знайти на сайті \href{https://www.phywe.com/en/difference-amplifier.html#tabs3}{PHYWE}.
+
+
+
+\subsubsection*{Осцилограф C1-93}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[every pin/.style={minimum size = 5pt, pin edge={red, thick}, draw, fill=gray!5, red, circle, font=\scriptsize},
+    small dot/.style={fill=black,circle,scale=0.3}]
+
+    \node at (0,0){ \includegraphics[width=12cm]{\currfiledir/Oscillograph}};
+    \node[small dot,pin={[pin distance=1cm]-90:{\ref{btn:power}}}] at (2.6,-2.6)  {};
+    \node[small dot,pin={[pin distance=1cm]-90:{\ref{btn:focus}}}] at (-0.6,-2.6)  {};
+    \node[small dot,pin={[pin distance=1cm]-90:{\ref{btn:brightness}}}] at  (-1.5,-2.6) {};
+    \node[small dot,pin=180:{\ref{btn:gk}}] at (-4.5,0.6) {};
+    \node[small dot,pin=160:{\ref{btn:pzch}}] at (-4,1.8) {};
+    \node[small dot,pin={[pin distance=1.5cm]120:{\ref{btn:stch}}}] at (-4,2.2) {};
+    \node[small dot,pin=90:{\ref{btn:YShift}}] at (-3.3,2.7) {};
+    \node[small dot,pin={[pin distance=1cm]-90:{\ref{btn:YShift}}}] at  (-3.3,-2.6) {};
+    \node[small dot,pin={180:{\ref{btn:gk}}}] at (-4.5,-2.5) {};
+    \node[small dot,pin={[pin distance=1.2cm]180:{\ref{btn:pzch}}}] at (-4,-1.5) {};
+    \node[small dot,pin={[pin distance=0.5cm]170:{\ref{btn:stch}}}] at (-4,-1.0) {};
+    \node[small dot,pin=0:{\ref{btn:timestepsoft}}] at (4.2,1.2) {};
+    \node[small dot,pin={[pin distance=2cm]180:{\ref{btn:ChangeChanels}}}] at (-3.2,-0.2) {};
+    \node[small dot,pin={[pin distance=1.5cm]45:{\ref{btn:timestep}}}] at (4.2,1.7) {};
+    \node[small dot,pin={[pin distance=1.5cm]-45:{\ref{btn:iternal}}}] at (4.1,-0.4) {};
+    \node[small dot,pin={[pin distance=1.5cm]-45:{\ref{btn:external}}}] at (4.1,-1.4) {};
+%    \draw[red] (-6,-5) to [grid with coordinates] (6,5);
+\end{tikzpicture}
+
+\caption{Елементи керування осциллографом C1-93}
+\label{fig:с1-93}
+\end{figure}
+
+На рис.~\ref{fig:с1-93} показані основні органи керування осцилографом: 
+
+\begin{enumerate}
+    \item \label{btn:power} ручка вмикання/вимикання живлення;
+    \item \label{btn:focus}ручка керування фокусуванням електронного променя;
+    \item \label{btn:brightness} ручка керування яскравістю  електронного променя;
+    \item \label{btn:gk} гніздо <<вхід>> каналів;
+    \item \label{btn:pzch} ручка плавної зміни чутливості (в нормі повернута проти годинникової стрілки до упору) каналів;
+    \item \label{btn:stch}ручка ступінчатого перемикання чутливості;
+    \item \label{btn:YShift}ручка зміщення електронного променя по осі <<Y>> каналів;
+%    \item ручка вмикання/вимикання розгортки по осі <<Y>> каналу I;
+%    \item \label{btn:gk2} гніздо <<вхід>> канала II;
+    \item \label{btn:pzch2} ручка плавної зміни чутливості (в нормі повернута проти годинникової стрілки до упору);
+%    \item ручка ступінчатого перемикання чутливості каналу II;
+%    \item \label{btn:YShift2}ручка зміщення електронного променя по осі <<Y>> каналу II;
+%    \item ручка вмикання/вимикання розгортки по осі <<Y>> каналу II;
+    \item \label{btn:ChangeChanels} кнопки перемикання каналів;
+    \item \label{btn:timestep}ручка ступінчатої зміни ціни поділок розгортки за часом;
+    \item \label{btn:timestepsoft}ручка плавної зміни чутливості розгортки за часом  (в нормі повернута проти годинникової стрілки до упору);
+    \item \label{btn:iternal}перемикачі для синхронізації розгортки внутрішнім сигналом;
+    \item \label{btn:external}перемикачі для синхронізації розгортки зовнішнім сигналом.
+\end{enumerate}
+
+\subsubsection*{Робота осцилографа в режимі внутрішньої розгортки}
+
+При роботі осцилографа в режимі внутрішньої розгортки на канали I та II поступають сигнали, які виводяться на екран у вигляді двох синусоїд (рис.~\ref{fig:InternalMode}).  Зсув фаз між сигналами можна безпосередньо визначити по шкалі на екрані.
+
+\begin{figure}[!h]\centering
+    \input{\currfiledir/OscInternal.tikz}
+\caption{Вигляд сигналів на екрані осцилографа, який працює в режимі внутрішньої розгортки}
+\label{fig:InternalMode}
+\end{figure}
+
+
+Для переведення в такий режим, необхідно:
+\begin{enumerate}
+\item  натиснути кнопку  \tcbox{\sc{$\rightarrow\rightarrow$}} перемикання каналів~\circled{\ref{btn:ChangeChanels}};
+\item  натиснути перемикач \tcbox{\sc{I}} синхронізації розгортки внутрішнім сигналом~\circled{\ref{btn:iternal}}.
+\end{enumerate}
+
+
+\subsubsection*{Робота осцилографа в режимі осцілоскопу}
+
+При роботі осцилографа в режимі осцилоскопа на канали I та II поступають сигнали, які виводяться на екран у вигляді  \href{https://uk.wikipedia.org/wiki/Фігури\_Ліссажу}{фігури Ліссажу} (рис.~\ref{fig:ExternalMode}). Тип фігури Ліссажу залежить від зсуву фаз між сигналами, що подаються на канали I та II. У випаду, якщо між сигналами зсув фаз дорівнюватиме $\pi/2$ і амплітуди сигналів однакові то на екрані має спостерігатись еліпс (рис.~\ref{fig:ExternalMode}). Якщо ж амплітуди сигналів будуть однакові, то фігура матиме вигляд кола. Майте на увазі, що коректний вигляд фігур можна побачити, якщо ціни поділок  по осям $X$ та $Y$ однакові, для цього ручки \circled{\ref{btn:stch}} повинні мати однакові значення \tcbox{\sc{V/дел}}. Як правило, канал I розгортається по осі $Y$ а канал II по осі $X$.
+
+
+\begin{figure}[!h]\centering
+    \input{\currfiledir/OscExternal.tikz}
+\caption{Вигляд сигналів на екрані осцилографа, який працює в режимі осцилоскопа}
+\label{fig:ExternalMode}
+\end{figure}
+
+
+Для переведення в такий режим, необхідно:
+\begin{enumerate}
+\item  натиснути кнопку  \tcbox{\sc{II}} перемикання каналів~\ref{btn:ChangeChanels};
+\item  натиснути перемикач \tcbox{\sc{\inX}} синхронізації розгортки зовнішнім сигналом~\ref{btn:external}.
+\end{enumerate}
+
+\section{Методика дослідження}
+
+\subsection{Опис методики дослідження}
+
+На послідовно з'єднані резистор та конденсатор подають синусоїдальну зовнішню напругу з контрольованою частотою $\omega = 2\pi \nu$, яка задається генератором ГЗ-112. Напруги на конденсаторі і резисторі вимірюються за допомогою  осцилографа C1-93. Знаючи опір резистора можна знайти опір конденсатора, якщо підібрати частоту, на якій напруги, вимірювані осцилографами будуть мати однакову амплітуду.
+
+Для дослідження використовують електричне коло, наведено на рис.~\ref{pic:RC_circuit}.
+
+%=========================================================
+\begin{figure}[h!]\centering
+        \input{\currfiledir/RC_circuit.tikz}
+		\caption{Схема дослідження $RC$-кола}
+		\label{pic:RC_circuit}
+\end{figure}
+
+
+\section{Хід експерименту}
+
+\subsection*{Вимірювання залежності імпедансу конденсатора від частоти та ємності}
+\begin{enumerate}
+    \item Виберіть режим внутрішньої розгортки для роботи осцилографа .
+    \item Зберіть схему, як показано на рис.~\ref{pic:RC_circuit}. Частоту генератора \tcbox{\sc{ГЗ-112/1}} змінюйте за допомогою ручки~\circled{\ref{btn:Hz}}.
+    \item \label{item:X_C} Візьміть конденсатор ємністю $1$~$\mu$Ф. Візьміть резистор з найменшим опором. За допомогою ручки генератора~\circled{\ref{btn:Hz}} підберіть частоту, коли амплітуда напруги на конденсаторі (канал $B$) дорівнюватиме амплітуді напруги на резисторі (канал $A$). Це також означає, що при цій частоті $X_C = R$. Поступово збільшуйте опір резисторів ($10$, $15$, $25$, $50$ $75$, $100$, $150$, $200$~Ом) і знімайте залежність $X_C = f(\nu)$. Перемикніть осцилограф в режим осцилоскопа, переконайтесь, що ви бачите коло на екрані.
+    \item  Візьміть конденсатор ємністю $2$~$\mu$Ф. Повторіть вимірювання як зазначено в п.~\ref{item:X_C}.
+    \item  З'єднайте конденсатори ємністю $1$~$\mu$Ф та $2$~$\mu$Ф послідовно та повторіть вимірювання вказані в п.~\ref{item:X_C}.
+    \item  З'єднайте конденсатори ємністю $1$~$\mu$Ф та $2$~$\mu$Ф паралельно та повторіть вимірювання вказані в п.~\ref{item:X_C}.
+    \item \label{item:X_C_plot}За результатами вимірювання побудуйте отримані залежності $X_C = f(\nu)$ в логарифмічних координатах для всіх випадків. Зробіть це на одній координатній площині. Апроксимуйте дані теоретичною залежністю. З параметрів апроксимації визначте ємності конденсаторів та порівняйте їх з номіналом (приклад на рис.~\ref{fig:X_Cnu}). Зробіть висновки.
+    \item Зробіть зріз апроксимованих залежностей, побудованих в п.~\ref{item:X_C_plot} для кількох частот і побудуйте залежність імпедансу від ємності $X_C = f(C)$ (приклад на рис.~\ref{fig:X_CC}). Зробіть висновки.
+\end{enumerate}
+
+\subsection*{Вимірювання залежності зсуву фаз між струмом в колі та напругою генератора}
+
+\begin{enumerate}[resume]
+\item Візьміть конденсатор ємністю $1$~мкФ та резистор опором $100$~Ом. Змінюючи частоту генератора в межах п.~\ref{item:X_C} вимірюйте відношення амплітуди напруги на конденсаторі $U_{0C}$ до амплітуди напруги на резисторі $U_{0R}$. Відношення цих амплітуд є тангенсом зсуву фаз аз між струмом в колі та напругою генератора 
+\[
+\tg\phi = \frac{U_{0C}}{U_{0R}}.
+\] 
+
+Побудуйте залежність зсуву фаз від частоти (приклад на рис.~\ref{fig:tanphi_nu}).
+\end{enumerate}
+
+\renewcommand{\floatpagefraction}{.1}
+%================================================================================================
+\begin{figure}[htbp!]\centering
+\begin{subfigure}[t]{0.7\linewidth}\centering
+    \input{\currfiledir/XCnu.tikz}
+\caption{$X_C = f(f)$}
+\label{fig:X_Cnu}
+\end{subfigure}
+\\
+\begin{subfigure}{0.7\linewidth}\centering
+    \input{\currfiledir/XCC.tikz}
+\caption{$X_C = f(C)$}
+\label{fig:X_CC}
+\end{subfigure}
+\caption{Залежність імпедансу $X_C$ від частоти $f$ та ємності $C$}
+\end{figure}
+
+\begin{figure}[h!]\centering
+    \input{\currfiledir/tanphinu.tikz}
+    \caption{Залежність зсуву фаз $\phi$ від частоти $f$}
+    \label{fig:tanphi_nu}
+\end{figure}
+%================================================================================================    
+
+\section*{Контрольні запитання}
+
+\begin{enumerate}
+	\item Як пояснити, що змінний струм протікає через конденсатор?
+	\item Поясніть метод комплексних амплітуд та сформулюйте на їх основі правила Кірхгофа для кіл змінного струму.
+	\item Що таке імпеданс?
+	\item Що таке активний та реактивний опори?
+	\item Побудуйте векторну діаграму паралельного та послідовного $RC$-кола.
+	\item Як впливає неідеальність конденсатора на зсув фаз між напругою та струмом на ньому в послідовному та паралельному $RC$-колі?
+    \item Як впливає внутрішній опір генератора на результати вимірювань?
+    \item Як виміряти зсув фаз за допомогою фігур Ліссажу?
+\end{enumerate}
+

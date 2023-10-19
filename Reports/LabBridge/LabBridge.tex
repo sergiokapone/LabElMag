@@ -1,0 +1,125 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !BIB program = bibtex8
+
+\documentclass{LabWork}
+\graphicspath{{LabWork5pic/}}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+every info/.style={font=\small},
+}
+\usetikzlibrary{decorations.pathreplacing}
+
+%============================================= Заголовок документу ====================================================%
+\work{5}
+\title{Вимірювання величини електричного опору за допомогою містка Уітстона}
+
+%\author{}{}
+
+%\group{ФФ-93}
+
+\abstract{%
+
+Вивчення принципу роботи вимірювальної мостової схеми. Визначення величини опору двох провідників і величини опору при їх послідовному і паралельному з'єднанні. Визначення величини внутрішнього опору гальванометра.
+}
+%======================================================================================================================%
+
+\begin{document}
+\writedatatofile{\jobname}
+\maketitle
+
+\section{Таблиці та розрахунки}
+
+\pgfplotstableread{
+R l1  l2 
+10  0.920 0.080
+50  0.668 0.332
+100 0.502 0.498
+}\ExpData
+
+% ===================== Додаємо розрахунок R_x по формулі (4)
+\pgfplotstablecreatecol[
+	create col/expr={\thisrow{R}*\thisrow{l1}/\thisrow{l2}},
+]{Rx}\ExpData
+
+
+
+%================ Верстка таблиці ======================
+\begin{table}[!htbp]\centering
+	\caption{Таблиця з експериментальними даними та розрахованим значенням $R_x$}
+	\label{tab1}
+	\pgfplotstabletypeset[
+		multicolumn names,
+		columns/R/.style={
+				column name={$R$, Ом},
+				column type={
+						S[
+								round-mode=places,
+								round-precision=2,
+								%                scientific-notation=engineering,
+								%                table-format=2.1,
+								exponent-product = \cdot
+							]
+					},
+				string type
+			},
+		columns/l1/.style={
+				column name={$l_1$, м},
+				column type={
+						S[
+								round-mode=places,
+								round-precision=2,
+								%                scientific-notation=engineering,
+								%                table-format=2.1,
+								exponent-product = \cdot
+							]
+					},
+				string type
+			},
+		columns/l2/.style={
+				column name={$l_2$, м},
+				column type={
+						S[
+								round-mode=places,
+								round-precision=2,
+								%                scientific-notation=engineering,
+								%                table-format=2.1,
+								exponent-product = \cdot
+							]
+					},
+				string type
+			},
+		columns/Rx/.style={
+				column name={$R_x$, Ом},
+				column type={
+						S[
+								round-mode=places,
+								round-precision=2,
+								%                scientific-notation=engineering,
+								%                table-format=2.1,
+								exponent-product = \cdot
+							]
+					},
+				string type
+			},
+		every head row/.style={
+				before row={\toprule},
+				after row={\midrule},
+			},
+		every last row/.style={after row=\bottomrule}
+	]\ExpData
+\end{table}
+
+\averageVal{\ExpData}{Rx}{\averageRx}% --- обчислення середнього з колонки Rx і присвоєння його змінній \averageRx
+\maxVal{\ExpData}{Rx}{\maxRx}% --- обчислення максимального з колонки Rx і присвоєння його змінній \maxRx
+\minVal{\ExpData}{Rx}{\minRx}% --- обчислення мінімального з колонки Rx і присвоєння його змінній \maxRx
+
+Середнє значення $R_x$ дорівнює \pgfmathprintnumber{\averageRx}~Ом. % Верстка значення
+
+Максимальне значення $R_x$ в колонці дорівнює \pgfmathprintnumber{\maxRx}~Ом. % Верстка значення
+
+Мінімальне значення $R_x$ в колонці дорівнює \pgfmathprintnumber{\minRx}~Ом. % Верстка значенн
+
+
+\end{document}

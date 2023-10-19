@@ -1,0 +1,37 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+	\begin{tikzpicture}
+		\begin{axis}[%
+				grid = both,
+				major grid style={line width=.2pt,draw=gray!50},
+				minor tick num = 4,
+				minor grid style = {line width=.1pt,draw=gray!10},
+				axis lines = middle,
+				axis line style={-stealth},
+				xlabel={$t$},
+				ylabel={$U,I$},
+				ytick style={draw=none},
+				xtick style={draw=none},
+				xticklabels={},yticklabels={},
+				xmin = -pi/2,
+				xmax = 4*pi,
+				ymin = -1,
+				ymax =  1,
+				width=1\linewidth,
+				height=0.65\linewidth,
+				enlargelimits={abs=0.25},
+			]
+			\addplot+[ultra thick, samples=1000, blue, no marks, domain={-pi/2:4*pi}] {cos(deg(x))};
+			\addplot+[ultra thick, samples=1000, red, no marks, domain={-(pi/2-0.4*pi):4*pi}] {4/5*cos(deg(x - 0.4*pi))};
+			\draw[-latex, blue, thick] (axis cs:0,0) -- node[left, color = black] {$U_0$} (axis cs:0,1);
+			\draw[-latex, red, thick] (axis cs:0.4*pi,0) -- node[left, color = black] {$I_0$} (axis cs:0.4*pi,4/5);
+			\draw[thick] (axis cs:-pi/2,0) -- (axis cs:-pi/2,-0.5) (axis cs:-pi/2+0.4*pi,0) -- (axis cs:-pi/2+0.4*pi,-0.5);
+			\draw[thick, latex-] (axis cs: -pi/2,-0.4) -- node[above] {$\phi$} (axis cs:-pi/2+0.4*pi,-0.4);
+			\draw[] (axis cs: 2*pi,-1.25) -- (axis cs: 2*pi,1.25);
+			\draw[-latex] (axis cs: 0,-1.05) -- node[above, pos=0.8] {$T = 2\pi/\omega$} (axis cs:2*pi,-1.05);
+			\legend{$U(t) = U_0\cos(\omega t )$, $I(t) = I_0\cos(\omega t + \phi)$}
+		\end{axis}
+	\end{tikzpicture}

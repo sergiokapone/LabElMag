@@ -1,0 +1,110 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+\begin{tikzpicture}[trim axis left, trim axis right, declare function={nu=0.8e4;}]
+\begin{axis}[
+% === Налаштування сітки ===
+grid = both,
+grid style={line width=.1pt, draw=gray!10},
+major grid style={line width=.2pt,draw=brown!50},
+minor grid style = {line width=.1pt,draw=brown!10},
+xlabel={$ f $,~Гц},
+ylabel={$ X_L $,~Ом},
+ylabel style={at={(0.05,1)}, anchor=east, rotate=-90},
+width=1\linewidth,
+height=1\linewidth,
+legend style={font=\scriptsize},
+legend pos=north east,
+	extra tick style={% changes for all extra ticks
+			tick align=outside,
+			major grid style={dashed,draw=black}
+		},
+extra y tick style={
+blue,
+major tick style={
+gray,
+},
+tick label style={
+		yshift=0mm,
+/pgf/number format/.cd, fixed, fixed zerofill,
+precision=2,
+}
+},
+extra x tick style={
+blue,
+major tick style={
+gray,
+},
+%			      tick label style={
+%					yshift=0mm,
+%			        /pgf/number format/.cd, fixed, fixed zerofill,
+%			        precision=2,
+%			      }
+},
+	extra x ticks={nu}, 
+	extra x tick labels={},
+    extra y ticks={ 2*pi*nu*(2/3)*1e-3},
+%	extra y tick labels={
+%		\pgfmathprintnumberFE[custom exponent=0]{2*pi*nu*3e-6},
+%		}, 
+tick label style={scaled x ticks=base 10:-3},
+]
+
+\pgfmathsetmacro{\sd}{750}
+\pgfmathsetmacro{\fd}{16e3}
+
+\pgfplotsinvokeforeach{2/3,1,2,3} {
+\addplot[forget plot,thick, domain=\sd:\fd,  smooth, mark=none]
+{2*pi*x*#1*1e-3};
+}
+
+\addlegendimage{only marks, mark=*}
+\addlegendimage{only marks, mark=o}
+\addlegendimage{only marks, mark=triangle}
+\addlegendimage{only marks, mark=square}
+\legend{{Паралельне з'єднання}, $L=1$~мГн, $L=2$~мГн, {Послідовне з'єднання}}
+
+\pgfplotsinvokeforeach{10,15,25,50} {
+\addplot[domain=\sd:\fd, 
+thick, only marks, mark=*,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=north}
+] 
+coordinates { ({#1/(2*pi*(2/3)*1e-3)}, {#1}) };
+}
+
+%\addlegendentry{$C = 1$~мкФ, $C = 2$~мкФ, {паралельне з'єднання}, {послідовне з'єднання}}
+
+\pgfplotsinvokeforeach{10,15,25,50,75,100} {
+\addplot[domain=\sd:\fd, 
+thick, only marks, mark=o,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=north}
+] 
+coordinates { ({#1/(2*pi*1e-3)}, {#1}) };
+}
+
+
+\pgfplotsinvokeforeach{10,15,25,50,75,100,150,200} {
+\addplot[domain=\sd:\fd, thick, only marks, mark=triangle,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=west}
+] 
+coordinates { ({#1/(2*pi*2e-3)}, {#1}) };
+}
+
+\pgfplotsinvokeforeach{25,50,75,100,150,200} {
+\addplot[domain=\sd:\fd, thick, only marks, mark=square,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=west}
+] 
+coordinates { ({#1/(2*pi*3e-3)}, {#1}) };
+}
+
+\addlegendimage{only marks,mark=*}
+
+
+
+
+
+
+\end{axis}    
+\end{tikzpicture}

@@ -1,0 +1,129 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+\begin{tikzpicture}[trim axis left, trim axis right, declare function={nu=1/(2*pi*100*1e-6);}]
+\begin{loglogaxis}[
+% === Налаштування сітки ===
+grid = both,
+grid style={line width=.1pt, draw=gray!10},
+major grid style={line width=.2pt,draw=brown!50},
+minor grid style = {line width=.1pt,draw=brown!10},
+xlabel={$ f $,~Гц},
+ylabel={$ X_C $,~Ом},
+ylabel style={at={(0.05,1)}, anchor=east, rotate=-90},
+width=1\linewidth,
+height=1\linewidth,
+legend style={font=\scriptsize},
+legend pos=north east,
+	extra tick style={% changes for all extra ticks
+			tick align=outside,
+			major grid style={dashed,draw=black}
+		},
+extra y tick style={
+blue,
+major tick style={
+gray,
+},
+tick label style={
+		yshift=0mm,
+/pgf/number format/.cd, fixed, fixed zerofill,
+precision=2,
+}
+},
+extra x tick style={
+blue,
+major tick style={
+gray,
+},
+%			      tick label style={
+%					yshift=0mm,
+%			        /pgf/number format/.cd, fixed, fixed zerofill,
+%			        precision=2,
+%			      }
+},
+	extra x ticks={nu}, 
+	extra x tick labels={\pgfmathprintnumberFE[custom exponent=3]{nu}},
+    extra y ticks={ 1/(2*pi*nu*3e-6)},
+	extra y tick labels={
+		\pgfmathprintnumberFE[custom exponent=0]{1/(2*pi*nu*3e-6)},
+		}, 
+]
+
+\pgfmathsetmacro{\sd}{750}
+\pgfmathsetmacro{\fd}{1.6e4}
+
+\pgfplotsinvokeforeach{2/3,1,2,3} {
+\addplot[forget plot,thick, domain=\sd:\fd,  smooth, mark=none]
+{1/(2*pi*x*#1*1e-6)};
+}
+
+\addlegendimage{only marks, mark=square}
+\addlegendimage{only marks, mark=*}
+\addlegendimage{only marks, mark=o}
+\addlegendimage{only marks, mark=triangle}
+
+\legend{{Послідовне з'єднання},$C=1$~мкФ, $C=2$~мкФ, {Паралельне з'єднання}}
+
+\pgfplotsinvokeforeach{15,25,50,75,100,150,200} {
+\addplot[domain=\sd:\fd, thick, only marks, mark=square,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=west}
+] coordinates { ({1/(2*pi*#1*(2/3)*1e-6)}, {#1}) };
+}
+
+\pgfplotsinvokeforeach{10,15,25,50,75,100,150,200} {
+\addplot[domain=\sd:\fd, 
+thick, only marks, mark=*,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=west}
+] 
+coordinates { ({1/(2*pi*#1*1e-6)}, {#1}) };
+}
+
+%\addlegendentry{$C = 1$~мкФ, $C = 2$~мкФ, {паралельне з'єднання}, {послідовне з'єднання}}
+
+\pgfplotsinvokeforeach{10,15,25,50,75,100} {
+\addplot[domain=\sd:\fd, 
+thick, only marks, mark=o,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=west}
+] coordinates { ({1/(2*pi*#1*2e-6)}, {#1}) };
+}
+
+
+\pgfplotsinvokeforeach{10,15,25,50} {
+\addplot[domain=\sd:\fd, thick, only marks, mark=triangle,
+nodes near coords={\tiny\pgfmathprintnumberFE[custom exponent=0]{#1}}, every node near coord/.append style={anchor=west}
+] coordinates { ({1/(2*pi*#1*3e-6)}, {#1}) };
+}
+
+
+\addlegendimage{only marks,mark=*}
+%
+%\addplot[thick, domain=\sd:\fd,  smooth, mark=none]
+%{1/(x*2E-6)};
+%
+%%\pgfplotsinvokeforeach{0.1,0.2,...,1} {
+%%\addplot[domain=1e5:1e6, thick, smooth, mark=triangle]
+%%        coordinates { ({#1*1e6}, {(1/(#1*1e6*2e-6))}) };
+%%}
+%
+%\addplot[thick, domain=\sd:\fd, smooth, mark=none]
+%{1/(x*3E-6)};
+%
+%%\pgfplotsinvokeforeach{0.1,0.2,...,1} {
+%%\addplot[domain=1e5:1e6, thick, smooth, mark=square]
+%%        coordinates { ({#1*1e6}, {(1/(#1*1e6*3e-6))}) };
+%%}
+%\addplot[thick, domain=\sd:\fd,  smooth, mark=none]
+%{1/(x*(2/3)*1E-6)};
+
+%\pgfplotsinvokeforeach{0.1,0.2,...,1} {
+%\addplot[domain=1e5:1e6, thick, smooth, mark=o]
+%        coordinates { ({#1*1e6}, {(1/(#1*1e6*(2/3)*1e-6))}) };
+%}
+
+
+
+
+\end{loglogaxis}    
+\end{tikzpicture}

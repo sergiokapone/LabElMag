@@ -1,0 +1,109 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+\begin{tikzpicture}%
+[
+declare function ={
+L = 2;
+C = 0.5;
+R = 0.9;
+U=15;
+omegares = 1/sqrt(L*C);
+Q = 1/R*sqrt(L/C);
+UC(\x) = U/(x*C)/sqrt(R^2 + (x*L-1/(C*x))^2);
+UL(\x) = U*(x*L)/sqrt(R^2 + (x*L-1/(C*x))^2);
+UR(\x) = U*R/sqrt(R^2 + (x*L-1/(C*x))^2);
+phi(\x) = rad(atan((x*L-1/(x*C))/R));
+}
+]
+			\begin{groupplot}[group style={group size=1 by 2, vertical sep=2cm}]
+				%---------------------------------------------------------
+				\nextgroupplot[title={\small Амплітудно-частотна характеристики напруг},
+					% === Налаштування сітки ===
+					grid = both,
+					major grid style={line width=.2pt,draw=gray!50},
+					minor tick num = 4,
+					minor grid style = {line width=.1pt,draw=gray!10},
+					% === Налаштування положення координатних осей ===
+					%axis x line=center, % top, center, bottom
+					%axis y line=center, % left, center, right
+					axis lines = middle,
+					axis line style={-stealth},
+					% === Підпис координатних осей ===
+					xlabel={$\omega$},
+					ylabel={$U$},
+					extra x ticks={omegares},
+					extra x tick labels={$\omega_0$},
+					xticklabels={},
+					yticklabels={},
+					extra y ticks={U, Q*U},
+					extra y tick labels={$\mathcal{E}_0$, $Q \mathcal{E}_0$},
+					% === Положення підпису координатних осей ===
+					xlabel style={below right},
+					ylabel style={above left},
+					xtick style={draw=none},
+					ytick style={draw=none},
+					% === Вибір підписів шкали для відображення ===
+					xtick = {},
+					ytick = {},
+					% === Налаштування мінімальних та максимальних значень координат ===
+					xmin = 0,
+					xmax =  2*omegares,
+					ymin = 0,
+					ymax =  40,
+					% === Налаштування розміру графіка ===
+					width=1\linewidth,
+					height=0.75\linewidth,
+					]
+				\addplot [ultra thick, samples = 1000, red, thick, domain=0.001:2*omegares] {UC(x)};
+				\addplot [ultra thick,samples = 1000, blue, thick, domain=0.001:2*omegares] {UL(x)};
+				\addplot [ultra thick,samples = 1000, green!50!black, thick, domain=0.001:2*omegares] {UR(x)};
+				\legend{$U_{0_C}$,$U_{0_L}$,$U_{0_R}$}
+				%---------------------------------------------------------
+				\nextgroupplot[title={\small Фазово-частотна характеристика послідовного кола},
+					% === Налаштування сітки ===
+					grid = both,
+					major grid style={line width=.2pt,draw=gray!50},
+					minor tick num = 4,
+					minor grid style = {line width=.1pt,draw=gray!10},
+					% === Налаштування положення координатних осей ===
+					axis lines = middle,
+					yticklabel pos=right,
+					axis line style={-stealth},
+					% === Підпис координатних осей ===
+					xlabel={$\omega$},
+					ylabel={$\phi$},
+					xticklabels={},
+					yticklabels={},
+					extra tick style={% changes for all extra ticks
+							tick align=outside,
+							grid style={dashed,draw=black}
+						},
+%					extra y tick style={
+%	
+%						},
+					extra x ticks = {omegares},
+					extra x tick labels={$\omega_0$},
+					extra y ticks = {-pi/2,pi/2},
+					ytick = {-pi/2,-pi/4,0,pi/4,pi/2},
+					extra y tick labels={$-\frac{\pi}{2}$,$\frac{\pi}{2}$},
+					xtick style={draw=none},
+					ytick style={draw=none},
+					% === Положення підпису координатних осей ===
+					xlabel style={below right},
+					ylabel style={above right},
+					% === Налаштування мінімальних та максимальних значень координат ===
+					xmin = 0,
+					xmax =  2*omegares,
+					ymin = -pi/2,
+					ymax =  pi/2,
+					% === Налаштування розміру графіка ===
+					width=1\linewidth,
+					height=0.4\linewidth,
+				]
+				\addplot [ultra thick,samples = 1000, green!50!black, thick, domain=0.01:2*omegares, name path global=ResCurve] {phi(x)};
+				%---------------------------------------------------------
+			\end{groupplot}
+		\end{tikzpicture}

@@ -1,0 +1,222 @@
+ % !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !BIB program = bibtex8
+
+\documentclass[]{article}
+
+\usepackage{fontspec}
+\setsansfont{CMU Sans Serif}%{Arial}
+\setmainfont{CMU Serif}%{Times New Roman}
+\setmonofont{CMU Typewriter Text}%{Consolas}
+\defaultfontfeatures{Ligatures={TeX}}
+\usepackage[math-style=TeX]{unicode-math}
+\usepackage[english, russian, ukrainian]{babel}
+\usepackage[%
+	a4paper,%
+	footskip=1cm,%
+	headsep=0.3cm,% 
+	top=1cm, %поле сверху
+	bottom=1cm, %поле снизу
+	left=1cm, %поле ліворуч
+	right=1cm, %поле праворуч
+    ]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{shadows}
+\usepackage[many, most]{tcolorbox}
+\newtcolorbox{tornpage}{%
+    enhanced jigsaw, % allow page breaks
+    frame hidden, % hide the default frame
+    overlay={%
+        \draw [
+            fill=white, % fill paper
+            draw=white!50!black, % boundary colour
+            decorate, % decoration
+            decoration={random steps,segment length=2pt,amplitude=1pt},
+            drop shadow, % shadow
+        ]
+        % top line
+        (frame.north west)--(frame.north east)--
+        % right line
+        (frame.north east)--(frame.south east)--
+        % bottom line
+        (frame.south east)--(frame.south west)--
+        % left line
+        (frame.south west)--(frame.north west);
+    },
+    % paragraph skips obeyed within tcolorbox
+    parbox=false,
+}
+\usepackage{caption}
+\usepackage{pgfplots}
+\usetikzlibrary{fpu}
+\usetikzlibrary{intersections}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{arrows.meta}  
+\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{intersections}
+\tikzset{circuit ee IEC,
+every info/.style=red,
+semithick,
+every info/.style={font=\footnotesize},
+small circuit symbols,
+circuit declare symbol = ocontact,
+circuit declare symbol = ampermeter,
+circuit declare symbol = voltmeter,
+circuit declare symbol = galvanometer,
+set ampermeter graphic = {draw,generic circle IEC, minimum size=5mm,info=center:A},%
+set voltmeter graphic = {draw,generic circle IEC, minimum size=5mm,info=center:V},
+set galvanometer graphic = {draw,generic circle IEC, minimum size=10mm,info=center:G},
+set ocontact graphic = {draw, fill = white, generic circle IEC, shape=circle, minimum size=1mm},
+}
+
+
+\pgfkeys{/pgf/number format/.cd,custom exponent/.initial=2}%
+\newcommand{\pgfmathprintnumberFE}[2][]{%
+\begingroup
+\pgfkeys{/pgf/number format/.cd,fixed,#1}%
+\pgfset{fpu=true}%
+\pgfmathparse{#2}%
+\pgfmathfloattomacro{\pgfmathresult}{\F}{\M}{\E}%
+\pgfset{fpu=false}%
+\pgfmathtruncatemacro{\redexp}{\E-\pgfkeysvalueof{/pgf/number format/custom exponent}}%
+\ifnum\pgfkeysvalueof{/pgf/number format/custom exponent}=0
+\ensuremath{\pgfmathprintnumber[#1]{\pgfmathresult}}%
+\else
+\pgfmathsetmacro{\newnum}{\M*pow(10,\redexp)}%
+\ensuremath{\pgfmathprintnumber{\newnum}\cdot10^{\pgfkeysvalueof{/pgf/number format/custom exponent}}}%
+\fi
+\endgroup}
+
+\begin{document}
+\pagestyle{empty}
+
+\newsavebox{\circuit}
+\sbox{\circuit}{%
+	\begin{tikzpicture}
+		\draw (0,-2) coordinate (START) to [resistor={info'={$R_i$}, color=red}] ++(0,2) to [ac source={rotate=-90,info'={right:$\mathcal{E}$}}] (0,2) to [resistor={info'={$R_I$}}] ++(4,0) to [inductor={info'={$L$}}] ++(0,-4/3) to [resistor={info'={$R_{L}$}, color=red}] ++(0,-4/3) to [capacitor={info'={$C$}}] ++(0,-4/3)  -- (START);
+		\node [text width=2cm] at (2,0) {\small Послідовний\\ $RLC$-контур};
+	\end{tikzpicture}
+}
+
+%---------------------------------------------------------
+\begin{center}
+	\begin{tikzpicture}[
+			declare function={
+					L  = 2e-3;
+					C  = 1.2e-6;
+					R  = 10;
+					RL  = 0.8;
+					Ri  = 5;
+					Rtot = R + RL + Ri;
+					U  = 10;
+					omegares  = 1/sqrt(L*C);
+					nures  = omegares/(2*pi);
+					Q  = sqrt(L/C)/Rtot;
+					Imax  = U/Rtot;
+					D1 =  (1/(4*pi*L))*(sqrt( (Rtot^2+4*L/C)) - Rtot);
+					D2 = (1/(4*pi*L))*(sqrt( (Rtot^2*C+4*L)/C) + Rtot);
+					I(\x) = Rtot/sqrt(Rtot^2 + ((2*pi*\x)*L-1/(C*(2*pi*\x)))^2);
+					F2(\x) = sqrt(Rtot^2/(pi^2*\x^2*L^2) + sqrt(((\x^2 - 1)*Rtot^2*(\x^2*C*Rtot^2 - 4*\x^2*L - C*Rtot^2))/(\x^4*C))/(pi^2*L^2) + 2/(pi^2*C*L) - Rtot^2/(pi^2*L^2))/(2*sqrt(2));
+					F1(\x) = sqrt(Rtot^2/(pi^2*\x^2*L^2) - sqrt(((\x^2 - 1)*Rtot^2*(\x^2*C*Rtot^2 - 4*\x^2*L - C*Rtot^2))/(\x^4*C))/(pi^2*L^2) + 2/(pi^2*C*L) - Rtot^2/(pi^2*L^2))/(2*sqrt(2));
+				},
+		]
+
+
+		\begin{axis}[
+				% === Налаштування сітки ===
+				grid = both,
+				major grid style={line width=.6pt,draw=brown!60},
+				minor tick num = 9,
+				minor grid style = {line width=.1pt,draw=brown!20},
+				% === Налаштування положення координатних осей ===
+				axis lines = middle,
+				axis line style={-stealth},
+				% === Підпис координатних осей ===
+				%				xticklabels={},
+				xlabel={$\nu$, Hz},
+				ylabel={$\frac{I_{0}}{I_{\max}}$},
+				% === Положення підпису координатних осей ===
+				ylabel style={above right},
+				every tick/.style={black},
+				extra tick style={% changes for all extra ticks
+						tick align=outside,
+						major grid style={dashed,draw=black}
+					},
+			    extra x tick style={
+			      red,
+			      major tick style={
+			        gray,
+			      },
+			      tick label style={
+					yshift=6mm,
+			        /pgf/number format/.cd, fixed, fixed zerofill,
+			        precision=2,
+			      }
+			    },
+				extra y tick style={% changes for extra y ticks
+						tick label style={yshift=2mm},
+					},
+				extra x ticks={F1(1/sqrt(2)), nures, F2(1/sqrt(2)},
+				extra x tick labels={
+					\pgfmathprintnumberFE[custom exponent=0]{F1(1/sqrt(2))/100},
+					\pgfmathprintnumberFE[custom exponent=0]{nures/100},
+					\pgfmathprintnumberFE[custom exponent=0]{F2(1/sqrt(2))/100},
+					},
+				extra y ticks={1/sqrt(2)},
+				extra y tick labels={$1/\sqrt{2}$},
+				scaled x ticks=base 10:-2,
+				% === Вибір підписів шкали для відображення ===
+				xtick = {},
+				ytick = {},
+				% === Налаштування мінімальних та максимальних значень координат ===
+				xmin = 15e2,
+				xmax =  65e2,
+				ymin = 0.25,
+				ymax =  1,
+				% === Налаштування розміру графіка ===
+				width=1\linewidth,
+				height=0.95\textheight,
+			]
+			\addplot [ultra thick,samples = 500, green!50!black, thick, domain=0.51*nures:1.85*nures, name path global=ResCurve]  {I(x)};
+
+
+			\pgfplotsinvokeforeach{0.3,0.4,...,0.9}
+			{
+				\addplot[color=blue,mark=*, only marks, point meta=x, nodes near coords={\pgfmathprintnumberFE[custom exponent=0, precision=1]{\pgfplotspointmeta/100}}, every node near coord/.append style={anchor=west}] coordinates { (F1(#1),#1) (F2(#1),#1) };
+			}
+			\addplot[color=red,mark=*, only marks, point meta=x, nodes near coords={\pgfmathprintnumberFE[custom exponent=0, precision=1]{\pgfplotspointmeta/100}}, every node near coord/.append style={anchor=south}] coordinates {(F2(1),1)};
+
+
+			%			\fill [white, draw=green!50!black, name intersections={of=ResCurve and line}] (intersection-1) circle (0.05cm) (intersection-2) circle (0.05cm);
+			\node[anchor = north east, text width=5cm] at (current axis.north east) {
+				\begin{tornpage}
+					$C = \pgfmathprintnumberFE[custom exponent=-6,precision=1]{C}$~Ф,\\
+					$L = \pgfmathprintnumberFE[custom exponent=-3,precision=0]{L}$~Гн,\\
+					$R_L = \pgfmathprintnumberFE[custom exponent=0,precision=2]{RL}$~Ом,\\
+					$R_i = \pgfmathprintnumberFE[custom exponent=0,precision=2]{Ri}$~Ом,\\
+					$R_I = \pgfmathprintnumberFE[custom exponent=0,precision=2]{R}$~Ом,\\
+					\hrulefill\\
+					\medskip%
+					$Q^{\mathrm{theor}} = \dfrac{1}{R}\sqrt{\dfrac{L}{C}} = \pgfmathprintnumberFE[custom exponent=0,precision=2]{Q}$\\
+					\hrulefill\\
+					\smallskip%
+					$\nu_0 = \pgfmathprintnumberFE[custom exponent=2,precision=1]{nures}$~Hz \\
+					$2\Delta\nu = \pgfmathprintnumberFE[custom exponent=2,precision=1]{D2-D1}$~Hz\\
+					\hrulefill\\
+					\smallskip%
+					$Q^{\mathrm{exp}} = \dfrac{\nu_0}{2\Delta\nu} = \pgfmathprintnumberFE[custom exponent=0,precision=2]{nures/(D2-D1)}$
+				\end{tornpage}
+			};
+		\end{axis}
+		\node[fill=white, anchor=east, text width=\wd\circuit + 1cm] at (current axis.east) {
+			\begin{tornpage}
+				\usebox{\circuit}
+			\end{tornpage}
+		};
+	\end{tikzpicture}
+	АЧХ послідовного контуру
+\end{center}
+%---------------------------------------------------------
+\end{document}

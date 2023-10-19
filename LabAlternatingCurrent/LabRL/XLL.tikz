@@ -1,0 +1,41 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+
+\begin{tikzpicture}[trim axis left, trim axis right, declare function={nu=0.8e4;}]
+    \begin{axis}[
+    % === Налаштування сітки ===
+    grid = both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=brown!50},
+    minor grid style = {line width=.1pt,draw=brown!10},
+    minor tick num=9,
+    xlabel={$ L $, Гн},
+    ylabel={$ X_L $, Ом},
+    ylabel style={at={(0,1)}, anchor=east, rotate=-90},
+    width=1\linewidth,
+    height=1\linewidth,
+    legend style={font=\scriptsize},
+    legend pos=north west,
+    legend entries={,$\nu=\pgfmathprintnumberFE[custom exponent=3]{nu}$  Hz},  
+%    xticklabels={$3$, $2$, $1$, $\frac23$},
+%    yticklabels={$1.67$, $2.50$, $5.00$, $7.50$},
+    ymin=30,
+    ymax=160,
+%    ytick={25,45,...,150},
+    ]
+    
+
+    \addplot[thick, domain=0.6e-3:3e-3, mark=none] {2*pi*nu*x};
+
+    \pgfplotsinvokeforeach{2/3,1,2,3} {
+    \addplot[
+    thick, only marks, mark=*,
+    nodes near coords={\tiny$\pgfmathprintnumberFE[custom exponent=0]{#1}$}, every node near coord/.append style={anchor=west}
+    ] 
+    coordinates { (#1*1e-3, {2*pi*nu*#1*1e-3}) };
+    }     
+    \end{axis}    
+\end{tikzpicture}

@@ -1,0 +1,73 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../LabWork.tex
+
+	\begin{tikzpicture}[
+			declare function={
+					L  = 2;
+					C  = 1.2e-3;
+					R  = 80;
+					omegares  = 1/sqrt(L*C);
+					Q  = sqrt(L/C)/R;
+					XL(\x) =\x*L;
+					XC(\x) = 1/(C*\x) ;
+				},
+		]
+		\begin{axis}[
+				% === Налаштування сітки ===
+				grid = both,
+				major grid style={line width=.2pt,draw=gray!50},
+				minor tick num = 4,
+				minor grid style = {line width=.1pt,draw=gray!10},
+				extra tick style={% changes for all extra ticks
+						tick align=outside,
+						grid style={dashed,draw=black}
+					},
+				extra x tick style={
+						tick label style={
+								xshift=5mm,
+								/pgf/number format/.cd, fixed, fixed zerofill,
+							}
+					},
+				% === Налаштування положення координатних осей ===
+				axis lines = middle,
+				axis line style={stealth-stealth},
+				% === Підпис коор5динатних осей ===
+				%				xticklabels={},
+				xlabel={$\omega$},
+				ylabel={},
+				% === Положення підпису координатних осей ===
+				ylabel style={above right},
+				xticklabels={},
+				yticklabels={},
+				extra x ticks = {omegares},
+				extra x tick labels = {$\omega_0$},
+				ytick style={draw=none},
+				xtick style={draw=none},
+				% === Вибір підписів шкали для відображення ===
+				xtick = {},
+				ytick = {},
+				legend style={at={(current axis.south east)},anchor=south east},
+				% === Налаштування мінімальних та максимальних значень координат ===
+				xmin = 6,
+				xmax =  60,
+				ymin = -150,
+				ymax =  150,
+				% === Налаштування розміру графіка ===
+				width=1\linewidth,
+				width=0.7\linewidth,
+			]
+			\addplot [ultra thick,samples = 500, blue, thick, domain=0.2*omegares:3*omegares,name path = UL]  {XL(x)};
+			\addplot [ultra thick,samples = 500, red, thick, domain=0.2*omegares:3*omegares,name path = UC]  {-XC(x)};
+			\addplot [ultra thick,samples = 500, green!50!black, thick, domain=0.2*omegares:3*omegares,name path = DU]  {XL(x)-XC(x)};
+			\addplot [ultra thick,samples = 500, black, thick, domain=0.2*omegares:3*omegares,name path = DU]  {sqrt(R^2 + (XL(x)-XC(x))^2)};
+			\legend{$X_L = \omega L$, $X_C = \frac{1}{\omega C}$, $Z_{LC} = X_L - X_C$, $Z = \sqrt{R^2 + (X_L - X_C)^2}$}
+			\pgfplotsinvokeforeach{0.5,1,2}{
+				\draw [-latex, blue, ultra thick] (axis cs:#1*omegares, 0) -- node[left] {$X_L$} (axis cs:#1*omegares, {XL(#1*omegares)});
+				\draw [-latex, red, ultra thick] (axis cs:#1*omegares, 0) -- node[left] {$X_C$} (axis cs:#1*omegares, {-XC(#1*omegares)});
+			}
+			\draw [latex-latex, black] (axis cs:0.6*omegares, 0) -- node[fill=white] {$R$} (axis cs:0.6*omegares, {R});
+			\draw [dashed] (axis cs:omegares, R) -- (axis cs:0.6*omegares, R);
+		\end{axis}
+	\end{tikzpicture}

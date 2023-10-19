@@ -1,0 +1,212 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !TeX root =../EMProblems.tex
+
+%========================================================================================================
+%
+%									      Палітурка
+%
+%========================================================================================================
+
+% ---------------------------------------- Кольори секцій -----------------------------------------------
+\definecolor{themecolordark}{RGB}{34,102,101}
+\definecolor{themecolorlight}{RGB}{153,168,167}
+\definecolor{titlebgdark}{RGB}{0,103,102}
+\definecolor{titlebglight}{RGB}{191,233,251}
+
+\newcommand{\CoverPage}{
+	\begin{alwayssingle}
+		\begin{center}
+			\begin{flushright}\bfseries\sffamily
+				\MakeUppercase{Міністерство освіти і науки України}\\
+				КПІ ім. Ігоря Сікорського\\
+			\end{flushright}
+			\begin{tcolorbox}[titlepagestyle,
+					toprule=0.10cm,
+					bottomrule=0.10cm,
+					overlay={%
+						\node (picture) at ([xshift=4cm]frame.west) {\includegraphics{logo_PTI}};
+					}
+			]%
+			\begin{flushright}
+				\large\bfseries\color{white}Фізико-технічний інститут
+			\end{flushright}
+			\end{tcolorbox}
+
+			\vspace*{15em}
+
+			\begin{tcolorbox}[
+				titlepagestyle,
+				toprule=0.15cm,
+				bottomrule=0.15cm,
+				top=1.3cm,
+				bottom=0.7cm,
+				overlay={%
+				\node[%
+							fill=white,
+							rounded corners = 15pt,	
+							draw=themecolorlight,
+							line width=0.15cm,
+							inner sep=0pt,
+							text width=17cm,
+							minimum height=2cm,
+							align=center,
+							%anchor=east,
+							font=\sffamily\bfseries\large
+						] (title) at (frame.north) {С.~М. Пономаренко,
+													Ю.~О. Тараненко%
+					};
+				}
+			]
+			\centering
+			\Huge\sffamily\bfseries\textcolor{white}{\realtitle}\\
+			\huge\sffamily\bfseries\textcolor{white}{\subtitle}
+			\end{tcolorbox}	
+			\vfill
+%		 	\begin{Large}\color{themecolordark!90!black}
+%			\begin{gather*}
+%				\frac{\partial F^{\mu\nu}}{\partial x^\nu} =                                                                                -\frac{4\pi}{c}j^\mu \\
+%				\frac{\partial F^{\mu\nu}}{\partial x^\alpha} + \frac{\partial F^{\mu\alpha}}{\partial x^\nu} +\frac{\partial F^{\alpha\mu}}{\partial x^\nu}  = 0.
+%			\end{gather*}
+%			\end{Large}
+			\vfill
+			\begin{tcolorbox}[titlepagestyle,
+					toprule=0.10cm,
+					bottomrule=0.10cm]
+				\begin{center}\color{white}\bfseries\normalsize
+					\MakeUppercase{Київ~2020} \\
+%					КПІ ім. Ігоря Сікорського \\
+%					\the\year
+				\end{center}			       	
+			\end{tcolorbox}
+		\end{center}
+		\clearpage
+	\end{alwayssingle}
+\setcounter{page}{1}	
+}
+
+
+%========================================================================================================
+%
+%									      Титульна сторінка
+%
+%========================================================================================================
+
+\renewcommand\maketitle{
+	\begin{alwayssingle}
+		\begin{center}
+				\MakeUppercase{Міністерство освіти і науки України}
+				
+				\bigskip
+				\MakeUppercase{Національний технічний університет України}\\
+				<<КИЇВСЬКИЙ ПОЛІТЕХНІЧНИЙ ІНСТИТУТ \\ імені ІГОРЯ СІКОРСЬКОГО>>
+				\vspace*{150pt}
+		
+%				{\large С.~Пономаренко,
+%						Ю.~О.~Тараненко
+%						}
+%				\vspace*{50pt}
+			
+				{\Huge\sffamily\bfseries\realtitle}\\[1em]
+				{\huge\sffamily\bfseries\subtitle}	
+			
+			\vspace*{50pt}
+			\begin{center}\itshape
+                Рекомендовано Методичною радою КПІ ім. Ігоря Сікорського як навчальний посібник для здобувачів ступеня бакалавра за освітньою програмою <<Прикладна фізика>> спеціальності 105 Прикладна фізика та наноматеріали 
+%				Методичні вказівки до виконання лабораторних робіт за темою <<Змінний струм>> з навчальної дисципліни <<Електрика та магнетизм>> для студентів, які навчаються за спеціальністю 105 <<Прикладна фізика та наноматеріали>>
+			\end{center}
+
+			\vfill
+			\begin{center}
+				\MakeUppercase{Київ} \\
+				КПІ ім. Ігоря Сікорського \\
+				2020
+			\end{center}			       	
+		\end{center}
+		\clearpage
+	\end{alwayssingle}	
+}
+
+
+%========================================================================================================
+%
+%									      Друга сторінка
+%
+%========================================================================================================
+\newcommand\makeinfopage{
+	\begin{alwayssingle}
+		\noindent%	
+        \begin{minipage}[t]{\textwidth}
+                \realtitle: \subtitle\ [Електронний ресурс] : навч. посіб. для студ. спеціальностей
+                105 <<Прикладна фізика та наноматеріали>> / КПІ ім. Ігоря Сікорського; уклад.  С.~М. Пономаренко, Ю.~О. Тараненко ; КПІ ім. Ігоря Сікорського.~--- Електронні текстові дані
+            (1 файл: 3.30~МБ). – Київ : КПІ ім. Ігоря Сікорського, 2020. --- \the\numexpr\getpagerefnumber{LastPage}~с.
+        \end{minipage}
+        \vspace*{2em}
+		\begin{center}\itshape\small
+				Гриф надано Методичною радою КПІ ім. Ігоря Сікорського (протокол № 4 від 10.12.2020 р.) за поданням Вченої ради Фізико-технічного інституту (протокол №11/2020 від 26.11.2020 р.)
+		\end{center}
+		\begin{center}
+			Електронне мережне навчальне видання
+			%\par {Версія від~\href{http://www.istpravda.com.ua/dates}{\today}} \par\else \par  \fi
+		\end{center}
+		\begin{center}\bfseries
+    		\LARGE\sffamily\realtitle\\
+   			\Large\sffamily\subtitle
+   		\end{center}
+
+		\vfill\noindent%
+        \begin{minipage}[t]{0.2\linewidth}
+            	\begin{flushleft}
+                    Укладачі:
+                \end{flushleft}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{0.78\linewidth}
+		\begin{flushleft}
+			\href{http://phes.ipt.kpi.ua/ponomarenko-sergij-mikolajovich}{\itshape Пономаренко Сергій Миколайович}, к.ф.-м.н., доцент \\
+			\itshape Тараненко Юрій Олексійович, старший викладач
+		\end{flushleft}
+        \end{minipage}
+
+        \vspace*{2em}
+		\noindent%
+        \begin{minipage}[t]{0.2\linewidth}
+            	\begin{flushleft}
+                    Відповідальний редактор:
+                \end{flushleft}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{0.78\linewidth}
+                к.ф.-м.н., доцент \href{http://ipt.kpi.ua/smirnov}{Смирнов С.~О.}
+        \end{minipage}
+
+        \vspace*{2em}
+		\noindent%
+        \begin{minipage}[t]{0.2\linewidth}
+            	\begin{flushleft}
+                    Рецензент:
+                \end{flushleft}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{0.78\linewidth}
+                \href{http://apd.ipt.kpi.ua/blog/author/19}{Я.~Д.~Кривенко-Еметов}, к.ф.-м.н., доцент кафедри прикладної фізики, Фізико-технічного інституту КПІ ім. Ігоря Сікорського
+        \end{minipage}
+
+        \vfill
+
+		Розглянуто зміст, основні складові та порядок виконання лабораторних робіт за темою <<Змінний струм>> з дисципліни <<Електрика та магнетизм>>. 
+
+		Для студентів фізико-технічного інституту КПІ ім. Ігоря Сікорського, які навчаються за спеціальністю 105~<<Прикладна фізика та наноматеріали>>.
+		
+		\vfill
+				
+%		\begin{flushleft}\small
+%			Ілюстративний матеріал підручника підготовлений за допомогою пакету \href{http://pgf.sourceforge.net}{TikZ/Pgf}. Верстка тексту проведена в видавничій системі \LaTeXe{} (компілятор Lua\LaTeX) на базі системи комп'ютерної верстки \TeX{} (Збірка  \href{https://www.tug.org/texlive/}{\TeX Live~\the\year}) з використанням оболонки \href{https://www.texstudio.org}{\TeX Studio}.
+%		\end{flushleft}	
+	\begin{flushright}
+        \textcopyright{} С.~М. Пономаренко, Ю.~О. Тараненко, 2020 р.
+    \end{flushright}
+		\newpage%
+	\end{alwayssingle}
+}
+
+
+
