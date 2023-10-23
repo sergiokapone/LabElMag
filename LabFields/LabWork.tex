@@ -5,6 +5,7 @@
 
 
 \documentclass{LabBook}
+\usetikzlibrary{angles}
 \usepackage{graphicx}
 \addbibresource[label=Lab1]{LabCoulombs/LabWork1.bib}
 \addbibresource{\jobname.bib}
@@ -26,7 +27,7 @@
 
 %===============================================================================
 %
-\input{CoverPage}%					      Титульна сторінка
+\input{CoverPage}%		    Титульна сторінка
 %
 %===============================================================================
 \date{}
@@ -41,16 +42,16 @@
 
 %===============================================================================
 %
-%									      Вставка файлів розділів
+%							Вставка файлів розділів
 %
 %===============================================================================
 
 %\setcounter{part}{1}
 %\renewcommand{\thechapter}{3.\arabic{chapter}}
 \newcommand{\Chapters}{
-    LabCoulombs,
-    LabMomentum,
-%    LabEarthMagnet,
+	LabCoulombs,
+	LabMomentum,
+	LabEarthMagnet,
 }
 
 %===============================================================================

@@ -22,4 +22,16 @@
 \contentsline {section}{\numberline {3}Експериментальне устаткування}{14}{section.71}%
 \contentsline {section}{\numberline {4}Хід роботи}{15}{section.74}%
 \contentsline {section}{\numberline {5}Завдання}{16}{section.81}%
+\contentsline {chapter}{\numberline {3}Вимірювання магнітного поля Землі}{18}{chapter.97}%
+\contentsline {section}{\numberline {1}Теоретичне підґрунтя}{18}{section.98}%
+\contentsline {subsection}{\numberline {1.1}Земний магнетизм}{18}{subsection.99}%
+\contentsline {subsection}{\numberline {1.2}Виміри}{19}{subsection.100}%
+\contentsline {section}{\numberline {2}Експериментальне устаткування}{21}{section.110}%
+\contentsline {section}{\numberline {3}Хід роботи}{22}{section.112}%
+\contentsline {subsection}{\numberline {3.1}Залежність $ {}^{h}\vec {B}_{H} $ від $I_{H}$}{22}{subsection.113}%
+\contentsline {subsection}{\numberline {3.2}Залежність $\alpha $ від $I_{H}$}{22}{subsection.114}%
+\contentsline {subsection}{\numberline {3.3}Виміри $\theta $}{22}{subsection.116}%
+\contentsline {section}{\numberline {4}Завдання}{23}{section.117}%
+\contentsline {section}{\numberline {5}Контрольні запитання}{23}{section.118}%
+\contentsline {section}{\numberline {6}Розрахункові завдання}{23}{section.119}%
 \contentsfinish 

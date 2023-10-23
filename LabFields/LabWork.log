@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.10.14)  20 OCT 2023 00:22
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.10.14)  23 OCT 2023 23:42
  system commands enabled.
 **LabWork.tex
 (./LabWork.tex
@@ -1987,7 +1987,11 @@ Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
 \BKM@id=\count516
-))) (./CoverPage.tex)
+)))
+(d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
+ibraries/tikzlibraryangles.code.tex
+File: tikzlibraryangles.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (./CoverPage.tex)
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
@@ -1997,32 +2001,32 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (./LabWork.aux)
 \openout1 = LabWork.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 3
-4.
+5.
 
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -2064,60 +2068,60 @@ Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 
 \symlegacymaths=\mathgroup5
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 34.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 34.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 34.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 34.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 34.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 34.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 34.
-LaTeX Font Info:    Redeclaring math accent \check on input line 34.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 34.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 34.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 34.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 34.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 35.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 35.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 35.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 35.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 35.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 35.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 35.
+LaTeX Font Info:    Redeclaring math accent \check on input line 35.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 35.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 35.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 35.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 35.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 34.
+(Font)              `operators' in the math version `normal' on input line 35.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/stix(0)/m/n on input line 34.
+(Font)                  OT1/cmr/m/n --> TU/stix(0)/m/n on input line 35.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 34.
+(Font)              `operators' in the math version `bold' on input line 35.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/stix(0)/m/n on input line 34.
+(Font)                  OT1/cmr/bx/n --> TU/stix(0)/m/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/stix(0)/m/n --> TU/stix(0)/m/n on input line 34.
+(Font)                  TU/stix(0)/m/n --> TU/stix(0)/m/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/stix(0)/m/it on input line 34.
+(Font)                  OT1/cmr/m/it --> TU/stix(0)/m/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/stix(0)/b/n on input line 34.
+(Font)                  OT1/cmr/bx/n --> TU/stix(0)/b/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> TU/CMUSansSerif(0)/m/n on input line 3
-4.
+5.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/CMUTypewriterText(0)/m/n on input l
-ine 34.
+ine 35.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/stix(0)/m/n --> TU/stix(0)/b/n on input line 34.
+(Font)                  TU/stix(0)/m/n --> TU/stix(0)/b/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/stix(0)/b/it on input line 34.
+(Font)                  OT1/cmr/bx/it --> TU/stix(0)/b/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/CMUSansSerif(0)/b/n on input line 
-34.
+35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/CMUTypewriterText(0)/b/n on input l
-ine 34.
+ine 35.
 (d:/Programs/LaTeX/TeXLive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count519
@@ -2150,20 +2154,20 @@ fg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \th on input line 34.
-LaTeX Info: Redefining \microtypecontext on input line 34.
-Package microtype Info: Applying patch `item' on input line 34.
-Package microtype Info: Applying patch `toc' on input line 34.
-Package microtype Info: Applying patch `eqnum' on input line 34.
-Package microtype Info: Applying patch `footnote' on input line 34.
-Package microtype Info: Applying patch `verbatim' on input line 34.
+LaTeX Info: Redefining \th on input line 35.
+LaTeX Info: Redefining \microtypecontext on input line 35.
+Package microtype Info: Applying patch `item' on input line 35.
+Package microtype Info: Applying patch `toc' on input line 35.
+Package microtype Info: Applying patch `eqnum' on input line 35.
+Package microtype Info: Applying patch `footnote' on input line 35.
+Package microtype Info: Applying patch `verbatim' on input line 35.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 34.
+LaTeX Info: Redefining \showhyphens on input line 35.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
@@ -2198,7 +2202,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 
-Package chemgreek Info: Activating mapping `fontspec' on line 34.
+Package chemgreek Info: Activating mapping `fontspec' on line 35.
 
 \c@lstlisting=\count525
 
@@ -2206,7 +2210,7 @@ Package chemgreek Info: Activating mapping `fontspec' on line 34.
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
 your preamble.
- on input line 34.
+ on input line 35.
 
 Package biblatex Info: Trying to load language 'ukrainian'...
 Package biblatex Info: ... file 'ukrainian.lbx' found.
@@ -2233,9 +2237,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'LabWork.bbl' found.
  (./LabWork.bbl)
-Package biblatex Info: Reference section=0 on input line 34.
-Package biblatex Info: Reference segment=0 on input line 34.
-Package hyperref Info: Link coloring ON on input line 34.
+Package biblatex Info: Reference section=0 on input line 35.
+Package biblatex Info: Reference segment=0 on input line 35.
+Package hyperref Info: Link coloring ON on input line 35.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `CMUSansSerif' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
@@ -2243,7 +2247,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 <logo_PTI.pdf, id=43, 144.19972pt x 144.19472pt>
 File: logo_PTI.pdf Graphic file (type pdf)
 <use logo_PTI.pdf>
-Package luatex.def Info: logo_PTI.pdf  used on input line 35.
+Package luatex.def Info: logo_PTI.pdf  used on input line 36.
 (luatex.def)             Requested size: 144.19937pt x 144.19435pt.
  [1
 
@@ -2310,32 +2314,32 @@ Underfull \hbox (badness 6396) in paragraph at lines 173--174
 них
  []
 
-<LabCoulombs/pic/ChargeImage.png, id=131, 963.6pt x 803.0pt>
+<LabCoulombs/pic/ChargeImage.png, id=133, 963.6pt x 803.0pt>
 File: LabCoulombs/pic/ChargeImage.png Graphic file (type png)
 <use LabCoulombs/pic/ChargeImage.png>
 Package luatex.def Info: LabCoulombs/pic/ChargeImage.png  used on input line 18
 2.
 (luatex.def)             Requested size: 145.11053pt x 120.92265pt.
 [7<./LabCoulombs/pic/ChargeImage.png>]
-<LabCoulombs/pic/ColumbTorsiomBalance.png, id=147, 153.4533pt x 201.6333pt>
+<LabCoulombs/pic/ColumbTorsiomBalance.png, id=149, 153.4533pt x 201.6333pt>
 File: LabCoulombs/pic/ColumbTorsiomBalance.png Graphic file (type png)
 <use LabCoulombs/pic/ColumbTorsiomBalance.png>
 Package luatex.def Info: LabCoulombs/pic/ColumbTorsiomBalance.png  used on inpu
 t line 197.
 (luatex.def)             Requested size: 202.42416pt x 266.00601pt.
-<LabCoulombs/pic/Installation.png, id=148, 461.47406pt x 597.73312pt>
+<LabCoulombs/pic/Installation.png, id=150, 461.47406pt x 597.73312pt>
 File: LabCoulombs/pic/Installation.png Graphic file (type png)
 <use LabCoulombs/pic/Installation.png>
 Package luatex.def Info: LabCoulombs/pic/Installation.png  used on input line 2
 05.
 (luatex.def)             Requested size: 204.6029pt x 265.00993pt.
-<LabCoulombs/pic/TorsionDynamometer.png, id=151, 130.3269pt x 190.0701pt>
+<LabCoulombs/pic/TorsionDynamometer.png, id=153, 130.3269pt x 190.0701pt>
 File: LabCoulombs/pic/TorsionDynamometer.png Graphic file (type png)
 <use LabCoulombs/pic/TorsionDynamometer.png>
 Package luatex.def Info: LabCoulombs/pic/TorsionDynamometer.png  used on input 
 line 227.
 (luatex.def)             Requested size: 204.6029pt x 298.42517pt.
-<LabCoulombs/pic/DCPower.png, id=152, 206.2104pt x 285.9483pt>
+<LabCoulombs/pic/DCPower.png, id=154, 206.2104pt x 285.9483pt>
 File: LabCoulombs/pic/DCPower.png Graphic file (type png)
 <use LabCoulombs/pic/DCPower.png>
 Package luatex.def Info: LabCoulombs/pic/DCPower.png  used on input line 235.
@@ -2346,51 +2350,51 @@ ng>] [9<./LabCoulombs/pic/TorsionDynamometer.png><./LabCoulombs/pic/DCPower.png>
 [10]
 Розділ 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--24
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
 
  []
 
 [11
 
 ]
-<LabMomentum/pic/corksckrew.png, id=205, 86.2422pt x 69.3792pt>
+<LabMomentum/pic/corksckrew.png, id=207, 86.2422pt x 69.3792pt>
 File: LabMomentum/pic/corksckrew.png Graphic file (type png)
 <use LabMomentum/pic/corksckrew.png>
-Package luatex.def Info: LabMomentum/pic/corksckrew.png  used on input line 63.
+Package luatex.def Info: LabMomentum/pic/corksckrew.png  used on input line 62.
 
 (luatex.def)             Requested size: 86.24197pt x 69.37901pt.
  [12<./LabMomentum/pic/corksckrew.png>]
-<LabMomentum/pic/Helmholtz_coils.png, id=227, 1027.84pt x 1102.1175pt>
+<LabMomentum/pic/Helmholtz_coils.png, id=229, 1027.84pt x 1102.1175pt>
 File: LabMomentum/pic/Helmholtz_coils.png Graphic file (type png)
 <use LabMomentum/pic/Helmholtz_coils.png>
 Package luatex.def Info: LabMomentum/pic/Helmholtz_coils.png  used on input lin
-e 104.
+e 103.
 (luatex.def)             Requested size: 174.13034pt x 186.70163pt.
-<LabMomentum/pic/Helmholtz_coils_field.png, id=230, 654.445pt x 638.385pt>
+<LabMomentum/pic/Helmholtz_coils_field.png, id=232, 654.445pt x 638.385pt>
 File: LabMomentum/pic/Helmholtz_coils_field.png Graphic file (type png)
 <use LabMomentum/pic/Helmholtz_coils_field.png>
 Package luatex.def Info: LabMomentum/pic/Helmholtz_coils_field.png  used on inp
-ut line 110.
+ut line 109.
 (luatex.def)             Requested size: 174.13034pt x 169.85307pt.
  [13<./LabMomentum/pic/Helmholtz_coils.png><./LabMomentum/pic/Helmholtz_coils_fi
 eld.png>]
-<LabMomentum/pic/Experimental_installation.png, id=253, 250.7769pt x 179.2296pt
+<LabMomentum/pic/Experimental_installation.png, id=255, 250.7769pt x 179.2296pt
 >
 File: LabMomentum/pic/Experimental_installation.png Graphic file (type png)
 <use LabMomentum/pic/Experimental_installation.png>
 Package luatex.def Info: LabMomentum/pic/Experimental_installation.png  used on
- input line 186.
+ input line 185.
 (luatex.def)             Requested size: 214.24991pt x 153.12802pt.
-<LabMomentum/pic/Power_supply.png, id=254, 1050.92625pt x 749.80125pt>
+<LabMomentum/pic/Power_supply.png, id=256, 1050.92625pt x 749.80125pt>
 File: LabMomentum/pic/Power_supply.png Graphic file (type png)
 <use LabMomentum/pic/Power_supply.png>
 Package luatex.def Info: LabMomentum/pic/Power_supply.png  used on input line 1
-94.
+93.
 (luatex.def)             Requested size: 214.24991pt x 152.85217pt.
 
 
@@ -2400,10 +2404,34 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [14] [15<./LabMomentum/pic/Experimental_installation.png><./LabMomentum/pic/Powe
-r_supply.png>] [16]) [17] [18
+r_supply.png>] [16]) (./LabEarthMagnet/LabEarthMagnet.tex [17]
+Розділ 3.
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+
+ []
+
+[18
+
+] [19] [20] [21]
+<LabEarthMagnet/pic/compas.png, id=358, 478.78876pt x 428.19975pt>
+File: LabEarthMagnet/pic/compas.png Graphic file (type png)
+<use LabEarthMagnet/pic/compas.png>
+Package luatex.def Info: LabEarthMagnet/pic/compas.png  used on input line 292.
+
+(luatex.def)             Requested size: 210.93071pt x 188.64148pt.
+<LabEarthMagnet/pic/compasV.png, id=359, 398.08725pt x 354.123pt>
+File: LabEarthMagnet/pic/compasV.png Graphic file (type png)
+<use LabEarthMagnet/pic/compasV.png>
+Package luatex.def Info: LabEarthMagnet/pic/compasV.png  used on input line 295
+.
+(luatex.def)             Requested size: 212.06645pt x 188.64148pt.
+ [22] [23<./LabEarthMagnet/pic/compas.png><./LabEarthMagnet/pic/compasV.png>] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./LabWork.aux)
  ***********
@@ -2413,17 +2441,18 @@ L3 programming layer <2023-10-10>
 Package logreq Info: Writing requests to 'LabWork.run.xml'.
 
 \openout1 = LabWork.run.xml
-)
+))
 
 Here is how much of LuaTeX's memory you used:
- 61771 strings out of 476835
+ 62071 strings out of 476835
  195579,2848258 words of node,token memory allocated
- 1985 words of node memory still in use:
-   31 hlist, 2 vlist, 14 rule, 1 local_par, 11 glue, 4 kern, 1 penalty, 3 glyph,
- 263 attribute, 95 glue_spec, 109 attribute_list, 2 write, 48 pdf_literal nodes
-   avail lists: 1:13,2:22195,3:5102,4:52,5:239,6:53,7:11718,8:42,9:757,10:31,11:
-988
- 81696 multiletter control sequences out of 65536+600000
+ 2095 words of node memory still in use:
+   32 hlist, 2 vlist, 14 rule, 1 local_par, 10 glue, 4 kern, 1 penalty, 1 margin
+_kern, 3 glyph, 302 attribute, 95 glue_spec, 122 attribute_list, 2 write, 48 pdf
+_literal nodes
+   avail lists: 1:13,2:22143,3:5102,4:51,5:239,6:53,7:11721,8:47,9:863,10:31,11:
+1140
+ 81949 multiletter control sequences out of 65536+600000
  107 fonts using 23662751 bytes
  118i,12n,115p,2739b,3367s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/cm-unicode/cmun
@@ -2435,17 +2464,18 @@ e/public/cm-unicode/cmunsx.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmex10.pfb><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programs/LaTeX/TeXLive/2023/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/Programs/LaTeX/TeXLive/2023/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programs/LaTeX/TeXLive/202
-3/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Programs/LaTeX/TeXLive
-/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programs/LaTeX/TeXL
-ive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programs/LaTeX/T
-eXLive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programs/La
-TeX/TeXLive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Program
-s/LaTeX/TeXLive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb>
-Output written on LabWork.pdf (19 pages, 4418768 bytes).
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programs/LaTeX/TeXLive/202
+3/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programs/LaTeX/TeXLive
+/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Programs/LaTeX/TeX
+Live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programs/LaTeX/
+TeXLive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programs/LaT
+eX/TeXLive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Program
+s/LaTeX/TeXLive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Pro
+grams/LaTeX/TeXLive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb>
+Output written on LabWork.pdf (24 pages, 6181076 bytes).
 
-PDF statistics: 391 PDF objects out of 1000 (max. 8388607)
- 300 compressed objects within 3 object streams
- 116 named destinations out of 1000 (max. 131072)
- 292 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 464 PDF objects out of 1000 (max. 8388607)
+ 360 compressed objects within 4 object streams
+ 144 named destinations out of 1000 (max. 131072)
+ 300 words of extra memory for PDF output out of 10000 (max. 100000000)
 

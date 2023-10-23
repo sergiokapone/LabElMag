@@ -3,8 +3,13 @@
 % !TeX spellcheck = uk_UA
 % !BIB program = biber
 
+
+
 \documentclass{LabWork}
-\usepackage{fixfoot}
+\usepackage{lipsum}
+
+
+\usepackage{minted}
 %\DeclareFixedFootnote{\repnote}{\fullcite{Spavieri2004}}
 %\addbibresource{LabWork1.bib}
 \graphicspath{{LabWork1pic/}}
@@ -13,370 +18,68 @@
 every info/.style={font=\small},
 }
 
-%============================================= Заголовок документу ====================================================%
-\work{1}
-\title{Перевірка закону Кулона}
+%====================== Заголовок документу ==========================%
+\work{2}
+\title{Робота в системі \LaTeX}
 
-\author{Тор А.~В.}{}
-\author{Другий А.~В.}{}
+\author{Красильнікова А.}{} % в класі LabWork.cls визначена команда \author{#1}{#2} з двома параметрами. Параметр #2 не задіяний, тому пустий. Але команда \author чекає, що для нього будуть дужки
 
-\group{ФФ-93}
+\group{ФФ-11}
 
 \abstract{%
-
-Перевірити закон Кулона:
-\begin{enumerate}
-\item Визначити залежність сили від заряду;
-\item визначити залежність сили від відстані;
-\item визначити електричну сталу в системі SI.
-\end{enumerate}
+Навчитись користуватись \LaTeX
 }
-%======================================================================================================================%
+%=====================================================================%
 
 \begin{document}
-\writedatatofile{\jobname}
 \maketitle
 
-\section{Експериментальні результати та їх обробка}
-
-Результати досліджень занесемо до табл.~\ref{tab:tableQF}.
-
-\pgfplotstableread{QF.dat}\QFTable
-\pgfplotstablecreatecol[
-	create col/expr={\thisrow{Q1}^2},
-]{Qsquare1}\QFTable
-\pgfplotstablecreatecol[
-	create col/expr={\thisrow{Q2}^2},
-]{Qsquare2}\QFTable
-\pgfplotstablecreatecol[
-	create col/expr={\thisrow{Q3}^2},
-]{Qsquare3}\QFTable
-\pgfplotstablecreatecol[
-	create col/expr={\thisrow{Q4}^2},
-]{Qsquare4}\QFTable
-\pgfplotstablecreatecol[
-	create col/expr={\thisrow{Q5}^2},
-]{Qsquare5}\QFTable
-
-\begin{table}[hb!]\centering\small
-\caption{Результати дослідження}
-\label{tab:tableQF}
-\pgfplotstabletypeset[
-    clear infinite,
-    every head row/.style={
-        before row={
-        \toprule
-        \multicolumn{2}{c}{$a = 4$~см} & \multicolumn{2}{c}{$a = 5$~см} & \multicolumn{2}{c}{$a = 6$~см} & \multicolumn{2}{c}{$a = 7$~см} & \multicolumn{2}{c}{$a = 8$~см}\\
-        },
-    after row=\midrule,
-    },
-    every last row/.style={
-    after row=\bottomrule},
-    columns/Q1/.style={
-        column name={$q$, нКл},
-        fixed,fixed zerofill,
-        multiply by=1e9,
-        precision=1},
-    columns={Q1,F1,Q2,F2,Q3,F3,Q4,F4,Q5,F5},
-    columns/F1/.style={
-        column name={$F$, мН},
-        fixed,fixed zerofill,
-        multiply by=1e3,
-        precision=2},
-    columns/Q2/.style={
-        column name={$q$, нКл},
-        fixed,fixed zerofill,
-        multiply by=1e9,
-        precision=1},
-    columns/F2/.style={
-        column name={$F$, мН},
-        fixed,fixed zerofill,
-        multiply by=1e3,
-        precision=2},
-    columns/Q3/.style={
-        column name={$q$, нКл},
-        fixed,fixed zerofill,
-        multiply by=1e9,
-        precision=1},
-    columns/F3/.style={
-        column name={$F$, мН},
-        fixed,fixed zerofill,
-        multiply by=1e3,
-        precision=2},
-    columns/Q4/.style={
-        column name={$q$, нКл},
-        fixed,fixed zerofill,
-        multiply by=1e9,
-        precision=1},
-    columns/F4/.style={
-        column name={$F$, мН},
-        fixed,fixed zerofill,
-        multiply by=1e3,
-        precision=2},
-    columns/Q5/.style={
-        column name={$q$, нКл},
-        fixed,fixed zerofill,
-        multiply by=1e9,
-        precision=1},
-    columns/F5/.style={
-        column name={$F$, мН},
-        fixed,fixed zerofill,
-        multiply by=1e3,
-        precision=2},
-]\QFTable
-\end{table}
-
-На основі результатів дослідження (табл.~\ref{tab:tableQF}), побудуємо графіки (рис.~\ref{plt:expresults}).
-\begin{tornpage}
-	\begin{center}%[h!]
-		%\centering
-		\begin{tikzpicture}[%
-            declare function={ F(\A,\s,\B) = \A*x^(1 + \s/2) + \B;  },
-            ]
-			\begin{axis}[%
-					LabPlotGrid,
-					xlabel={$q^2$, Кл$^2$},
-					ylabel=\empty,
-					every y tick scale label/.style={at={(0.05,1)},anchor=south},
-					ytick scale label code/.code={$F$, $\cdot 10^{#1}$ Н},
-					legend pos = north west,
-					width=1\linewidth,
-					height=0.6\linewidth,
-                    xmin=0,
-				]
-				%---- Побудова графіку за даними ----%
-				\addplot[%
-					blue,
-					only marks,
-                    mark=*,
-					error bars/.cd,
-					y dir = both,  y explicit,
-				]
-				table[%
-						x=Qsquare1,
-						y = F1,
-%						x error = CError,
-%						y error = TError,
-					]\QFTable;
-   				\addlegendentry{$a = 4$~см}
-				\addplot[%
-					blue,
-					only marks,
-                    mark=triangle*,
-					error bars/.cd,
-					y dir = both,  y explicit,
-				]
-				table[%
-						x=Qsquare2,
-						y = F2,
-%						x error = CError,
-%						y error = TError,
-					]\QFTable;
-   				\addlegendentry{$a = 5$~см}
-				\addplot[%
-					blue,
-					only marks,
-                    mark=diamond*,
-					error bars/.cd,
-					y dir = both,  y explicit,
-				]
-				table[%
-						x=Qsquare3,
-						y = F3,
-%						x error = CError,
-%						y error = TError,
-					]\QFTable;
-   				\addlegendentry{$a = 6$~см}
-				\addplot[%
-					blue,
-					only marks,
-                    mark=square*,
-					error bars/.cd,
-					y dir = both,  y explicit,
-				]
-				table[%
-						x=Qsquare4,
-						y = F4,
-%						x error = CError,
-%						y error = TError,
-					]\QFTable;
-   				\addlegendentry{$a = 7$~см}
-				\addplot[%
-					blue,
-					only marks,
-                    mark=o,
-					error bars/.cd,
-					y dir = both,  y explicit,
-				]
-				table[%
-						x=Qsquare5,
-						y = F5,
-%						x error = CError,
-%						y error = TError,
-					]\QFTable;
-   				\addlegendentry{$a = 8$~см}
-
-    \addplot [no markers, red] gnuplot [raw gnuplot] {
-            f(x) = A*x**(1 + s/2) + B;  
-            A=1e+12; s=1e-4; B = 1e-6 ; 
-            set print "A.dat"; 
-            print "a A dA s"; 
-            fit f(x) "QF.dat" u ($1**2):2 via A,B; plot  [x=0:6.5e-16] f(x); print 4e-2,A,A_err,s;
-            fit f(x) "QF.dat" u ($3**2):4 via A,B; plot  [x=0:6.5e-16] f(x); print 5e-2,A,A_err,s;
-            fit f(x) "QF.dat" u ($5**2):6 via A,B; plot  [x=0:6.5e-16] f(x); print 6e-2,A,A_err,s;
-            fit f(x) "QF.dat" u ($7**2):8 via A,B; plot  [x=0:6.5e-16] f(x); print 7e-2,A,A_err,s;
-            fit f(x) "QF.dat" u ($9**2):10 via A,B; plot  [x=0:6.5e-16] f(x); print 8e-2,A,A_err,s;
-            set print;
-    };
+\section{Експериментальні результати}
 
 
 
-			\end{axis}
-		\end{tikzpicture}
-		\captionof{figure}{Графік залежності $F$ від  $q^2$.}
-		\label{plt:expresults}
-	\end{center}
-\end{tornpage}
+\section{Обробка результатів}
 
-\pgfplotstableread{A.dat}\ATable
-\pgfplotstablecreatecol[
-	create col/expr={1/\thisrow{a}^2},
-]{inva2}\ATable
 
-Для більш точної нелінійної апроксимації за формулою $F = A \cdot q^2 \cdot q^{\sigma/2} + B$, будемо підбирати показник степеря $\sigma$ самостійно, домагаючись найменшої похибки в значенні параметра $A$. В теорії, параметр $B = 0$, однак в нашому випадку він може містити інформацію про додаткові сили пружності з боку дрота, яким наша кулька під'єднана до джерела високої напруги та інші невраховані сили, які дають внесок в систематичну похибку.
+\begin{figure}[h!]\centering
+    \begin{tikzpicture}
 
-З результатів апроксимації за формулою отримуємо наступні дані включені до табл.~\ref{tab:results}. Показник степеня $\sigma = 1 \cdot 10^{-4}$.
+        \begin{axis}[width = 15cm,
+        legend style = {font = \small,
+            fill opacity = 0.5,
+            text opacity = 1,
+            draw = none,
+            cells = {align = left, anchor = west},
+            pos = south east},
+        grid = both,
+        grid style = {line width=.1pt},
+        major grid style = {line width=.2pt},
+        minor grid style = {line width=.1pt},
+        tick label style = {font=\sffamily},
+        tick align = inside,
+        legend style = {font = \sffamily},
+        xlabel = {$t$, с},
+        ylabel = {$y$, м}]
 
-\begin{table}[ht!]\centering
-\caption{Результати апроксимації графіків~\ref{plt:expresults}}
-\label{tab:results}
-\pgfplotstabletypeset[
-    every head row/.style={
-        before row={
-        \toprule
-        },
-    after row=\midrule,
-    },
-    every last row/.style={
-    after row=\bottomrule},
-    columns={inva2, A, dA, s},
-%    columns/a/.style={
-%        column name={$a$, м},
-%        sci,sci zerofill,
-%        precision=1},
-    columns/inva2/.style={
-        column name={$1/a^2$, м$^{-2}$},
-        sci zerofill,
-        precision=0},
-    columns/A/.style={
-        fixed,fixed zerofill,
-        multiply by=1e-12,
-        column name={$A = F/q^2$, $10^{12}~$Н/Кл$^{2}$},
-        precision=2},
-    columns/dA/.style={
-        column name={$\Delta(F/q^2)$, $10^{12}~$Н/Кл$^{2}$},
-        fixed,fixed zerofill,
-        multiply by=1e-12,
-        precision=2},
-    columns/s/.style={
-        column name={$\sigma$},
-        sci, sci zerofill,
-        precision=0},
-]\ATable
-\end{table}
+            \addplot [only marks, mark size = 3] plot [error bars/.cd, y dir=both, y explicit] table [y error = spos] {lab.txt};
 
-На основі результатів апроксимації (табл.~\ref{tab:results}), побудуємо графіки (рис.~\ref{plt:expresults2}).
+           \addlegendentry{експеримент}
 
-\begin{tornpage}
-	\begin{center}%[h!]
-		%\centering
-		\begin{tikzpicture}
-			\begin{axis}[%
-					LabPlotGrid,
-					xlabel={$1/{a^2}$, м$^{-2}$},
-					ylabel=\empty,
-					every y tick scale label/.style={at={(0.05,1)},anchor=south},
-					ytick scale label code/.code={$F/q^2$, $\cdot 10^{#1}$ Н/Кл$^{2}$},
-					legend pos = north west,
-					width=1\linewidth,
-					height=0.6\linewidth,
-                    xmin=0, ymin=0,
-				]
-				%---- Побудова графіку за даними ----%
-				\addplot[%
-					blue,
-					only marks,
-					error bars/.cd,
-					y dir = both,  y explicit,
-				]
-				table[%
-						x=inva2,
-						y = A,
-%						x error = CError,
-						y error = dA,
-				]\ATable;
-				%---- Додавання легенди до вищепобудованого графіку ----%
-				\addlegendentry{Експериментальні дані}
-				%---- Побудова лінійної апроксимації до даних файлу ----%	
-%				\addplot[red] table[x=Current, y={create col/linear regression={y = Torque}}]\QFTable;
-    \addplot [no markers, red] gnuplot [raw gnuplot] { % "raw gnuplot" allows us to use arbitrary gnuplot commands
-            f(x) = k/4*x**(1+e/2) + C;  % Define the function to fit
-            k=2.8e+9; e=2e-2; C = -0.1e12 ;     % Set reasonable starting values here
-            fit f(x) "A.dat" u (1/$1**2):2 via k,C; 
-            plot  [x=150:650] f(x); % Specify the range to plot
-%            plot  "A.dat" u (1/$1**2):2; % Specify the range to plot
-    };
-				%---- Параметри регресії ----%
-%				\xdef\slope{\pgfplotstableregressiona}
-%				\xdef\ycepte{\pgfplotstableregressionb}
-%				%---- Додавання легенди до вищепобудованого графіку ----%
-			\end{axis}
-		\end{tikzpicture}
-		\captionof{figure}{Графік залежності ${F}/{q^2}$ від $1/{a^2}$.}
-		\label{plt:expresults2}
-	\end{center}
-\end{tornpage}
+            \addplot[domain=0:2.2, red]   {-4.9*x^2+12.5*x+0.16}; % 4,9 -> 4.9
 
-Результати апроксимації графіка \ref{plt:expresults2} за формулою $A = \frac{k}{4} \cdot (1/a^2) \cdot (1/a^2)^{\varepsilon/2}$ дають отримане значення $\varepsilon = 2\cdot 10^{-2}$. Аналогічно, ми підбирали показник степеря $\varepsilon$ самостійно, домагаючись найменшої похибки для $k$.
+            \addlegendentry{апроксимація $y(t) = -4.9t^2 +12.5t + 0.16$ }
 
-Для значення константи $k$ результати апроксимації дають:
-\begin{equation}\label{}
-    k = (10.5 \pm 0.5)\cdot 10^{9}\ \frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}
-\end{equation}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{y(t)}
+    \label{pic: y(t)}
+\end{figure}
 
-Табличне прецизійне значення
-\begin{equation}\label{}
-    k = 8.9875517923(14) \cdot 10^{9}\ \frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}
-\end{equation}
+\newpage
 
-Таким чином, відмінність нашого значення від табличного становить $\approx 17\%$.
+
 
 \section*{Висновки}
 
-В результаті дослідів було перевірено закон Кулона. Встановлено, що сила взаємодії однойменних прямо пропорційна квадрату $F \propto q^{2 + \sigma}$. Оцінка $\sigma $ дає величину: 
-\[
-    \sigma \le 1\cdot10^{-4}.
-\]
 
-Також було перевірено <<закон обернених квадратів>> $F \propto \frac{1}{r^{2 + \varepsilon}}$. Оцінка $ \varepsilon $ дає величину: 
-\[
-    \varepsilon \le 2\cdot10^{-2}.
-\]
-
-Для значення константи $k$ результати апроксимації дають:
-\begin{equation*}\label{}
-    k = (10.5 \pm 0.5)\cdot 10^{9}\ \frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}
-\end{equation*}
-
-Табличне прецизійне значення
-\begin{equation*}\label{}
-    k = 8.9875517923(14) \cdot 10^{9}\ \frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}
-\end{equation*}
-
-Відмінність нашого значення від табличного становить $\approx 17\%$.
-
-Для перевірки закону Кулона в нашій роботі ми користувались прямим методом, який має низьку точність, оскільки ефекти електростатичної індукції призводять до того, що заряди наводяться практично на всіх тілах, що
-оточуючих використовуваний прилад, а також, ці ефекти призводять до того, що заряд на кулькі розподілений нерівномірно. На точність також впливає і явище стікання електричного заряду з кульки. Однак, основна похибка обумовлена тим, що коромисло не вдається встановити в початкове положення, тобто визначити, коли нитка не закручена, бо цьому перешкоджає рух повітря навколо кульки.
-
-Для більш точної перевірки закону <<обернених квадратів>> сьогодні користуються непрямими методами, які полягають у вимірювання електричних потенціалів на концентричних сферах.
 \end{document}
