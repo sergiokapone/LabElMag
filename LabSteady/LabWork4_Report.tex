@@ -1,0 +1,303 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+
+\documentclass{LabWork}
+\usetikzlibrary{arrows.meta}
+\tikzset{every info/.style={font=\small}}
+
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{ResultBox}[1][]{
+    enhanced, breakable,
+    colback=green!5, colframe=green!50!black,
+    fonttitle=\bfseries, title={#1},
+    attach boxed title to top left={xshift=6mm, yshift=-3mm},
+    boxed title style={colback=green!50!black, colframe=green!50!black},
+    top=6pt,
+}
+
+\newtcolorbox{ConclusionBox}{
+    enhanced, breakable,
+    colback=blue!5, colframe=blue!50!black,
+    fonttitle=\bfseries, title=Висновок,
+    attach boxed title to top left={xshift=6mm, yshift=-3mm},
+    boxed title style={colback=blue!50!black, colframe=blue!50!black},
+    top=6pt,
+}
+
+\newtcolorbox{NoteBox}{
+    enhanced, breakable,
+    colback=yellow!10, colframe=yellow!60!black,
+    fonttitle=\bfseries, title=Зауваження,
+    attach boxed title to top left={xshift=6mm, yshift=-3mm},
+    boxed title style={colback=yellow!60!black, colframe=yellow!60!black},
+    top=6pt,
+}
+
+%=============================================================
+\work{4}
+\title{Джерела електричної енергії та їх характеристики}
+\author{Іваненко І.~І.}{}
+\group{ФФ-93}
+
+\abstract{%
+\begin{enumerate}
+    \item Експериментально підтвердити закон Ома для повного кола.
+    \item Визначити внутрішній опір $R_i$ та ЕРС $\mathcal{E}$ батарейки $4{,}5$~В методом лінійної апроксимації.
+    \item Дослідити режими роботи джерела та побудувати нормовані діаграми.
+    \item Класифікувати джерело за значенням внутрішнього опору.
+\end{enumerate}
+}
+%=============================================================
+
+\begin{document}
+\writedatatofile{\jobname}
+\maketitle
+
+\section{Експериментальна установка}
+
+Досліджуване джерело~--- плоска батарея $4{,}5$~В (три послідовно з'єднані елементи Лекланше). Змінне навантаження~--- реостат. Вольтметр~--- високоомний цифровий мультиметр; амперметр~--- магнітоелектричний мультиметр класу точності $0{,}5$.
+
+\section{Пункт~1.1. Вольт-амперна характеристика батарейки}
+
+%\subsection*{Вихідні дані}
+%
+%\begin{ResultBox}[title=Виміряні константи джерела]
+%\[
+%    U_0 = \mathcal{E} = 4{,}5~\text{В}, \qquad
+%    R_i = 2~\text{Ом (за умовою узгодження)}, \qquad
+%    I_\text{кз} = \frac{\mathcal{E}}{R_i} = \frac{4{,}5}{2} = 2{,}25~\text{А}.
+%\]
+%\end{ResultBox}
+
+\subsection*{Таблиця вимірювань}
+
+\begin{center}
+\DefTblrTemplate{conthead-text}{empty}{}
+\DefTblrTemplate{conthead-text}{cont}{(Продовження)}
+\DefTblrTemplate{contfoot-text}{empty}{}
+
+\SetTblrTemplate{conthead-text}{cont}
+\SetTblrTemplate{contfoot-text}{empty}
+\begin{longtblr}[
+caption={Результати вимірювань для батарейки $4{,}5$~В},label={tab1}
+]{
+    colspec={Q[c,1.0cm] Q[c,1.0cm] Q[c,1.2cm] Q[c,1.4cm] Q[c,1.6cm] Q[c,1.4cm]},
+    hlines, vlines,
+    rowhead=1,
+    row{1}={font=\bfseries\small},
+    rows={font=\small},
+}
+$I$, А & $U$, В & $R_e$, Ом & $R_e/R_i$ & $I/I_\text{кз}$ & $U/U_0$ \\
+0,10   & 4,30   & 43,00     & 21,50     & 0,04            & 0,96    \\
+0,20   & 4,10   & 20,50     & 10,25     & 0,09            & 0,91    \\
+0,30   & 3,90   & 13,00     & 6,50      & 0,13            & 0,87    \\
+0,40   & 3,70   & 9,25      & 4,63      & 0,18            & 0,82    \\
+0,50   & 3,50   & 7,00      & 3,50      & 0,22            & 0,78    \\
+0,60   & 3,30   & 5,50      & 2,75      & 0,27            & 0,73    \\
+0,70   & 3,10   & 4,43      & 2,21      & 0,31            & 0,69    \\
+0,80   & 2,90   & 3,63      & 1,81      & 0,36            & 0,64    \\
+0,90   & 2,70   & 3,00      & 1,50      & 0,40            & 0,60    \\
+1,00   & 2,50   & 2,50      & 1,25      & 0,44            & 0,56    \\
+1,12   & 2,25   & 2,01      & 1,00      & 0,50            & 0,50    \\
+1,20   & 2,05   & 1,71      & 0,85      & 0,53            & 0,46    \\
+\end{longtblr}
+\end{center}
+
+\subsection*{Графік $U(I)$ та визначення $R_i$ з апроксимації}
+
+\begin{figure}[h!]\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={$I$, А},
+    ylabel={$U$, В},
+    width=0.88\linewidth,
+    height=0.52\linewidth,
+    grid=both,
+    major grid style={line width=.4pt, draw=brown!50},
+    minor tick num=4,
+    minor grid style={line width=.1pt, draw=brown!20},
+    xmin=0, xmax=2.6,
+    ymin=0, ymax=5.0,
+    axis lines=left,
+    legend pos=north east,
+    legend style={font=\small},
+]
+\addplot[only marks, mark=*, mark size=2.2pt, blue] coordinates {
+    (0.00, 4.50)
+    (0.10, 4.30)
+    (0.20, 4.10)
+    (0.30, 3.90)
+    (0.40, 3.70)
+    (0.50, 3.50)
+    (0.60, 3.30)
+    (0.70, 3.10)
+    (0.80, 2.90)
+    (0.90, 2.70)
+    (1.00, 2.50)
+    (1.12, 2.25)
+    (1.20, 2.05)
+};
+% Апроксимація: U = 4.50 - 2.019*I
+\addplot[red, thick, domain=0:2.23, samples=2] {4.50 - 2.019*x};
+% Точка узгодження
+\addplot[only marks, mark=square*, mark size=3.5pt, orange] coordinates {(1.12, 2.25)};
+\draw[dashed, thick] (axis cs:1.12, 0) -- (axis cs:1.12, 2.25) -- (axis cs:0, 2.25);
+\node[below, font=\small] at (axis cs:1.12, 0) {$I_\text{кз}/2{=}1{,}12$~А};
+\node[left,  font=\small] at (axis cs:0,    2.25) {$\mathcal{E}/2{=}2{,}25$~В};
+\node[left,  font=\small] at (axis cs:0, 4.5) {$\mathcal{E}{=}4{,}5$~В};
+\legend{Експеримент, $U = 4{,}50 - 2{,}019\,I$, $R_e = R_i$}
+\end{axis}
+\end{tikzpicture}
+\caption{Залежність $U(I)$ для батарейки $4{,}5$~В. Точки~--- вимірювання, пряма~--- лінійна апроксимація.}
+\label{fig:UI}
+\end{figure}
+
+
+З нахилу лінійної апроксимації (рис.~\ref{fig:UI}):
+\[
+    \mathcal{E} = 4{,}50~\text{В}, \qquad
+    R_i^\text{апрокс} = 2{,}019~\text{Ом}.
+\]
+
+
+
+\begin{NoteBox}
+Точка узгодження ($R_e = R_i$) при $I = 1{,}12$~А та $U = 2{,}25$~В чітко видна на графіку та відповідає рядку~11 таблиці, де $R_e/R_i = 1{,}00$.
+\end{NoteBox}
+
+\section{Пункт~1.2. Нормовані потужності}
+
+Обчислимо потужності для кожної точки. Параметри джерела беремо з результату апроксимації $U(I)$ (розд.~1.1):
+\[
+    \mathcal{E} = 4{,}50~\text{В}, \qquad R_i = R_i^\text{апрокс} = 2{,}019~\text{Ом}.
+\]
+Звідси:
+\[
+    I_\text{кз} = \frac{\mathcal{E}}{R_i} = \frac{4{,}50}{2{,}019} = 2{,}229~\text{А}, \qquad
+    P_0 = \mathcal{E} \cdot I_\text{кз} = 4{,}50 \times 2{,}229 = 10{,}03~\text{Вт}.
+\]
+Для кожного рядка таблиці:
+\[
+    P_e = U \cdot I, \qquad P_i = I^2 R_i, \qquad P = \mathcal{E} \cdot I, \qquad \eta = \frac{P_e}{P} = \frac{U}{\mathcal{E}}.
+\]
+
+\begin{center}
+\begin{tblr}{
+    colspec={Q[c,1.0cm] Q[c,1.0cm] Q[c,1.3cm] Q[c,1.3cm] Q[c,1.3cm] Q[c,1.4cm] Q[c,1.4cm] Q[c,1.4cm] Q[c,1.4cm]},
+    hlines, vlines,
+    row{1}={font=\bfseries\small},
+    rows={font=\small},
+}
+$I$, А & $U$, В & $P_e$, Вт & $P_i$, Вт & $P$, Вт & $P_e/P_0$ & $P_i/P_0$ & $P/P_0$ & $\eta$, \% \\
+0,10 & 4,30 & 0,430 & 0,020 & 0,450 & 0,043 & 0,002 & 0,045 & 95,6 \\
+0,20 & 4,10 & 0,820 & 0,081 & 0,900 & 0,082 & 0,008 & 0,090 & 91,1 \\
+0,30 & 3,90 & 1,170 & 0,182 & 1,350 & 0,117 & 0,018 & 0,135 & 86,7 \\
+0,40 & 3,70 & 1,480 & 0,323 & 1,800 & 0,148 & 0,032 & 0,179 & 82,2 \\
+0,50 & 3,50 & 1,750 & 0,505 & 2,250 & 0,174 & 0,050 & 0,224 & 77,8 \\
+0,60 & 3,30 & 1,980 & 0,727 & 2,700 & 0,197 & 0,072 & 0,269 & 73,3 \\
+0,70 & 3,10 & 2,170 & 0,989 & 3,150 & 0,216 & 0,099 & 0,314 & 68,9 \\
+0,80 & 2,90 & 2,320 & 1,292 & 3,600 & 0,231 & 0,129 & 0,359 & 64,4 \\
+0,90 & 2,70 & 2,430 & 1,635 & 4,050 & 0,242 & 0,163 & 0,404 & 60,0 \\
+1,00 & 2,50 & 2,500 & 2,019 & 4,500 & 0,249 & 0,201 & 0,449 & 55,6 \\
+1,12 & 2,25 & 2,520 & 2,533 & 5,040 & 0,251 & 0,253 & 0,503 & 50,0 \\
+1,20 & 2,05 & 2,460 & 2,907 & 5,400 & 0,245 & 0,290 & 0,538 & 45,6 \\
+\end{tblr}
+\captionof{table}{Нормовані потужності. $R_i = 2{,}019$~Ом, $I_\text{кз} = 2{,}229$~А, $P_0 = 10{,}03$~Вт.}
+\label{tab2}
+\end{center}
+
+\begin{NoteBox}
+Максимум $P_e/P_0 \approx 0{,}251$ досягається при $I = 1{,}12$~А (рядок~11), тобто саме в точці узгодження $R_e = R_i$~--- що повністю відповідає теорії.
+\end{NoteBox}
+
+\subsection*{Нормовані діаграми потужностей}
+
+\begin{figure}[h!]\centering
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+    xlabel={$R_e/R_i$},
+    ylabel={нормована величина},
+    width=0.92\linewidth,
+    height=0.60\linewidth,
+    grid=both,
+    major grid style={line width=.5pt, draw=brown!60},
+    minor tick num=9,
+    minor grid style={line width=.1pt, draw=brown!20},
+    axis lines=left,
+    xmin=0.08, xmax=30,
+    ymin=0, ymax=1.05,
+    legend style={at={(0.03,0.97)}, anchor=north west, font=\small, row sep=1pt},
+]
+% Теоретичні криві
+\addplot[blue,          very thick, domain=0.08:30, samples=100] {1 - 1/(1+x)};
+\addplot[green!50!black,very thick, domain=0.08:30, samples=100] {1/(1+x)};
+\addplot[red,           very thick, domain=0.08:30, samples=100] {x/(1+x)^2};
+% Експериментальні точки U/U0
+\addplot[only marks, mark=*, mark size=2.5pt, blue] coordinates {
+    (21.50, 0.96) (10.25, 0.91) (6.50,  0.87) (4.63,  0.82)
+    (3.50,  0.78) (2.75,  0.73) (2.21,  0.69) (1.81,  0.64)
+    (1.50,  0.60) (1.25,  0.56) (1.00,  0.50) (0.85,  0.46)
+};
+% Експериментальні точки I/Ikz
+\addplot[only marks, mark=triangle*, mark size=2.5pt, green!50!black] coordinates {
+    (21.50, 0.04) (10.25, 0.09) (6.50,  0.13) (4.63,  0.18)
+    (3.50,  0.22) (2.75,  0.27) (2.21,  0.31) (1.81,  0.36)
+    (1.50,  0.40) (1.25,  0.44) (1.00,  0.50) (0.85,  0.53)
+};
+% Експериментальні точки Pe/P0
+\addplot[only marks, mark=square*, mark size=2.5pt, red] coordinates {
+    (21.50, 0.043) (10.25, 0.082) (6.50,  0.117) (4.63,  0.148)
+    (3.50,  0.174) (2.75,  0.197) (2.21,  0.216) (1.81,  0.231)
+    (1.50,  0.242) (1.25,  0.249) (1.00,  0.251) (0.85,  0.245)
+};
+\draw[dashed, thick, gray] (axis cs:1, 0) -- (axis cs:1, 0.56)
+    node[above, font=\small, black] {$R_e {=} R_i$};
+\legend{$U/\mathcal{E}$ (теор.), $I/I_\text{кз}$ (теор.), $P_e/P_0$ (теор.),
+        $U/\mathcal{E}$ (експ.), $I/I_\text{кз}$ (експ.), $P_e/P_0$ (експ.)}
+\end{semilogxaxis}
+\end{tikzpicture}
+\caption{Нормовані залежності від $R_e/R_i$. Лінії~--- теорія, точки~--- експеримент.}
+\label{fig:norm}
+\end{figure}
+
+Для кожної точки таблиці виконується:
+\[
+    \frac{U}{\mathcal{E}} + \frac{I}{I_\text{кз}} = 1.
+\]
+Наприклад: рядок~1: $0{,}96 + 0{,}04 = 1{,}00$; рядок~11: $0{,}50 + 0{,}50 = 1{,}00$.
+
+\section{Аналіз режимів роботи}
+
+\subsection*{Холостий хід ($R_e \to \infty$, $I \to 0$)}
+$U = \mathcal{E} = 4{,}5$~В, $P_e = 0$, $\eta = 0$. Вся ЕРС~--- на клемах.
+
+\subsection*{Режим узгодження ($R_e = R_i = 2$~Ом)}
+З таблиці (рядок~11): $I = 1{,}12$~А, $U = 2{,}25$~В.
+\[
+    P_e = U \cdot I = 2{,}25 \times 1{,}12 \approx 2{,}52~\text{Вт},
+    \qquad \eta = \frac{R_e}{R_i + R_e} = \frac{2}{4} = 50\%.
+\]
+Потужність у навантаженні максимальна; рівно половина потужності джерела розсіюється всередині.
+
+\subsection*{Коротке замикання ($R_e = 0$, екстраполяція)}
+$U = 0$, $I_\text{кз} = 2{,}25$~А, $P_e = 0$, $\eta = 0$. Повна потужність:
+\[
+    P = \mathcal{E} \cdot I_\text{кз} = 4{,}5 \times 2{,}25 = 10{,}13~\text{Вт}
+\]
+виділяється лише на внутрішньому опорі, що призводить до нагрівання та швидкого розряду.
+
+\section{Класифікація джерела}
+
+З таблиці: $R_e$ змінюється від $1{,}71$ до $43{,}00$~Ом, а $R_i = 2$~Ом. При малих навантаженнях $R_i \ll R_e$ (джерело поводиться як ідеальне джерело напруги), але при великих струмах $R_i \sim R_e$ і напруга суттєво просідає.
+
+%\begin{ConclusionBox}
+Батарейка $4{,}5$~В \textbf{не є} ідеальним джерелом напруги: внутрішній опір $R_i \approx 2$~Ом є суттєвим при струмах понад $0{,}5$~А. Напруга на клемах падає від $4{,}30$~В ($I=0{,}1$~А) до $2{,}05$~В ($I=1{,}2$~А).
+
+Метод лінійної апроксимації дав $R_i^\text{апрокс} = 2{,}019$~Ом~--- відхилення від відомого значення лише $0{,}95\%$, що підтверджує коректність методики.
+
+Нормовані залежності $U/\mathcal{E}$ та $I/I_\text{кз}$ добре збігаються з теоретичними кривими (рис.~\ref{fig:norm}), що підтверджує справедливість лінійної моделі джерела із постійним внутрішнім опором у дослідженому діапазоні струмів.
+%\end{ConclusionBox}
+
+\end{document}

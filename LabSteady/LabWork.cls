@@ -38,7 +38,7 @@
 \RequirePackage[%
 	a4paper,%
 	footskip=1cm,%
-	headsep=0.3cm,% 
+	headsep=0.3cm,%
 	top=2cm, %поле сверху
 	bottom=2cm, %поле снизу
 	left=2cm, %поле ліворуч
@@ -54,6 +54,7 @@
 \RequirePackage[justification=centering,labelsep=period]{caption}
 \RequirePackage{multirow}
 \RequirePackage{makecell}
+\RequirePackage{tabularray}
 \RequirePackage{booktabs}
 \newcolumntype{C}{>{\centering\arraybackslash}p{5em}}
 \RequirePackage[many, most]{tcolorbox}
@@ -159,7 +160,7 @@ set galvanometer graphic = {draw,generic circle IEC, minimum size=10mm,info=cent
 
 \newcommand{\fputrue}{\pgfkeys{/pgf/fpu=true}}
 \newcommand{\fpufalse}{\pgfkeys{/pgf/fpu=false}}
-\RequirePackage{tikz}  
+\RequirePackage{tikz}
 \usetikzlibrary{fpu}
 
 \newcommand{\maxVal}[3]{
@@ -185,7 +186,7 @@ set galvanometer graphic = {draw,generic circle IEC, minimum size=10mm,info=cent
 
 \usetikzlibrary{decorations.text, decorations.markings, decorations.pathreplacing, decorations.pathmorphing}
 \usetikzlibrary{shadows}
-\usetikzlibrary{arrows.meta}  
+\usetikzlibrary{arrows.meta}
 \usetikzlibrary{backgrounds,scopes}   %<------- Load librariesr)
 \usetikzlibrary{shapes.geometric,calc}
 
@@ -288,7 +289,7 @@ set galvanometer graphic = {draw,generic circle IEC, minimum size=10mm,info=cent
 	\par
 	\vskip1em
 	\noindent\@keywordprint
-	\smallskip\noindent\hrulefill\medskip  
+	\smallskip\noindent\hrulefill\medskip
 \endgroup
   \global\let\thanks\relax
   \global\let\maketitle\relax
@@ -301,7 +302,7 @@ set galvanometer graphic = {draw,generic circle IEC, minimum size=10mm,info=cent
   \global\let\author\relax
   \global\let\date\relax
   \global\let\and\relax
-}   
+}
 
 
 
@@ -311,11 +312,11 @@ set galvanometer graphic = {draw,generic circle IEC, minimum size=10mm,info=cent
 \def\@separatora{\def\@separatora{, }}% Delay comma once
 \let\email\@empty
 \newcommand{\addauthor}[3][]{%
-  \if\relax\detokenize{#1}\relax	
+  \if\relax\detokenize{#1}\relax
   \g@addto@macro\@author{\@separatora#2\textsuperscript{#3}}
   \else
 	  \g@addto@macro\@author{\@separatora#2\if\relax\detokenize{#3}\relax\else\textsuperscript{#3\@separatora\hskip-0.5ex}\fi\thanks{#1}}
-  \fi	 
+  \fi
   \g@addto@macro\@authortofile{\@separator#2}
 }
 
@@ -327,7 +328,7 @@ set galvanometer graphic = {draw,generic circle IEC, minimum size=10mm,info=cent
 \def\process@authors{\expandafter{\@authortofile\@separator!}}
 
 \def\@separator#1\@separator#2{%
-\immediate\write\titleauthorfile{%   
+\immediate\write\titleauthorfile{%
      \string\thispaperauthor{\unexpanded{#1}}}%
 \ifx!#2%
 \else
@@ -369,7 +370,7 @@ set galvanometer graphic = {draw,generic circle IEC, minimum size=10mm,info=cent
 \RequirePackage{tocloft}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \setlength{\cftbeforesecskip}{1pt}
-	\renewcommand{\tableofcontents}{	
+	\renewcommand{\tableofcontents}{
 		\section*{\MakeUppercase{\contentsname}}
 		\begin{multicols}{2}
 			\@starttoc{toc}
