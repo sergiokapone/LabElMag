@@ -1,0 +1,412 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !BIB program = biber
+% !TeX root =../LabWork.tex
+
+\chapter{Джерела електричної енергії та їх характеристики}
+\makeworktitle
+
+%\author{Тор А.~В.}{}
+%\author{Другий А.~В.}{}
+%
+%\group{ФФ-93}
+
+\abstract{%
+\begin{enumerate}
+    \item Експериментально підтвердити та проаналізувати справедливість закону Ома для різних ділянок електричного кола (повного кола, зовнішньої ділянки, неоднорідної ділянки), визначити зв'язок між струмом, напругою та опором.
+
+    \item Визначити внутрішній опір $R_i$ реального джерела електричної енергії.
+
+    \item Дослідити режим узгодження потужностей джерела та споживача.
+
+    \item Класифікувати досліджуване джерело за величиною його внутрішнього опору (тобто визначити, чи наближається воно до ідеального джерела напруги чи до ідеального джерела струму).
+
+    \item Визначити умови роботи джерела (режими: холостого ходу, короткого замикання, узгодженого навантаження) та розрахувати максимальний коефіцієнт корисної дії (ККД) для кожного з режимів, з'ясувавши, за якого режиму ККД є найбільшим.
+\end{enumerate}
+}
+%======================================================================================================================%
+
+
+\section{Теоретичні відомості}
+
+
+
+%\begin{Definition}
+Електричним струмом називають упорядкований рух електричних зарядів в провідному середовищі під дією електричного поля.
+
+Мірою інтенсивності руху зарядів є \emph{сила струму} $I$~--- кількість заряду, що проходить через поперечний переріз провідника за одиницю часу:
+\begin{equation}\label{Idef}
+	I = \frac{dq}{dt}.
+\end{equation}
+Для постійного струму ($I = \mathrm{const}$):
+\begin{equation}\label{Idef1}
+	I = \frac{q}{t}.
+\end{equation}
+%\end{Definition}
+
+\begin{wrapfigure}{l}{0.4\linewidth}\centering
+	\begin{tikzpicture}[thick, every circuit symbol/.style={thick},large circuit symbols,]
+        \def\h{1}
+		\draw (0,-\h) coordinate (START) to [battery={info={$\mathcal{E}$}}] ++(0,{2*\h}) -- ++(4,0) to [resistor={info=$R_e$}] ++(0,-{2*\h}) -- (START);
+		\node[contact] (1)  at (2.5,-\h) {}; \node[below] at (1) {$1$};
+		\node[contact] (2)  at (2.5,+\h) {}; \node[above] at (2) {$2$};
+		\draw[latex-latex, ultra thick, blue, font=\small] (1) -- node[left] {$U_{12}$} (2);
+		\draw[-latex, ultra thick, red, font=\small, yshift=10pt] (0.5,-\h) -- node[above] {$I$} ++(1,0);
+	\end{tikzpicture}
+	\caption{Електричне коло}
+	\label{thpic1}
+\end{wrapfigure}
+Електричний струм на ділянці виникає тоді, коли на її затискачах існує різниця потенціалів (електричне поле вздовж ділянки).
+
+%\begin{Definition}
+\emph{Напруга} (або падіння напруги) між двома точками~--- це різниця їхніх потенціалів. Для точок $1$ і $2$ (рис.~\ref{thpic1}): $U_{12} = \varphi_1 - \varphi_2$. Якщо $U_{12} > 0$, то $\varphi_1 > \varphi_2$, і струм тече від точки $1$ до точки $2$.
+
+Напруга чисельно дорівнює роботі $A$, яку виконує джерело при переміщенні одиничного заряду між двома точками:
+\begin{equation}\label{Udef}
+	U_{12} = \frac{A_{12}}{q}.
+\end{equation}
+%\end{Definition}
+
+Потужність~--- робота, яку виконує джерело за одиницю часу на даній ділянці кола:
+\begin{equation}\label{Pdil}
+	P = \frac{A_{12}}{t} = U_{12}I.
+\end{equation}
+
+%\begin{Definition}
+\emph{Електрорушійна сила (ЕРС)} $\mathcal{E}$~--- це робота стороніх (неелектростатичних) сил джерела при переміщенні одиничного заряду по замкнутому колу:
+\begin{equation}
+    \mathcal{E} = \frac{A}{q}.
+\end{equation}
+Потужність, що розвивається джерелом:
+\begin{equation}\label{Psource}
+	P = \mathcal{E}I.
+\end{equation}
+%\end{Definition}
+
+\begin{wrapfigure}{l}{0.4\linewidth}\centering
+	\begin{tikzpicture}[thick, every circuit symbol/.style={thick},large circuit symbols,]
+		\draw (0,0) node [contact] {} to [battery={info={$\mathcal{E}$}}] ++(2,0) to [resistor={info=$R_i$, color=red}] ++(2,0) node [contact] {} ;
+	\end{tikzpicture}
+	\caption{Еквівалентна схема джерела}
+	\label{thpic2}
+\end{wrapfigure}
+
+%\begin{Definition}
+\emph{Внутрішній опір} $R_i$~--- опір електричному струму всіх елементів всередині генератора (рис.~\ref{thpic2}).
+%\end{Definition}
+
+Якщо $R_i \ll R_e$, то напруга на клемах джерела практично не залежить від струму навантаження і дорівнює ЕРС. Таке джерело називають \emph{ідеальним джерелом напруги} ($R_i = 0$). Якщо ж $R_i \gg R_e$, то струм у зовнішньому колі практично не залежить від опору навантаження~--- це \emph{ідеальне джерело струму}. Надалі будемо вважати, що ЕРС та внутрішній опір джерела не залежать від струму.
+
+В електричному колі (рис.~\ref{thpic1}) при зміні навантаження $R_e$ від нуля до нескінченності змінюються $I$ і $U$. Розглянемо найбільш характерні режими роботи джерела:
+
+%\begin{ModeBox}
+\begin{enumerate}
+	\item \textbf{Режим холостого ходу:} $R_e \to \infty$, $I = 0$, $U = \mathcal{E}$.
+	\item \textbf{Номінальний режим:} від джерела відбирається найбільша тривала потужність без перегрівання. Нагрівання зумовлено внутрішніми втратами: $P_i = I^2 R_i$.
+	\item \textbf{Режим короткого замикання:} $R_e = 0$, $U = 0$, $I = I_\text{кз} = \mathcal{E}/R_i$. Для джерел з малим $R_i$ (акумулятори) це аварійний режим.
+	\item \textbf{Режим узгодження:} $R_e = R_i$~--- максимальна потужність у навантаженні.
+\end{enumerate}
+%\end{ModeBox}
+
+
+%\begin{LawBox}[title=ККД джерела]
+Коефіцієнт корисної дії (ККД) $\eta$ визначається відношенням потужності в навантаженні ($P_e = I^2R_e$) до повної потужності джерела ($P = \mathcal{E}I$):
+\begin{equation}\label{eta}
+	\eta = \frac{P_e}{P} = \frac{I^2R_e}{I^2R_i + I^2R_e} = \frac{R_e}{R_i + R_e}.
+\end{equation}
+З формули видно: чим більше $R_e$ порівняно з $R_i$, тим вищий ККД.
+%\end{LawBox}
+
+%---------------------------------------------------------
+\begin{wrapfigure}[19]{l}{0.45\linewidth}%[h!]
+	\centering
+	\begin{tikzpicture}[
+			mark position/.style args={#1(#2)}{
+					postaction={
+							decorate,
+							decoration={
+									markings,
+									mark=at position #1 with \coordinate (#2);
+								}
+						}
+				}
+		]
+		\draw[-latex, thick] (0,0) -- ++(6.5,0) node[below] {$I$};
+		\draw[-latex, thick] (0,0) -- ++(0,4) node[left] {$\eta$};
+		\draw[-latex, thick] (6,0) node[below] {$I_\text{кз}$}-- ++(0,7) node[right] {$P$};
+		\node[below] at (3,0) {$I_\text{кз}/2$};
+		\node[left] at (0,3) {$1$};
+		\draw[dashed] (3,0) -- (3,3/2);
+		\draw[dashed] (0,3/2) node[left] {$0.5$} -- (3,3/2);
+		\draw[ultra thick, domain=0:6, smooth, variable=\x, red,  mark position=0.8(A)]  plot ({\x}, {-1/6*(\x)*(\x-6)}) ;\node[above] at (A) {$P_e$};
+
+		\draw[ultra thick, domain=0:6, smooth, variable=\x, blue,  mark position=0.2(E)] plot ({\x}, {-1/2*\x+3}); \node[above] at (E) {$\eta$};
+
+		\draw[ultra thick, domain=0:6, smooth, variable=\x, green!60!black,  mark position=0.7(Pe)] plot ({\x}, {1/6*\x*\x}); \node[anchor=north west] at (Pe) {$I^2R_i$};
+
+		\draw[ultra thick, domain=0:6, smooth, variable=\x, green!60!black,  mark position=0.7(P)] plot ({\x}, {1*\x});\node[anchor=south east] at (P) {$P$};
+	\end{tikzpicture}
+	\caption{Діаграма режимів роботи джерела електроенергії}
+	\label{thpic3}
+\end{wrapfigure}
+%---------------------------------------------------------
+При узгодженому режимі ($R_e = R_i$) у приймачі виділяється найбільша потужність. Цей режим використовується у вимірювальних колах, пристроях обчислювальної та інформаційної техніки, засобів зв'язку. В цьому випадку $\eta = 1 - \frac{I}{I_\text{кз}}$, де $I_\text{кз}$~--- струм короткого замикання. Потужність у навантаженні при цьому:
+\begin{equation}\label{key}
+	P_e = \frac{\mathcal{E}^2}{4R_i},
+\end{equation}
+а ККД дорівнює $50$~\%.
+
+%\begin{NoteBox}
+При передачі великих потужностей (енергетика) режим узгодження є неприпустимим~--- там ККД має бути якнайвищим. Обов'язкова умова: $R_e \gg R_i$.
+%\end{NoteBox}
+
+На рис.~\ref{thpic3} наведено залежності $\eta$, $P_e$, $I^2R_i$ та $P$ від струму $I$. З кривих видно, що найбільша потужність у навантаженні досягається при $I = I_\text{кз}/2$, або що те ж~--- при $R_e = R_i$.
+
+\section{Теоретичне підґрунтя роботи}
+
+\subsection{Закони Ома та ідея дослідів}
+
+%---------------------------------------------------------
+\begin{wrapfigure}[14]{l}{0.5\linewidth}\centering
+	\begin{tikzpicture}[thick, every circuit symbol/.style={thick},large circuit symbols,]
+		\draw[red, fill=red!20] (-1.2,-1.7) rectangle ++(2.2,3.1);
+		\draw (0,-2) coordinate (START) to [resistor={info={$R_i$}, color=red}] ++(0,2) to [battery={info={$\mathcal{E}$}}] ++(0,2) to [ampermeter] coordinate (A1) ++(6,0) to [resistor={info'=$R_e$}] ++(0,-4) -- (START)
+		;
+		\draw [latex-] (6.1,0) -- ++(0.5,0) -- ++(0,-1) -- ++(-0.6,0) node[contact] {};
+		\draw ([xshift=-1.2cm]A1) node[contact] {} to[voltmeter] ++(0,-4) node[contact] {};
+	\end{tikzpicture}
+	\caption{Послідовне з'єднання елементів}
+	\label{pic1}
+\end{wrapfigure}
+%---------------------------------------------------------
+Реальні джерела описуються в еквівалентній схемі як послідовно з'єднані ідеальне \emph{джерело напруги} $\mathcal{E}$ і внутрішній опір $R_i$ (рис.~\ref{pic1}). Напруга на клемах і сила струму залежать від зовнішнього опору $R_e$.
+
+%\begin{LawBox}[title=Закон Ома для повного кола]
+\begin{equation}\label{OhmLow}
+	I = \frac{\mathcal{E}}{R_i + R_e}.
+\end{equation}
+
+Вихідна напруга (напруга на клемах джерела):
+\begin{equation}\label{U}
+	U = \mathcal{E} - R_i I.
+\end{equation}
+Зовнішній опір у робочій точці визначається як:
+\begin{equation}\label{Re}
+	R_e = \frac{U}{I}.
+\end{equation}
+%\end{LawBox}
+
+Формула~\eqref{U} описує лінійну залежність $U(I)$, де вільний член дає $\mathcal{E}$ (ЕРС~--- напруга при $I=0$, тобто в режимі холостого ходу), а нахил прямої дорівнює $-R_i$. Тому:
+\begin{equation}\label{tan}
+	\tg\varphi = - R_i,
+\end{equation}
+де $\varphi$~--- кут нахилу залежності $U(I)$ до осі $I$ (рис.~\ref{pic2}).
+
+\begin{NoteBox}
+Не плутати два різні нахили на графіку $U(I)$:\par
+\textbf{1)} Нахил самої прямої $U(I)$~--- визначає $R_i$ через $\tg\varphi = -R_i$.\par
+\textbf{2)} Нахил прямої від початку координат до робочої точки~--- визначає зовнішній опір $R_e = U/I$ в цій точці.
+\end{NoteBox}
+
+%---------------------------------------------------------
+\begin{figure}[h!]\centering
+	\begin{tikzpicture}
+		\draw[-latex] (0,0) -- ++(5,0) node[below] {$I$, А};
+		\draw[-latex] (0,0) -- ++(0,5) node[left] {$U$, В};
+		\draw[red, thick] (0,4) -- (4,0) coordinate[pos=0.5] (X) coordinate[pos=0.4] (A);
+		\draw[dashed] (X) -- (0,0-|X) node[below] {$I_\text{кз}/2$};
+		\draw[dashed] (X) -- (0,0|-X) node[left] {$\mathcal{E}/2$};
+		\fill (X) circle (0.1);
+		\node[right] at (X) {$R_e = R_i$};
+		\node[left] at (0,4) {$\mathcal{E}$};
+		\node[below] at (4,0) {$I_\text{кз}$};
+		\node[right] at (0,4) {$R_e \to \infty$};\node[above right] at (4,0) {$R_e \to 0$};
+		\draw (3,0) arc(180:{180-45}:1) node[anchor=north east, xshift=-5pt, font=\small] {$\pi - \varphi$};
+
+        \draw (0,0) -- (X);
+	\end{tikzpicture}
+	\caption{Характеристика джерела із сталим внутрішнім опором $R_i$.}
+	\label{pic2}
+\end{figure}
+%---------------------------------------------------------
+
+Таким чином, лінійна залежність $U(I)$ означає, що внутрішній опір $R_i$ є сталим.
+
+Для нашої роботи ми будемо аналізувати три типи навантаження:
+
+\begin{enumerate}
+	\item \textbf{Холостий хід:} $R_e \to \infty$. Струм не тече, немає падіння напруги на $R_i$, тому $U = \mathcal{E}$.
+	\item \textbf{Коротке замикання:} $R_e=0$. Все падіння напруги~--- на внутрішньому опорі, тому $U = 0$. Струм короткого замикання:
+	      \begin{equation}\label{short}
+		      I_\text{кз}=\frac{\mathcal{E}}{R_i}.
+	      \end{equation}
+	\item \textbf{Узгодження потужності:} $R_e=R_i$. У цьому випадку $U = \frac{\mathcal{E}}{2}$, $I=\frac{I_\text{кз}}{2}$.
+\end{enumerate}
+
+Пронормуємо виміряні значення напруги $U$ та струму $I$ на максимальні значення~--- напругу холостого ходу $\mathcal{E}$ та струм короткого замикання $I_\text{кз}$. З рівнянь \eqref{OhmLow} та \eqref{short}:
+\begin{equation}\label{I/I0}
+	\frac{I}{I_\text{кз}} = \frac{1}{1 + \dfrac{R_e}{R_i}}.
+\end{equation}
+
+Рівняння \eqref{U} дає
+\begin{equation}\label{Г/Г0}
+	\frac{U}{\mathcal{E}} = 1 - \frac{1}{1 + \dfrac{R_e}{R_i}},
+\end{equation}
+або, враховуючи \eqref{I/I0}:
+\begin{equation}
+	\frac{U}{\mathcal{E}} + \frac{I}{I_\text{кз}}  = 1.
+\end{equation}
+
+Тобто нормовані залежності напруги та струму від навантаження є взаємно протилежними (рис.~\ref{pic3}).
+
+\subsection{Потужність та ККД}
+
+Визначимо співвідношення між потужностями елементів кола.
+
+Максимальна потужність кола (при короткому замиканні):
+\begin{equation}\label{eq:P0}
+    P_0 = \mathcal{E} I_\text{кз}.
+\end{equation}
+
+Потужність на внутрішньому опорі $R_i$:
+\begin{equation}\label{Pi}
+	P_i = I^2R_i.
+\end{equation}
+
+Потужність на навантаженні $R_e$:
+\begin{equation}\label{Pe}
+	P_e = I^2R_e.
+\end{equation}
+
+Нормуємо потужність навантаження~\eqref{Pe} на максимальну~\eqref{eq:P0}:
+\begin{equation}\label{Pe/P0}
+	\frac{P_e}{P_0} = \frac{U}{\mathcal{E}} \cdot \frac{I}{I_\text{кз}} = \frac{R_e/R_i}{\left( 1+ R_e/R_i \right)^2 }.
+\end{equation}
+
+Залежність $P_e/P_0$ від $R_e/R_i$ має максимум при $R_e=R_i$ (рис.~\ref{pic3})~--- джерело віддає в навантаження максимальну потужність у режимі узгодження.
+
+%---------------------------------------------------------
+\begin{figure}[h!]\centering
+	\begin{tikzpicture}
+		\begin{semilogxaxis}[
+				x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+				legend style={row sep = 5pt},
+				xlabel={$\frac{R_e}{R_i}$},
+				width = \linewidth,
+				height = 0.6\linewidth,
+				grid = both,
+				major grid style={line width=.6pt,draw=brown!60},
+				minor tick num = 9,
+				minor grid style = {line width=.1pt,draw=brown!20},
+				axis lines=center,
+			]
+			\addplot[domain=0.01:100, samples=100, blue, thick] {1 - 1/(1 + x/1)};
+			\addplot[domain=0.01:100, samples=100, green!50! black, thick] {1/(1 + x/1)};
+			\addplot[domain=0.01:100, samples=100, red, thick] {x/1/(1+x/1)^2};
+			\node (XX) [draw=red, fill= white, minimum width=5cm] at (axis cs:10,0.5) {Холостий хід};
+			\node (KZ) [draw=red, fill= white, minimum width=5cm] at (axis cs:0.1,0.5) {Коротке замикання};
+			\draw[-latex, double] (XX.east) -- ++(0.5,0);
+			\draw[-latex, double] (KZ.west) -- ++(-0.5,0) ;
+			\legend{${U}/{\mathcal{E}}$, ${I}/{I_\text{кз}}$, ${P}/{P_0}$}
+		\end{semilogxaxis}
+	\end{tikzpicture}
+	\caption{Діаграма режимів для джерела електроенергії}
+	\label{pic3}
+\end{figure}
+%---------------------------------------------------------
+
+\section{Експериментальне устаткування}
+
+Експериментальне устаткування складається з трьох типів джерел електричної енергії:
+\begin{itemize}
+    \item \textbf{свинцево-кислотний акумулятор} (~$12$~В)~--- джерело з малим внутрішнім опором;
+    \item \textbf{плоска батарея} $4{,}5$~В (три послідовно з'єднані елементи Лекланше)~--- джерело із середнім внутрішнім опором;
+    \item \textbf{нікель-кадмієвий акумулятор} ($1{,}2$~В)~--- джерело з дуже малим внутрішнім опором.
+\end{itemize}
+Як змінне навантаження використовується реостат на $100$~Ом або на $10$~Ом (залежно від типу джерела). Вимірювальні прилади~--- високоомний цифровий мультиметр (як вольтметр) та магнітоелектричний мультиметр класу точності $0{,}5$ (як амперметр).
+
+\section{Хід експерименту}
+
+\subsection*{Частина~1. Зняття вольт-амперної характеристики}
+
+\begin{enumerate}
+    \item Зберіть вимірювальну схему згідно з рис.~\ref{pic1}. Як змінний резистор $R_e$ використовуйте реостат на $100$~Ом.
+
+    \item Встановіть реостат у положення максимального опору ($R_e \to \infty$) і виміряйте напругу холостого ходу $U_0 \approx \mathcal{E}$.
+
+    \item Змінюючи опір реостата, знімайте залежність $U(I)$~--- від режиму холостого ходу ($I = 0$) до максимально допустимого струму з кроком $\Delta I \approx 0{,}1$~А.
+
+    \item Занесіть результати до таблиці~\ref{tab1}. Для кожної точки обчисліть $R_e = U/I$.
+\end{enumerate}
+
+\begin{center}
+    \captionof{table}{Вимірювання вольт-амперної характеристики}
+    \label{tab1}
+    \begin{tblr}{
+    colspec={Q[c, 1.45cm] Q[c, 1.45cm] Q[c, 1.46cm] Q[c, 1.45cm] Q[c, 1.45cm] Q[c, 1.45cm] Q[c, 1.45cm] Q[c, 1.45cm] Q[c, 1.45cm]},
+    hlines, vlines,
+    }
+        $I$, А & $U$, В & $R_e$, Ом & $R_i$, Ом & $R_e/R_i$ & $P_e/P_0$ & $P_i / P_0$ & $P/ P_0$ & $\eta$ \\
+              &       &       &     &           &           &             &          &
+    \end{tblr}
+\end{center}
+
+\subsection*{Частина~2. Визначення параметрів джерела}
+
+\begin{enumerate}
+    \item Побудуйте графік залежності $U(I)$.
+
+    \item Апроксимуйте отримані точки прямою лінією $U = \mathcal{E} - R_i I$. \emph{Підказка:} ЕРС $\mathcal{E}$~--- це значення $U$ при $I = 0$ (точка перетину з віссю $U$); внутрішній опір $R_i$~--- це модуль нахилу прямої:
+    \begin{equation*}
+        R_i = -\frac{\Delta U}{\Delta I}.
+    \end{equation*}
+
+    \item Визначте струм короткого замикання $I_\text{кз} = \mathcal{E}/R_i$ (точка перетину прямої з віссю $I$).
+
+    \item Позначте на графіку точку узгодження ($R_e = R_i$, тобто $I = I_\text{кз}/2$, $U = \mathcal{E}/2$).
+\end{enumerate}
+
+\subsection*{Частина~3. Аналіз потужностей та ККД}
+
+\begin{enumerate}
+    \item Обчисліть $P_0 = \mathcal{E} \cdot I_\text{кз}$ (максимальна потужність джерела).
+
+    \item Для кожної точки таблиці обчисліть нормовані величини $P_e/P_0$, $P_i/P_0$, $P/P_0$ та ККД $\eta$ і занесіть до таблиці~\ref{tab1}.
+
+    \item Побудуйте нормовані діаграми потужностей у функції від $R_e/R_i$, аналогічні рис.~\ref{pic3}. Використайте логарифмічну шкалу по осі $x$.
+
+    \item Порівняйте вигляд отриманого графіка з теоретичним (рис.~\ref{pic3}) та прокоментуйте розбіжності.
+\end{enumerate}
+
+\subsection*{Частина~4. Класифікація джерела}
+
+\begin{enumerate}
+    \item Порівняйте $R_i$, отриманий з апроксимації, з типовими значеннями $R_e$ з таблиці вимірювань: чи $R_i \ll R_e$, чи $R_i \sim R_e$, чи $R_i \gg R_e$?
+    \item Зробіть висновок: чи наближається досліджуване джерело до ідеального джерела напруги ($R_i \ll R_e$), чи до ідеального джерела струму ($R_i \gg R_e$)?
+\end{enumerate}
+
+
+\section*{Контрольні питання}
+
+\begin{enumerate}
+    \item Що таке електрорушійна сила (ЕРС) джерела та який її фізичний зміст?
+
+    \item Чим відрізняється ЕРС від напруги на клемах джерела?
+
+    \item Запишіть закон Ома для повного кола.
+
+    \item Що таке внутрішній опір джерела і як він впливає на струм у колі?
+
+    \item Як змінюється напруга на клемах джерела при збільшенні струму?
+
+    \item Що таке режим холостого ходу і які значення струму та напруги при цьому?
+
+    \item Що таке коротке замикання? Запишіть формулу струму короткого замикання.
+
+    \item Як експериментально визначити ЕРС і внутрішній опір джерела?
+
+    \item Який вигляд має графік залежності напруги від струму $U(I)$ і що означає його нахил?
+
+    \item За якої умови потужність, що виділяється на навантаженні, є максимальною?
+\end{enumerate}

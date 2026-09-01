@@ -1,19 +1,20 @@
-% !TeX program = lualatex
-% !TeX encoding = utf8
-% !TeX spellcheck = uk_UA
-% !TeX root =../EMProblems.tex
+% !TeX root =./LabWork.tex
+
+% chktex-file 1
+
+%========================================================================================================
+%
+%									      Протоколи
+%
+%========================================================================================================
+
+\input{protocols.tex}
 
 %========================================================================================================
 %
 %									      Палітурка
 %
 %========================================================================================================
-
-% ---------------------------------------- Кольори секцій -----------------------------------------------
-\definecolor{themecolordark}{RGB}{34,102,101}
-\definecolor{themecolorlight}{RGB}{153,168,167}
-\definecolor{titlebgdark}{RGB}{0,103,102}
-\definecolor{titlebglight}{RGB}{191,233,251}
 
 \newcommand{\CoverPage}{
 	\begin{alwayssingle}
@@ -26,15 +27,15 @@
 					toprule=0.10cm,
 					bottomrule=0.10cm,
 					overlay={%
-						\node (picture) at ([xshift=4cm]frame.west) {\includegraphics{logo_PTI}};
+						\node (picture) at ([xshift=4cm]frame.west) {\includegraphics[width=3.5cm]{logo/logo_IPT}};
 					}
 			]%
 			\begin{flushright}
-				\large\bfseries\color{white}Фізико-технічний інститут
+				\large\bfseries\color{white}Навчально-науковий\\ фізико-технічний інститут
 			\end{flushright}
 			\end{tcolorbox}
 
-			\vspace*{15em}
+			\vspace*{10em}
 
 			\begin{tcolorbox}[
 				titlepagestyle,
@@ -45,7 +46,7 @@
 				overlay={%
 				\node[%
 							fill=white,
-							rounded corners = 15pt,	
+							rounded corners = 15pt,
 							draw=themecolorlight,
 							line width=0.15cm,
 							inner sep=0pt,
@@ -62,28 +63,25 @@
 			\centering
 			\Huge\sffamily\bfseries\textcolor{white}{\realtitle}\\
 			\huge\sffamily\bfseries\textcolor{white}{\subtitle}
-			\end{tcolorbox}	
+			\end{tcolorbox}
 			\vfill
-%		 	\begin{Large}\color{themecolordark!90!black}
-%			\begin{gather*}
-%				\frac{\partial F^{\mu\nu}}{\partial x^\nu} =                                                                                -\frac{4\pi}{c}j^\mu \\
-%				\frac{\partial F^{\mu\nu}}{\partial x^\alpha} + \frac{\partial F^{\mu\alpha}}{\partial x^\nu} +\frac{\partial F^{\alpha\mu}}{\partial x^\nu}  = 0.
-%			\end{gather*}
-%			\end{Large}
+		 	\begin{Large}\color{themecolordark!90!black}
+                \input{LabPotential/pic/opposite.tex}
+			\end{Large}
 			\vfill
 			\begin{tcolorbox}[titlepagestyle,
 					toprule=0.10cm,
 					bottomrule=0.10cm]
 				\begin{center}\color{white}\bfseries\normalsize
-					\MakeUppercase{Київ~2020} \\
+					\MakeUppercase{Київ~\the\year} \\
 %					КПІ ім. Ігоря Сікорського \\
 %					\the\year
-				\end{center}			       	
+				\end{center}
 			\end{tcolorbox}
 		\end{center}
 		\clearpage
 	\end{alwayssingle}
-\setcounter{page}{1}	
+\setcounter{page}{1}
 }
 
 
@@ -97,35 +95,37 @@
 	\begin{alwayssingle}
 		\begin{center}
 				\MakeUppercase{Міністерство освіти і науки України}
-				
+
 				\bigskip
 				\MakeUppercase{Національний технічний університет України}\\
 				<<КИЇВСЬКИЙ ПОЛІТЕХНІЧНИЙ ІНСТИТУТ \\ імені ІГОРЯ СІКОРСЬКОГО>>
-				\vspace*{150pt}
-		
-%				{\large С.~Пономаренко,
-%						Ю.~О.~Тараненко
-%						}
-%				\vspace*{50pt}
-			
+				\vspace*{100pt}
+
+				{\large С.~М.~Пономаренко,
+						Ю.~О.~Тараненко
+						}
+				\vspace*{50pt}
+
 				{\Huge\sffamily\bfseries\realtitle}\\[1em]
-				{\huge\sffamily\bfseries\subtitle}	
-			
+				{\huge\sffamily\bfseries\subtitle}
+
 			\vspace*{50pt}
 			\begin{center}\itshape
-                Рекомендовано Методичною радою КПІ ім. Ігоря Сікорського як навчальний посібник для здобувачів ступеня бакалавра за освітньою програмою <<Прикладна фізика>> спеціальності 105 Прикладна фізика та наноматеріали 
-%				Методичні вказівки до виконання лабораторних робіт за темою <<Змінний струм>> з навчальної дисципліни <<Електрика та магнетизм>> для студентів, які навчаються за спеціальністю 105 <<Прикладна фізика та наноматеріали>>
+			Рекомендовано Методичною радою КПІ ім. Ігоря Сікорського як навчальний посібник для
+			здобувачів ступеня бакалавра за спеціальностями E6 Прикладна фізика та наноматеріали.
 			\end{center}
-
+            \vfill
+%                 \textcolor{malina}{Видання друге, виправлене та доповнене}
+%                \textcolor{malina}{Версія від~\today, час компіляції \currenttime.}
 			\vfill
 			\begin{center}
 				\MakeUppercase{Київ} \\
 				КПІ ім. Ігоря Сікорського \\
-				2020
-			\end{center}			       	
+				\the\year
+			\end{center}
 		\end{center}
 		\clearpage
-	\end{alwayssingle}	
+	\end{alwayssingle}
 }
 
 
@@ -136,74 +136,93 @@
 %========================================================================================================
 \newcommand\makeinfopage{
 	\begin{alwayssingle}
-		\noindent%	
-        \begin{minipage}[t]{\textwidth}
-                \realtitle: \subtitle\ [Електронний ресурс] : навч. посіб. для студ. спеціальностей
-                105 <<Прикладна фізика та наноматеріали>> / КПІ ім. Ігоря Сікорського; уклад.  С.~М. Пономаренко, Ю.~О. Тараненко ; КПІ ім. Ігоря Сікорського.~--- Електронні текстові дані
-            (1 файл: 3.30~МБ). – Київ : КПІ ім. Ігоря Сікорського, 2020. --- \the\numexpr\getpagerefnumber{LastPage}~с.
-        \end{minipage}
-        \vspace*{2em}
-		\begin{center}\itshape\small
-				Гриф надано Методичною радою КПІ ім. Ігоря Сікорського (протокол № 4 від 10.12.2020 р.) за поданням Вченої ради Фізико-технічного інституту (протокол №11/2020 від 26.11.2020 р.)
-		\end{center}
-		\begin{center}
-			Електронне мережне навчальне видання
-			%\par {Версія від~\href{http://www.istpravda.com.ua/dates}{\today}} \par\else \par  \fi
-		\end{center}
-		\begin{center}\bfseries
-    		\LARGE\sffamily\realtitle\\
-   			\Large\sffamily\subtitle
-   		\end{center}
+		\noindent%
+		\begin{minipage}[t]{0.5\textwidth}
+				\begin{flushleft}
+					УДК  537\\
+					Ж 42
+				\end{flushleft}
+		\end{minipage}
 
-		\vfill\noindent%
-        \begin{minipage}[t]{0.2\linewidth}
+
+		\bigskip\noindent%
+        \begin{minipage}[t]{0.25\linewidth}
             	\begin{flushleft}
-                    Укладачі:
+                    Рецензенти:
                 \end{flushleft}
         \end{minipage}\hfill
-        \begin{minipage}[t]{0.78\linewidth}
-		\begin{flushleft}
-			\href{http://apd.ipt.kpi.ua/blog/author/183}{\itshape Пономаренко Сергій Миколайович}, к.ф.-м.н., доцент \\
-			\itshape Тараненко Юрій Олексійович, старший викладач
-		\end{flushleft}
+        \begin{minipage}[t]{0.75\linewidth}
+                \href{https://kzf.kpi.ua/kulish-volodymyr-viktorovych/}{В.~В.~Куліш}, д.ф.-м.н., професор кафедри загальної фізики фізико-метематичного факультету КПІ ім. Ігоря Сікорського.
+                \\[1ex]
+                \href{https://phys.knu.ua/1450-vilchinskiy-stanislav-yosipovich}{С.~Й.~Вільчинський},  д.ф.-м.н., професор, завідувач кафедри  квантової теорії поля та космомікрофізики.
         \end{minipage}
 
-        \vspace*{2em}
-		\noindent%
-        \begin{minipage}[t]{0.2\linewidth}
+		\bigskip\noindent%
+        \begin{minipage}[t]{0.25\linewidth}
             	\begin{flushleft}
                     Відповідальний редактор:
                 \end{flushleft}
         \end{minipage}\hfill
-        \begin{minipage}[t]{0.78\linewidth}
-                к.ф.-м.н., доцент \href{http://ipt.kpi.ua/smirnov}{Смирнов С.~О.}
+        \begin{minipage}[t]{0.75\linewidth}
+                \href{http://is.ipt.kpi.ua/is/smirnovsa/}{С.~А.~Смирнов}, к.ф.-м.н., доцент, голова
+                методичної ради НН ФТІ КПІ ім. Ігоря Сікорського
         \end{minipage}
 
-        \vspace*{2em}
-		\noindent%
-        \begin{minipage}[t]{0.2\linewidth}
-            	\begin{flushleft}
-                    Рецензент:
-                \end{flushleft}
-        \end{minipage}\hfill
-        \begin{minipage}[t]{0.78\linewidth}
-                \href{http://apd.ipt.kpi.ua/blog/author/19}{Я.~Д.~Кривенко-Еметов}, к.ф.-м.н., доцент кафедри прикладної фізики, Фізико-технічного інституту КПІ ім. Ігоря Сікорського
+		\begin{center}\itshape\small
+				Гриф надано Методичною радою КПІ ім. Ігоря Сікорського (протокол №~\KPINo~від \KPIDate~р.) за поданням Вченої ради Навчально-наукового Фізико-технічного інституту (протокол №~\IPTNo~від \IPTDate~р.)
+		\end{center}
+		\begin{center}
+			\ifelectronic Електронне мережне навчальне видання \fi
+			%\par {Версія від~\href{http://www.istpravda.com.ua/dates}{\today}} \par\else \par  \fi
+		\end{center}
+		\begin{center}
+			\href{https://apd.ipt.kpi.ua/kafedra/stuff/ponomarenko}{\itshape Пономаренко Сергій
+			Миколайович}, к.ф.-м.н., доцент \\
+			{\itshape Тараненко Юрій
+			БориОлексійович}, старший викладач
+		\end{center}
+%			\vspace*{1em}%
+		\begin{center}\bfseries
+			\LARGE\sffamily\realtitle \\
+			\Large\sffamily\subtitle
+		\end{center}
+        \noindent%
+        \begin{minipage}[t]{\textwidth}\small
+                \realtitle: \subtitle\ [Електронний ресурс] : навч. посіб. для студ. спеціальностей
+                E6 <<Прикладна фізика та наноматеріали>> та F1 <<Прикладна математика>> /  С.~М. Пономаренко, Ю.~О. Тараненко КПІ ім. Ігоря Сікорського.~--- Електронні
+                текстові дані
+            (1 файл: 789~кБ). – Київ: КПІ ім. Ігоря Сікорського, \the\year. ---
+             \the\numexpr\getpagerefnumber{LastPages}-1\relax~с.
         \end{minipage}
 
-        \vfill
-
-		Розглянуто зміст, основні складові та порядок виконання лабораторних робіт за темою <<Електричне та магнітне поле>> з дисципліни <<Електрика та магнетизм>>. 
-
-		Для студентів фізико-технічного інституту КПІ ім. Ігоря Сікорського, які навчаються за спеціальністю 105~<<Прикладна фізика та наноматеріали>>.
-		
+%		\noindent%
+%		\begin{flushleft}
+%			\begin{tabular}{lp{0.9\textwidth}}
+%				     & В.~І. Жданов, С.~М. Пономаренко, В.~Б. Долгошей                                                                                                                                                                        \\
+%				Ж 42 & \hspace*{3ex} \realtitle : \subtitle{} [Електронний ресурс] : навчальний посібник / %
+%				В.~І. Жданов, %
+%				С.~М. Пономаренко%,
+%				В.~Б. Долгошей %
+%				--- К.:~КПІ ім. Ігоря Сікорського, \the\year. --~\the\numexpr\getpagerefnumber{LastPage}-1\relax~с. -- Бібліогр.: с.~\pageref{BibPage}\relax. \ifelectronic\relax\else-- 80~прим.\fi
+%			\end{tabular}
+%		\end{flushleft}
 		\vfill
-				
+
+
+		Для студентів фізико-технічного інституту КПІ ім. Ігоря Сікорського, які навчаються за спеціальностями E6~<<Прикладна фізика та наноматеріали>> та F1 <<Прикладна математика>>.
+
+		\vfill
+
 %		\begin{flushleft}\small
 %			Ілюстративний матеріал підручника підготовлений за допомогою пакету \href{http://pgf.sourceforge.net}{TikZ/Pgf}. Верстка тексту проведена в видавничій системі \LaTeXe{} (компілятор Lua\LaTeX) на базі системи комп'ютерної верстки \TeX{} (Збірка  \href{https://www.tug.org/texlive/}{\TeX Live~\the\year}) з використанням оболонки \href{https://www.texstudio.org}{\TeX Studio}.
-%		\end{flushleft}	
-	\begin{flushright}
-        \textcopyright{} С.~М. Пономаренко, Ю.~О. Тараненко, 2020 р.
-    \end{flushright}
+%		\end{flushleft}
+	\hfill
+        \begin{flushright}
+    	\begin{minipage}[t]{0.8\linewidth}\small
+        \textcopyright{} В.~І. Жданов, С.~М. Пономаренко, В.~Б. Долгошей, \the\year\,р. \\
+        \textcopyright{}  КПІ ім. Ігоря Сікорського (НН ФТІ), \the\year~р.
+        \end{minipage}
+        \end{flushright}
 		\newpage%
 	\end{alwayssingle}
 }
@@ -212,14 +231,15 @@
 %%                                                                        %%
 %%                              Last Page                                 %%
 %%                                                                        %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\makelastpage}{%
 \clearpage%
 \thispagestyle{empty}%
 \vspace*{0.4\textheight}
 \begin{center}
+		\textbf{Жданов} Валерій Іванович \\
 	    \textbf{Пономаренко} Сергій Миколайович \\
-	    \textbf{Тараненко} Юрій Олексійович
+	    \textbf{Долгошей} Володимир Борисович
 \end{center}
 
 \begin{center}\bfseries
@@ -236,7 +256,7 @@
 Національний технічний університет України \\
 <<Київський політехнічний інститут імені Ігоря Сікорського>> \\
 Свідоцтво про державну реєстрацію: серія ДК № 5354 від 25.05.2017 р.\\
-просп. Перемоги, 37, м. Київ, 03056
+просп. Берестейський, 37, м. Київ, 03056
 \end{center}
 
 %\vfill
@@ -247,7 +267,6 @@
 %    м. Київ, 03056 \\
 %    Тел. (044) 204-81-78
 %\end{center}
-}	
-
+}
 
 
