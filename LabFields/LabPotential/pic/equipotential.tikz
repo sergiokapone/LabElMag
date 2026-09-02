@@ -51,4 +51,12 @@ smooth] (fieldx,fieldy);
 \pgfmathsetmacro{\fieldtheta}{\a}
 \node at (fieldx,fieldy) {$\varphi_{\X}$};
 }
+
+% ---- Позначення Δn: відрізок ОДНІЄЇ силової лінії (C=10.2) між точками її перетину
+% з сусідніми еквіпотенціальними поверхнями φ4 (theta=58.284 deg) і φ5 (theta=71.506 deg) ----
+\pgfmathsetmacro{\constant}{10.2}
+\draw[<->, very thick, blue!70!black]
+    plot[domain=58.284:71.506, samples=20, variable=\equipotentialtheta]
+    (-equipotentialx,equipotentialy);
+\node[blue!70!black, font=\small] at (-0.70,1.95) {$\Delta n$};
 \end{tikzpicture}
