@@ -83,6 +83,20 @@
 \let\MakeUppercase\MakeTextUppercase
 \RequirePackage{indentfirst}
 \RequirePackage{currfile}
+
+\RequirePackage{minted}
+
+\setminted{
+    fontsize=\scriptsize,
+    bgcolor=gray!20,
+    frame=lines,
+    framesep=3mm,
+    breaklines,
+    autogobble=false,
+    obeytabs=true,
+    tabsize=4,
+    showtabs=false,
+}
 % ------------------------------------ Плаваючі об'єкти -----------------------
 %\RequirePackage{subfig}і
 %\renewcommand\thesubfigure{\alph{subfigure}}
@@ -744,6 +758,11 @@ ecranlens/.pic={
 	\titlespacing{\chapter}{0pt}{0pt}{0pt}
 }
 
+% Для ненумерованих розділів (\chapter*)
+\titleformat{\chapter}[display]
+	{\Large\bfseries\sffamily}{}
+	{0pt}{\Large\filcenter}
+
 \titleformat{\section}
    {\normalfont\normalsize\bfseries}{\thesection.}{1em}{}
 
@@ -766,13 +785,15 @@ ecranlens/.pic={
 	\headrule\sethead{\hfill\small Робота\ \thechapter. \chaptertitle\hfill}{}{}
 	\setfoot{}{\small\thepage}{}}
 
+\newpagestyle{pre}{%
+	\sethead{}{}{}
+	\setfoot{}{\small\thepage}{}}
+
 \newpagestyle{theorpart}{%
 	\headrule\sethead{\hfill\small Теоретична частина\hfill}{}{}
 	\setfoot{}{\small\thepage}{}
 	\settitlemarks{part}
 }
-
-
 
 \titleformat{\part}[display]
 {\sffamily\bfseries\raggedright}{\LARGE\thepart}{0mm}{\Huge}{}
