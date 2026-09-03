@@ -907,6 +907,8 @@ ecranlens/.pic={
 
 \def\apparatus#1{%
 	\if\relax\detokenize{#1}\relax
+		\let\@apparatusPDFprint\@empty
+		\let\@apparatusprint\@empty
 	\else
 		\def\@apparatusPDFprint{#1}
 		\def\@apparatusprint{{\bfseries\apparatusname}:\,{\itshape #1}\par}
@@ -924,6 +926,8 @@ ecranlens/.pic={
 \def\keyname{Ключові слова}
 \def\keywords#1{%
 	\if\relax\detokenize{#1}\relax
+		\let\@keywordPDFprint\@empty
+		\let\@keywordprint\@empty
 	\else
 		\def\@keywordPDFprint{#1}
 		\def\@keywordprint{{\bfseries\keyname}:\,{\itshape #1}\par}

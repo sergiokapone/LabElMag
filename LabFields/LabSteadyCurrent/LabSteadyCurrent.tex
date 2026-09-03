@@ -20,11 +20,14 @@
 }
 %======================================================================================================================%
 
+\keywords{}
+
+\apparatus{}
+
 \chapter{Джерела електричної енергії та їх характеристики}
 \makeworktitle
 
 \section{Теоретичні відомості}
-
 
 
 %\begin{Definition}
@@ -104,7 +107,6 @@
 \end{enumerate}
 %\end{ModeBox}
 
-
 %\begin{LawBox}[title=ККД джерела]
 Коефіцієнт корисної дії (ККД) $\eta$ визначається відношенням потужності в навантаженні ($P_e = I^2R_e$) до повної потужності джерела ($P = \mathcal{E}I$):
 \begin{equation}\label{eta}
@@ -163,13 +165,13 @@
 \subsection{Закони Ома та ідея дослідів}
 
 %---------------------------------------------------------
-\begin{wrapfigure}[14]{l}{0.5\linewidth}\centering
+\begin{wrapfigure}[12]{l}{0.5\linewidth}\centering
 	\begin{tikzpicture}[thick, every circuit symbol/.style={thick},large circuit symbols,]
-		\draw[red, fill=red!20] (-1.2,-1.7) rectangle ++(2.2,3.1);
-		\draw (0,-2) coordinate (START) to [resistor={info={$R_i$}, color=red}] ++(0,2) to [battery={info={$\mathcal{E}$}}] ++(0,2) to [ampermeter] coordinate (A1) ++(6,0) to [resistor={info'=$R_e$}] ++(0,-4) -- (START)
+		\draw[red, fill=red!20] (-0.4,-1.4) rectangle ++(0.8,2.8);
+		\draw (0,-1.5) coordinate (START) to [resistor={info={[label distance=1mm]$R_i$}}] ++(0,1.5) to [battery={info={$\mathcal{E}$}}] ++(0,1.5) -- ++(1,0) to [ampermeter] coordinate (A1) ++(3,0) to [resistor={info'=$R_e$}] ++(0,-3) -- (START)
 		;
-		\draw [latex-] (6.1,0) -- ++(0.5,0) -- ++(0,-1) -- ++(-0.6,0) node[contact] {};
-		\draw ([xshift=-1.2cm]A1) node[contact] {} to[voltmeter] ++(0,-4) node[contact] {};
+		\draw [latex-] (4.1,0) -- ++(0.5,0) -- ++(0,-1) -- ++(-0.6,0) node[contact] {};
+		\draw ([xshift=1cm]START) node[contact] {} to[voltmeter] ++(0,3) node[contact] {};
 	\end{tikzpicture}
 	\caption{Послідовне з'єднання елементів}
 	\label{pic1}
@@ -182,15 +184,19 @@
 	I = \frac{\mathcal{E}}{R_i + R_e}.
 \end{equation}
 
+
 Вихідна напруга (напруга на клемах джерела):
 \begin{equation}\label{U}
 	U = \mathcal{E} - R_i I.
 \end{equation}
+
+
 Зовнішній опір у робочій точці визначається як:
 \begin{equation}\label{Re}
 	R_e = \frac{U}{I}.
 \end{equation}
 %\end{LawBox}
+
 
 Формула~\eqref{U} описує лінійну залежність $U(I)$, де вільний член дає $\mathcal{E}$ (ЕРС~--- напруга при $I=0$, тобто в режимі холостого ходу), а нахил прямої дорівнює $-R_i$. Тому:
 \begin{equation}\label{tan}
