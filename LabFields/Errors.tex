@@ -290,7 +290,7 @@ $(x_i, y_i)$:
 $a$, $b$ та їхніх похибок лише тоді, коли похибки всіх точок $y_i$
 приблизно однакові, а похибками $x_i$ можна знехтувати: сама формула
 для $\Delta a$ виводиться з розкиду точок відносно прямої (через
-$\overline{y^2}$) і не використовує задані наперед $\Delta x_i$,
+$\la{y^2}$) і не використовує задані наперед $\Delta x_i$,
 $\Delta y_i$ явно.
 
 \section{Комп'ютерна обробка даних: \texttt{Python} та \texttt{Gnuplot}}
@@ -384,7 +384,7 @@ plt.plot(xx, linear([a, b], xx),
 plt.xlabel("$x$")
 plt.ylabel("$y$")
 plt.legend()
-plt.savefig("fit.png", dpi=150)
+plt.savefig("fit.png", dpi=300)
 \end{minted}
 \egroup
 
