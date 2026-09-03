@@ -1,0 +1,40 @@
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+% !BIB program = biber
+
+
+\documentclass{LabBook}
+\usetikzlibrary{angles}
+\usepackage{graphicx}
+\addbibresource[label=Lab1]{LabCoulombs/LabWork1.bib}
+\addbibresource{\jobname.bib}
+%\usepackage{caption}
+
+
+\newcommand{\inX}{%
+\tikz[baseline=-0.3em]{\draw (165:0.5em) arc (165:-165:0.5em); \draw[-latex] (-0.8em,0) -- ++(1em,0);} X%
+}
+
+
+
+\begin{document}
+
+
+\newcommand{\Chapters}{
+%	LabCoulombs,
+%    LabPotential,
+    LabSteadyCurrent,
+%	LabMomentum,
+%	LabEarthMagnet,
+}
+
+
+
+\labworklayout
+\setcounter{chapter}{2}
+\pagestyle{main}
+\multiinclude{\Chapters}[]
+
+
+\end{document}
